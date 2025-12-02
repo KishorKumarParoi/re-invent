@@ -27,6 +27,12 @@ const Hero = () => {
     }
 
     React.useEffect(() => {
+        if (loadedVideos >= 2) {
+            setIsLoading(false)
+        }
+    }, [loadedVideos])
+
+    React.useEffect(() => {
         if (!audioRef.current) return
         audioRef.current.muted = isMuted
         if (!isMuted) {
