@@ -4,7 +4,7 @@ const Hero = () => {
     const [currentIndex, setCurrentIndex] = React.useState(0)
     const [isLoading, setIsLoading] = React.useState(true)
     const [loadedVideos, setLoadedVideos] = React.useState(0)
-    const [isMuted, setIsMuted] = React.useState(false) // start muted to avoid autoplay block
+    const [isMuted, setIsMuted] = React.useState(false)
 
     const totalVideos = 5
     const nextVideoRef = React.useRef(null)
@@ -27,12 +27,6 @@ const Hero = () => {
     }
 
     React.useEffect(() => {
-        if (loadedVideos >= 2) {
-            setIsLoading(false)
-        }
-    }, [loadedVideos])
-
-    React.useEffect(() => {
         if (!audioRef.current) return
         audioRef.current.muted = isMuted
         if (!isMuted) {
@@ -41,20 +35,6 @@ const Hero = () => {
             audioRef.current.pause()
         }
     }, [isMuted])
-
-    React.useEffect(() => {
-        const start = () => {
-            if (audioRef.current) {
-                audioRef.current.muted = true
-                audioRef.current.play().then(() => {
-                    setTimeout(() => { audioRef.current.muted = false }, 300)
-                })
-            }
-            window.removeEventListener('pointerdown', start)
-        }
-        window.addEventListener('pointerdown', start)
-        return () => window.removeEventListener('pointerdown', start)
-    }, [])
 
     const getVideoSrc = (index) => `videos/hero-${index}.mp4`
     const upcomingVideoIndex = ((currentIndex + 1) % totalVideos)
@@ -66,6 +46,7 @@ const Hero = () => {
                 ref={audioRef}
                 src="/audio/audio-5.mp3" // place file in public/audio/hero-theme.mp3
                 loop
+                autoPlay
                 preload="auto"
             />
 
