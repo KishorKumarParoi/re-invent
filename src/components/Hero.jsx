@@ -39,8 +39,10 @@ const Hero = () => {
     React.useEffect(() => {
         const start = () => {
             if (audioRef.current) {
-                audioRef.current.muted = false; // or keep true if you want silent start
-                audioRef.current.play().catch(() => { })
+                audioRef.current.muted = true
+                audioRef.current.play().then(() => {
+                    setTimeout(() => { audioRef.current.muted = false }, 300)
+                })
             }
             window.removeEventListener('pointerdown', start)
         }
