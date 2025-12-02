@@ -36,6 +36,18 @@ const Hero = () => {
         }
     }, [isMuted])
 
+    React.useEffect(() => {
+        const start = () => {
+            if (audioRef.current) {
+                audioRef.current.muted = false; // or keep true if you want silent start
+                audioRef.current.play().catch(() => { })
+            }
+            window.removeEventListener('pointerdown', start)
+        }
+        window.addEventListener('pointerdown', start)
+        return () => window.removeEventListener('pointerdown', start)
+    }, [])
+
     const getVideoSrc = (index) => `videos/hero-${index}.mp4`
     const upcomingVideoIndex = ((currentIndex + 1) % totalVideos)
 
