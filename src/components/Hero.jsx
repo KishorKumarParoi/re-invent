@@ -1,38 +1,58 @@
 import React from 'react'
 
 const Hero = () => {
-    const [currentIndex, setCurrentIndex] = React.useState(1);
-    const [hasClicked, setHasClicked] = React.useState(false);
-    const [isLoading, setIsLoading] = React.useState(true);
-    const [loadedVideos, setLoadedVideos] = React.useState(0);
+    const [currentIndex, setCurrentIndex] = React.useState(0)
+    const [isLoading, setIsLoading] = React.useState(true)
+    const [loadedVideos, setLoadedVideos] = React.useState(0)
+    const [isMuted, setIsMuted] = React.useState(false) // start muted to avoid autoplay block
 
-    const totalVideos = 5;
-    const nextVideoRef = React.useRef(null);
+    const totalVideos = 5
+    const nextVideoRef = React.useRef(null)
+    const audioRef = React.useRef(null)
 
     const handleMiniVideoClick = () => {
-        setHasClicked(true);
-        setCurrentIndex(prevIndex => (prevIndex % totalVideos) + 1);
+        // First user gesture: try starting audio if still muted
+        if (audioRef.current && audioRef.current.paused) {
+            audioRef.current.play().catch(() => { }) // ignore autoplay errors
+        }
+        setCurrentIndex(prevIndex => ((prevIndex + 1) % totalVideos))
     }
 
     const handleVideoLoad = () => {
-        setLoadedVideos((prev) => prev + 1)
+        setLoadedVideos(prev => prev + 1)
     }
 
-    const getVideoSrc = (index) => `videos/hero-${index}.mp4`
-
-    const upcomingVideoIndex = (currentIndex % totalVideos) + 1;
+    const toggleMute = () => {
+        setIsMuted(prev => !prev)
+    }
 
     React.useEffect(() => {
-        if (loadedVideos === totalVideos - 1) {
-            setIsLoading(false);
+        if (!audioRef.current) return
+        audioRef.current.muted = isMuted
+        if (!isMuted) {
+            audioRef.current.play().catch(() => { }) // will succeed after a user gesture
+        } else {
+            audioRef.current.pause()
         }
-    }, [loadedVideos]);
+    }, [isMuted])
+
+    const getVideoSrc = (index) => `videos/hero-${index}.mp4`
+    const upcomingVideoIndex = ((currentIndex + 1) % totalVideos)
 
     return (
         <div className='relative h-dvh w-screen overflow-x-hidden'>
+            {/* Background music element */}
+            <audio
+                ref={audioRef}
+                src="/audio/audio-5.mp3" // place file in public/audio/hero-theme.mp3
+                loop
+                preload="auto"
+            />
+
             <div id='video-frame' className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
                 <video
                     src={getVideoSrc(currentIndex)}
+                    id='current-video'
                     autoPlay
                     loop
                     muted
@@ -40,6 +60,15 @@ const Hero = () => {
                     className='absolute left-0 top-0 size-full object-cover object-center'
                     onLoadedData={handleVideoLoad}
                 />
+
+                {/* Mute/Unmute button */}
+                <button
+                    onClick={toggleMute}
+                    className='absolute bottom-6 right-6 z-50 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-black/70'
+                    aria-label={isMuted ? 'Unmute music' : 'Mute music'}
+                >
+                    {isMuted ? '🔇' : '🔊'}
+                </button>
 
                 <div className='mask-clip-path absolute-center z-50 size-64 cursor-pointer overflow-hidden rounded-lg'>
                     <div
@@ -53,13 +82,13 @@ const Hero = () => {
                             loop
                             muted
                             playsInline
-                            id='current-video'
+                            id='next-video'
                             onLoadedData={handleVideoLoad}
                         />
                     </div>
                 </div>
             </div>
-            {/* 
+
             {isLoading && (
                 <div className='flex-center absolute z-100 h-dvh w-screen overflow-hidden bg-violet-50'>
                     <div className='three-body'>
@@ -68,9 +97,9 @@ const Hero = () => {
                         <div className='three-body__dot'></div>
                     </div>
                 </div>
-            )} */}
+            )}
         </div>
     )
 }
 
-export default Hero;
+export default Hero
