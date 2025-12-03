@@ -36,13 +36,6 @@ const Hero = () => {
 
     const getCurrentColor = () => colors[currentIndex % colors.length]
 
-
-    React.useEffect(() => {
-        if (loadedVideos == loadedVideos - 1) {
-            setIsLoading(false)
-        }
-    }, [loadedVideos])
-
     const handleMiniVideoClick = () => {
         setHasClicked(true)
         // First user gesture: try starting audio if still muted
@@ -111,7 +104,7 @@ const Hero = () => {
     }
 
     React.useEffect(() => {
-        if (loadedVideos >= 2) {
+        if (loadedVideos >= 1) {
             setIsLoading(false)
         }
     }, [loadedVideos])
