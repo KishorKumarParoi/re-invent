@@ -3,11 +3,14 @@ import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/all'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = React.useState(0)
     const [loadedVideos, setLoadedVideos] = React.useState(0)
-    const [isMuted, setIsMuted] = React.useState(true)
+    const [isMuted, setIsMuted] = React.useState(false)
     const [hasClicked, setHasClicked] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(true)
 
@@ -17,19 +20,28 @@ const Hero = () => {
 
     // Define color array
     const colors = [
-        'text-blue-100',
-        'text-purple-200',
-        'text-pink-200',
-        'text-yellow-200',
-        'text-green-200',
-        'text-orange-200',
-        'text-red-200',
-        'text-cyan-200',
-        'text-indigo-200',
+        'text-violet-400',
+        'text-fuchsia-500',
+        'text-cyan-400',
+        'text-yellow-400',
+        'text-rose-500',
+        'text-emerald-400',
+        'text-orange-500',
+        'text-pink-500',
+        'text-lime-400',
+        'text-sky-400',
+        'text-purple-500',
+        'text-amber-400',
     ]
+
     const getCurrentColor = () => colors[currentIndex % colors.length]
 
 
+    React.useEffect(() => {
+        if (loadedVideos == loadedVideos - 1) {
+            setIsLoading(false)
+        }
+    }, [loadedVideos])
 
     const handleMiniVideoClick = () => {
         setHasClicked(true)
@@ -69,6 +81,26 @@ const Hero = () => {
         }
     }, { dependencies: [currentIndex], revertOnUpdate: true })
 
+    useGSAP(() => {
+        gsap.set('#video-frame', {
+            clipPath: 'polygon(2% 3%, 74% 7%, 89% 91%, 2% 82%)',
+            borderRadius: '30px',
+        })
+
+        gsap.from('#video-frame', {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+            borderRadius: '0px',
+            duration: 1.5,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+                trigger: '#video-frame',
+                start: 'center center',
+                end: 'bottom top',
+                scrub: true,
+            }
+        })
+    })
+
 
     const handleVideoLoad = () => {
         setLoadedVideos(prev => prev + 1)
@@ -99,10 +131,20 @@ const Hero = () => {
 
     return (
         <div className='relative h-dvh w-screen overflow-x-hidden'>
+            {isLoading && (
+                <div className='flex-center absolute inset-0 z-[1000] bg-violet-50'>
+                    {/* simpler positioning: inset-0 fills the screen */}
+                    <div className='three-body'>
+                        <div className='three-body__dot'></div>
+                        <div className='three-body__dot'></div>
+                        <div className='three-body__dot'></div>
+                    </div>
+                </div>
+            )}
             {/* Background music element */}
             <audio
                 ref={audioRef}
-                src="/audio/audio-5.mp3" // place file in public/audio/hero-theme.mp3
+                src="/audio/audio-5.mp3"
                 loop
                 autoPlay
                 preload="auto"
@@ -140,7 +182,7 @@ const Hero = () => {
                             className='size-64 origin-center scale-150 object-cover object-center'
                             loop
                             muted
-                            // autoPlay
+                            autoPlay
                             playsInline
                             id='next-video'
                             onLoadedData={handleVideoLoad}
@@ -171,9 +213,9 @@ const Hero = () => {
                 </div>
             </div >
 
-            {/* <h1 className='special-font hero-heading absolute bottom-14 right-5 z-30 text-black'>
+            <h1 className='special-font hero-heading absolute bottom-12 right-5 text-black'>
                 G<b>A</b><b>M</b>I<b>N</b>G
-            </h1> */}
+            </h1>
         </div >
     )
 }
