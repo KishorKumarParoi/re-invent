@@ -2,10 +2,19 @@
 
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scroll-padding-top: 80px; /* Offset for fixed headers */
+}
+
 body {
+  overscroll-behavior: none; /* Prevent bounce on scroll end */
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #dfdff0;
+  background-color: #e2d3d3;
   font-family: "General Sans", sans-serif;
 }
 

@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = React.useState(0)
     const [loadedVideos, setLoadedVideos] = React.useState(0)
-    const [isMuted, setIsMuted] = React.useState(false)
+    const [isMuted, setIsMuted] = React.useState(true)
     const [hasClicked, setHasClicked] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(true)
 
@@ -110,10 +110,20 @@ const Hero = () => {
     }, [loadedVideos])
 
     React.useEffect(() => {
+        const onKeyDown = (e) => {
+            if (e.key.toLowerCase() === 'm') {
+                setIsMuted((prev) => !prev)
+            }
+        }
+        window.addEventListener('keydown', onKeyDown)
+        return () => window.removeEventListener('keydown', onKeyDown)
+    }, [])
+
+    React.useEffect(() => {
         if (!audioRef.current) return
         audioRef.current.muted = isMuted
         if (!isMuted) {
-            audioRef.current.play().catch(() => { }) // will succeed after a user gesture
+            audioRef.current.play().catch(() => { })
         } else {
             audioRef.current.pause()
         }
