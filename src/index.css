@@ -472,3 +472,25 @@ body {
     opacity: 0.8;
   }
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-animation {
+  animation: shimmer 3s infinite;
+}
+
+/* Add perspective for 3D skill badges */
+.skills-section {
+  perspective: 1000px;
+}
+
+.skill-badge {
+  transform-style: preserve-3d;
+}

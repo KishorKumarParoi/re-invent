@@ -135,7 +135,7 @@ const Hero = () => {
     return (
         <div className='relative h-dvh w-screen overflow-x-hidden'>
             {isLoading && (
-                <div className='flex-center absolute inset-0 z-[1000] bg-violet-50'>
+                <div className='flex-center absolute inset-0 z-1000 bg-violet-50'>
                     {/* simpler positioning: inset-0 fills the screen */}
                     <div className='three-body'>
                         <div className='three-body__dot'></div>
@@ -206,7 +206,8 @@ const Hero = () => {
                             <b>y</b>o<b className='text-red-600'>u</b>rs<b>e</b><b>l</b><b>f</b>
                         </h1>
                         <p className='mb-5 max-w-64 font-robert-medium text-blue-300/80'>
-                            Enter the Metagame Layer <br /> Unleash the Play Economy
+                            “Even the finest sword plunged into salt water - <br />  will eventually rust.”
+                            ― Sun Tzu
                         </p>
 
                         <Button id="watch-trailer" title="Watch Trailer" leftIcon={<TiLocationArrow />}
