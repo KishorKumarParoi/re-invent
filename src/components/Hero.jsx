@@ -168,7 +168,7 @@ const Hero = () => {
 
             {/* Notification Tooltip */}
             {showNotification && (
-                <div className='notification-tooltip absolute top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 rounded-full bg-black/80 backdrop-blur-md px-6 py-3 text-white shadow-2xl border border-white/20'>
+                <div className='notification-tooltip absolute top-6 left-1/2 -translate-x-1/2 z-60 flex items-center gap-3 rounded-full bg-black/80 backdrop-blur-md px-6 py-3 text-white shadow-2xl border border-white/20'>
                     <span className='text-2xl'>🎵</span>
                     <div className='flex flex-col gap-1'>
                         <p className='text-sm font-semibold'>Music Controls</p>
