@@ -13,6 +13,7 @@ const Hero = () => {
     const [isMuted, setIsMuted] = React.useState(true)
     const [hasClicked, setHasClicked] = React.useState(false)
     const [isLoading, setIsLoading] = React.useState(true)
+    const [showNotification, setShowNotification] = React.useState(true)
 
     const totalVideos = 5
     const nextVideoRef = React.useRef(null)
@@ -129,6 +130,27 @@ const Hero = () => {
         }
     }, [isMuted])
 
+    // Hide notification after 3 seconds
+    React.useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowNotification(false)
+        }, 3000)
+
+        return () => clearTimeout(timer)
+    }, [])
+
+    // Animate notification entrance and exit
+    useGSAP(() => {
+        if (showNotification) {
+            gsap.from('.notification-tooltip', {
+                opacity: 0,
+                y: -20,
+                duration: 0.5,
+                ease: 'power2.out'
+            })
+        }
+    }, [showNotification])
+
     const getVideoSrc = (index) => `videos/hero-${index}.mp4`
     const upcomingVideoIndex = ((currentIndex + 1) % totalVideos)
 
@@ -136,7 +158,6 @@ const Hero = () => {
         <div className='relative h-dvh w-screen overflow-x-hidden'>
             {isLoading && (
                 <div className='flex-center absolute inset-0 z-1000 bg-violet-50'>
-                    {/* simpler positioning: inset-0 fills the screen */}
                     <div className='three-body'>
                         <div className='three-body__dot'></div>
                         <div className='three-body__dot'></div>
@@ -144,6 +165,20 @@ const Hero = () => {
                     </div>
                 </div>
             )}
+
+            {/* Notification Tooltip */}
+            {showNotification && (
+                <div className='notification-tooltip absolute top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 rounded-full bg-black/80 backdrop-blur-md px-6 py-3 text-white shadow-2xl border border-white/20'>
+                    <span className='text-2xl'>🎵</span>
+                    <div className='flex flex-col gap-1'>
+                        <p className='text-sm font-semibold'>Music Controls</p>
+                        <p className='text-xs text-gray-300'>
+                            Press <kbd className='px-2 py-0.5 bg-white/20 rounded text-xs font-mono'>M</kbd> or click 🔇 to toggle music
+                        </p>
+                    </div>
+                </div>
+            )}
+
             {/* Background music element */}
             <audio
                 ref={audioRef}
@@ -168,7 +203,7 @@ const Hero = () => {
                 {/* Mute/Unmute button */}
                 <button
                     onClick={toggleMute}
-                    className='absolute bottom-6 left-6 z-50 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-black/70'
+                    className='absolute bottom-6 left-6 z-50 flex size-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-black/70 hover:scale-110'
                     aria-label={isMuted ? 'Unmute music' : 'Mute music'}
                 >
                     {isMuted ? '🔇' : '🔊'}
