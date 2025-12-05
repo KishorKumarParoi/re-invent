@@ -378,7 +378,7 @@ const About = () => {
                 </div>
 
                 {/* Connect Section */}
-                <div className='connect-section w-full max-w-3xl rounded-2xl border border-emerald-500/20 bg-linear-to-r from-emerald-900/20 to-teal-900/20 p-8 mt-40 text-center'>
+                <div id='contact' className='connect-section w-full max-w-3xl rounded-2xl border border-emerald-500/20 bg-linear-to-r from-emerald-900/20 to-teal-900/20 p-8 mt-40 text-center'>
                     <h3 className='mb-4 text-2xl font-bold text-emerald-300 relative'>
                         Let&apos;s Connect over a cup of{' '}
                         <span className='inline-block relative' style={{ display: 'inline-block' }}>

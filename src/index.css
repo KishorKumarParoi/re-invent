@@ -179,6 +179,54 @@ body {
   }
 }
 
+/* Gradient text shimmer animation */
+@keyframes gradientShimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Title entrance animation */
+@keyframes titleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-10deg);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+/* Subtle glow pulse */
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6));
+  }
+}
+
+/* Enhanced gradient text */
+.gradient-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #06b6d4 0%,
+    #10b981 25%,
+    #06b6d4 50%,
+    #3b82f6 75%,
+    #06b6d4 100%
+  );
+  background-size: 200% 100%;
+  animation: gradientShimmer 8s linear infinite;
+}
+
 @utility floating-nav {
   background-color: theme(colors.black);
   border-radius: 0.5rem;
