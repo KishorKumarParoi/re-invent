@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import AnimatedTitle from './AnimatedTitle'
 import gsap from 'gsap'
 import RoundedCorners from './RoundedCorner.jsx'
+import Button from './Button'
 
 const Story = () => {
     const frameRef = useRef(null)
@@ -45,7 +46,7 @@ const Story = () => {
     }
 
     return (
-        <section id="story" className='min-h-dvh w-screen bg-black text-blue-100'>
+        <section id="story" className='min-h-dvh w-screen text-blue-100'>
             <div className='flex size-full flex-col items-center py-10 pb-24'>
                 <p className='font-general text-lg uppercase md:text-[10px]'>
                     The Multiversal Metaverse World
@@ -57,8 +58,8 @@ const Story = () => {
                         <div className='text-center mb-16'>
                             <h1 className='text-5xl md:text-7xl lg:text-8xl font-black tracking-none mb-4'>
                                 <span className='bg-linear-to-r from-cyan-300 via-emerald-300 to-blue-400 bg-clip-text text-transparent'>
-                                    Proj<span className='relative text-white'>
-                                        e
+                                    Proj<span className='relative '>
+                                        <b className='text-fuchsia-500'>e</b>
                                         <span className='absolute inset-0 bg-linear-to-r from-cyan-400 to-emerald-400 text-transparent bg-clip-text animate-pulse'></span>
                                     </span>ct
                                 </span>
@@ -68,7 +69,7 @@ const Story = () => {
                                 <span className='relative inline-block'>
                                     <span className='absolute -inset-2 bg-linear-to-r from-cyan-500 to-emerald-500 rounded-lg blur opacity-30 animate-pulse'></span>
                                     <span className='relative bg-linear-to-r from-emerald-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent'>
-                                        Cert<span className='relative'>
+                                        Cert<span className='relative text-blue-600'>
                                             i
                                             <span className='absolute inset-0 bg-linear-to-r from-emerald-400 to-blue-400 text-transparent bg-clip-text animate-pulse'></span>
                                         </span>ficate
@@ -92,7 +93,7 @@ const Story = () => {
                         <AnimatedTitle
                             title={"The st<b>o</b>ry of <br/> a hidden real<b>m</b>"}
                             sectionId="#story"
-                            containerClass="pointer-events-none mix-blend-difference relative z-10"
+                            containerClass="pointer-events-none mix-blend-difference relative z-10 bottom-20"
                         />
 
                         {/* Image container with rounded corners */}
@@ -117,6 +118,17 @@ const Story = () => {
                             </div>
                         </div>
 
+                        <div className='-mt-64 flex w-full justify-center md:-mt-124 md:me-44 md:justify-end'>
+                            <div className='flex h-full w-fit flex-col items-center md:items-start'>
+                                <p className='mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start '>
+                                    “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.”
+                                </p>
+                                <p className='italic'>~ Linus Torvalds (Linux Creator) </p>
+                                <Button id="realm-button" title="discover prologue" containerClass="mt-6 bg-linear-to-r from-cyan-300 to-purple-400 to-blue-400" />
+                            </div>
+                        </div>
+
+
                         {/* Certificate Cards Grid */}
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mt-12'>
                             {/* Certificate Card 1 */}
@@ -125,8 +137,8 @@ const Story = () => {
                                 <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-cyan-500/20 hover:border-cyan-500/60 transition'>
                                     <div className='text-4xl mb-3'>🏆</div>
                                     <h3 className='text-lg font-black text-white mb-2'>Excellence Award</h3>
-                                    <p className='text-sm text-cyan-300 mb-4'>Recognized for outstanding innovation and impact</p>
-                                    <span className='text-xs text-emerald-400 font-semibold'>2024</span>
+                                    <p className='text-sm text-cyan-300 mb-4'>Recognized for outstanding leading and impact</p>
+                                    <span className='text-xs text-emerald-400 font-semibold'>2023</span>
                                 </div>
                             </div>
 
@@ -136,8 +148,8 @@ const Story = () => {
                                 <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-emerald-500/20 hover:border-emerald-500/60 transition'>
                                     <div className='text-4xl mb-3'>⭐</div>
                                     <h3 className='text-lg font-black text-white mb-2'>Innovation Leader</h3>
-                                    <p className='text-sm text-emerald-300 mb-4'>Leading breakthrough solutions in tech</p>
-                                    <span className='text-xs text-blue-400 font-semibold'>2024</span>
+                                    <p className='text-sm text-emerald-300 mb-4'>Leading breakthrough solutions in AI & Tech</p>
+                                    <span className='text-xs text-blue-400 font-semibold'>2025</span>
                                 </div>
                             </div>
 

@@ -12,6 +12,7 @@ const supabase = createClient(
 
 const VisitorCount = () => {
     const [count, setCount] = useState(0)
+    const [displayCount, setDisplayCount] = useState(0)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [email, setEmail] = useState('')
@@ -19,6 +20,7 @@ const VisitorCount = () => {
     const [subscribing, setSubscribing] = useState(false)
     const counterRef = React.useRef(null)
     const containerRef = React.useRef(null)
+    const countObjRef = React.useRef({ value: 0 })
     const [placeholder, setPlaceholder] = useState("Let's have a coffee together ☕")
     const inputRef = React.useRef(null)
 
@@ -102,40 +104,34 @@ const VisitorCount = () => {
         trackVisitor()
     }, [])
 
-    // Animate counter when scrolled into view
+    // Animate counter when count changes
     useEffect(() => {
-        if (count > 0 && counterRef.current) {
-            gsap.fromTo(
-                counterRef.current,
+        if (count > 0) {
+            countObjRef.current.value = displayCount
+
+            const tl = gsap.timeline()
+
+            tl.to(
+                countObjRef.current,
                 {
-                    innerHTML: 0,
-                },
-                {
-                    scrollTrigger: {
-                        trigger: containerRef.current,
-                        start: 'top 80%',
-                        end: 'top 50%',
-                        toggleActions: 'play pause resume reverse',
-                    },
-                    innerHTML: count,
-                    duration: 2,
-                    snap: { innerHTML: 1 },
+                    value: count,
+                    duration: 2.5,
                     ease: 'power2.out',
                     onUpdate: function () {
+                        const displayValue = Math.floor(countObjRef.current.value)
+                        setDisplayCount(displayValue)
                         if (counterRef.current) {
-                            counterRef.current.innerHTML = Math.floor(
-                                this.targets()[0].innerHTML
-                            ).toLocaleString()
+                            counterRef.current.textContent = displayValue.toLocaleString()
                         }
                     }
                 }
             )
 
             return () => {
-                ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+                tl.kill()
             }
         }
-    }, [count])
+    }, [count, displayCount])
 
     useEffect(() => {
         const placeholders = [
@@ -229,7 +225,7 @@ const VisitorCount = () => {
     return (
         <div
             ref={containerRef}
-            className='flex flex-col items-center gap-4 py-6 bg-linear-to-b from-blue-800/60 to-slate-200/30 rounded-lg shadow-orange-500 '
+            className='flex flex-col items-center gap-4 py-6 bg-linear-to-b from-blue-800/60 to-slate-200/30 rounded-lg shadow-lg shadow-orange-500/20'
         >
             {/* Welcome Message */}
             <div className='text-center'>
@@ -242,12 +238,13 @@ const VisitorCount = () => {
             <div className='flex items-center gap-3 px-6 py-3 rounded-full bg-linear-to-r from-blue-900/30 to-violet-900/30 border border-blue-400/30 backdrop-blur-sm hover:border-blue-400/60 transition-all duration-300'>
                 <span className='text-2xl animate-pulse'>👥</span>
                 <div className='flex flex-col'>
-                    <span className='font-semibold text-slate-300'>Total Visitors: {" "}
-                        <span className='text-lg font-bold text-emerald-300 min-w-[60px] text-right'>
+                    <span className='font-semibold text-slate-300 tracking-widest'>
+                        Total Visitors : {" "}
+                        <span className='text-lg font-bold text-emerald-300 min-w-20 inline-block text-right tracking-widest'>
                             {loading ? (
                                 <span className='inline-block animate-spin'>⟳</span>
                             ) : (
-                                <span ref={counterRef}>0</span>
+                                <span ref={counterRef} className='tracking-widest'>0</span>
                             )}
                         </span>
                     </span>
@@ -272,12 +269,13 @@ const VisitorCount = () => {
             <form onSubmit={handleSubscribe} className='w-full max-w-xl px-4'>
                 <div className='flex gap-2'>
                     <input
+                        ref={inputRef}
                         type='email'
                         placeholder={placeholder}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         disabled={subscribed || subscribing}
-                        className='flex-1 px-4 py-2 rounded-lg bg-slate-800/50 border border-blue-400/30 text-white placeholder-blue-300/50 focus:outline-none focus:border-emerald-400/60 transition-all disabled:opacity-50'
+                        className='flex-1 px-4 py-2 rounded-lg tracking-wider font-semibold bg-slate-800/50 border border-blue-900 text-white placeholder-blue-300/50 focus:outline-1 focus:border-emerald-400/60 transition-all disabled:opacity-50'
                     />
                     <button
                         type='submit'
@@ -293,7 +291,7 @@ const VisitorCount = () => {
             <p className='text-xs text-blue-200/60 italic'>
                 ✨ You're part of{' '}
                 <span className='text-emerald-300 font-semibold'>
-                    {count.toLocaleString()}
+                    {displayCount.toLocaleString()}
                 </span>{' '}
                 amazing visitors exploring innovation & tech!
             </p>

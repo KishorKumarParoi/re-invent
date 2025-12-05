@@ -14,8 +14,100 @@ body {
   overscroll-behavior: none; /* Prevent bounce on scroll end */
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #e2d3d3;
   font-family: "General Sans", sans-serif;
+  
+  /* Stunning gradient background */
+  background: linear-gradient(
+    135deg,
+    #0a0e27 0%,
+    #1a0033 15%,
+    #0d2b45 30%,
+    #001a33 45%,
+    #0a1428 60%,
+    #1a0a2e 75%,
+    #0f3460 90%,
+    #050a15 100%
+  );
+  background-attachment: fixed;
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Overlay with subtle texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: overlayFloat 20s ease-in-out infinite;
+}
+
+@keyframes overlayFloat {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Subtle animated particles */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(34, 211, 238, 0.5), rgba(34, 211, 238, 0)),
+    radial-gradient(2px 2px at 60px 70px, rgba(16, 185, 129, 0.5), rgba(16, 185, 129, 0)),
+    radial-gradient(1px 1px at 50px 50px, rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0)),
+    radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.5), rgba(139, 92, 246, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 0;
+  animation: particleFloat 40s linear infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 200px;
+  }
+}
+
+/* Ensure content is above background */
+main {
+  position: relative;
+  z-index: 2;
 }
 
 @layer base {
@@ -164,9 +256,37 @@ body {
   font-family: "circular-web";
   font-size: 1.125rem;
   line-height: 1.75rem;
+  
+  /* Gradient text with background colors */
+  background: linear-gradient(
+    135deg,
+    #00d9ff 0%,
+    #00ff9f 25%,
+    #ff006e 50%,
+    #8338ec 75%,
+    #00d9ff 100%
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientTextShift 8s ease infinite;
 
   @media (width >= 768px) {
     max-width: 34rem;
+  }
+}
+
+/* Add this keyframe animation for the text gradient */
+@keyframes gradientTextShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
@@ -257,7 +377,7 @@ body {
   width: 100%;
   filter: url("#flt_tag");
   overflow: hidden;
-  border-radius: 1.5rem; /* or use rounded-3xl in Tailwind */
+  border-radius: 1.5rem;
 }
 
 @utility story-img-mask {

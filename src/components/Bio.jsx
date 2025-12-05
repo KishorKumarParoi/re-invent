@@ -31,7 +31,7 @@ const Bio = () => {
     return (
         <div id='about' className='min-h-screen w-screen'>
             <div className='relative mb-8 mt-36 flex flex-col items-center gap-5'>
-                <h2 className='font-general text-sm uppercase md:text-[10px]'>
+                <h2 className='font-general text-sm uppercase md:text-[10px] bg-linear-to-r from-purple-400 via-cyan-300 to-fuchsia-300 bg-clip-text text-transparent font-black tracking-widest animate-pulse'>
                     Welcome to KKP&apos;s World
                 </h2>
                 <div className='mt-5 text-center text-4xl uppercase leading-[0.8] md:text-[6rem]'>

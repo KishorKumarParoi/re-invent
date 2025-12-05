@@ -148,11 +148,11 @@ const AnimatedTitle = ({ title, containerClass = "" }) => {
             </div>
 
             {/* Animated accent dots */}
-            <div className='mt-16 flex justify-center gap-4'>
+            {/* <div className='mt-16 flex justify-center gap-4'>
                 <div className='w-4 h-4 rounded-full bg-linear-to-br from-cyan-400 to-cyan-300 animate-pulse shadow-lg shadow-cyan-400/60 hover:scale-125 transition-transform'></div>
                 <div className='w-4 h-4 rounded-full bg-linear-to-br from-emerald-400 to-emerald-300 animate-pulse shadow-lg shadow-emerald-400/60 hover:scale-125 transition-transform' style={{ animationDelay: '0.2s' }}></div>
                 <div className='w-4 h-4 rounded-full bg-linear-to-br from-blue-400 to-blue-300 animate-pulse shadow-lg shadow-blue-400/60 hover:scale-125 transition-transform' style={{ animationDelay: '0.4s' }}></div>
-            </div>
+            </div> */}
 
             {/* Floating particles */}
             <div className='absolute inset-0 pointer-events-none overflow-hidden -z-10'>
