@@ -399,7 +399,7 @@ const About = () => {
                     <div className='flex flex-wrap justify-center gap-4'>
                         <a
                             href='mailto:Kishor.ruet.cse@gmail.com'
-                            className='rounded-full bg-blue-500 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-blue-400 hover:shadow-lg hover:shadow-blue-500/50'
+                            className='rounded-full bg-blue-700 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-blue-800 hover:shadow-lg hover:shadow-blue-500/50'
                         >
                             📧 Email
                         </a>
@@ -407,7 +407,7 @@ const About = () => {
                             href='https://api.whatsapp.com/send/?phone=8801724714156&text=Hi+Kishor%2C+I+saw+your+portfolio.&type=phone_number&app_absent=0'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='rounded-full bg-green-500 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-green-400 hover:shadow-lg hover:shadow-green-500/50'
+                            className='rounded-full bg-green-800 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-green-900 hover:shadow-lg hover:shadow-green-500/50'
                         >
                             💬 WhatsApp
                         </a>
@@ -415,7 +415,7 @@ const About = () => {
                             href='https://www.linkedin.com/in/kishor-paroi-b06344166/'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='rounded-full bg-blue-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/50'
+                            className='rounded-full bg-purple-800 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-purple-900 hover:shadow-lg hover:shadow-blue-600/50'
                         >
                             💼 LinkedIn
                         </a>
@@ -423,7 +423,7 @@ const About = () => {
                             href='https://github.com/KishorKumarParoi'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='rounded-full bg-purple-800 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-purple-700 hover:shadow-lg hover:shadow-gray-800/50'
+                            className='rounded-full bg-red-600 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-red-700 hover:shadow-lg hover:shadow-blue-600/50'
                         >
                             🐙 GitHub
                         </a>
@@ -431,7 +431,7 @@ const About = () => {
                             href='https://twitter.com/paroi_kishor'
                             target='_blank'
                             rel='noopener noreferrer'
-                            className='rounded-full bg-black px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-gray-900 hover:shadow-lg hover:shadow-black/50'
+                            className='rounded-full bg-cyan-700 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-cyan-900 hover:shadow-lg hover:shadow-blue-600/50'
                         >
                             𝕏 Twitter
                         </a>
