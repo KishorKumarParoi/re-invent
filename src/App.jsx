@@ -5,12 +5,14 @@ import Bio from './components/Bio'
 import VisitorCount from './components/VisitorCount'
 import { inject } from '@vercel/analytics'
 import Footer from './components/Footer'
+import Navbar from './components/Navbar'
 
 inject()
 
 const App = () => {
   return (
     <main className='relative min-h-screen w-screen overflow-x-hidden'>
+      <Navbar />
       <Hero />
       <Bio />
       <About />
