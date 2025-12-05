@@ -55,8 +55,8 @@ const Story = () => {
                     {/* Project Certificate Section */}
                     <div className='relative z-500 my-16 px-4'>
                         {/* Cool Animated Heading */}
-                        <div className='text-center mb-16'>
-                            <h1 className='text-5xl md:text-7xl lg:text-8xl font-black tracking-none mb-4'>
+                        <div className='text-center mb-20'>
+                            <h1 className='text-4xl md:text-7xl lg:text-8xl font-black tracking-none mb-4'>
                                 <span className='bg-linear-to-r from-cyan-300 via-emerald-300 to-blue-400 bg-clip-text text-transparent'>
                                     Proj<span className='relative '>
                                         <b className='text-fuchsia-500'>e</b>
