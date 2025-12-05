@@ -229,7 +229,7 @@ const VisitorCount = () => {
     return (
         <div
             ref={containerRef}
-            className='flex flex-col items-center gap-4 py-6 bg-gradient-to-b from-slate-800/50 to-slate-900/50 rounded-lg border border-blue-500/20'
+            className='flex flex-col items-center gap-4 py-6 bg-linear-to-b from-blue-800/60 to-slate-200/30 rounded-lg shadow-orange-500 '
         >
             {/* Welcome Message */}
             <div className='text-center'>
@@ -239,7 +239,7 @@ const VisitorCount = () => {
             </div>
 
             {/* Visitor Count with Animation */}
-            <div className='flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-900/30 to-violet-900/30 border border-blue-400/30 backdrop-blur-sm hover:border-blue-400/60 transition-all duration-300'>
+            <div className='flex items-center gap-3 px-6 py-3 rounded-full bg-linear-to-r from-blue-900/30 to-violet-900/30 border border-blue-400/30 backdrop-blur-sm hover:border-blue-400/60 transition-all duration-300'>
                 <span className='text-2xl animate-pulse'>👥</span>
                 <div className='flex flex-col'>
                     <span className='font-semibold text-slate-300'>Total Visitors: {" "}

@@ -64,37 +64,17 @@ body {
   border: 1px solid theme(colors.white / 20%);
 }
 
-@layer utilities {
-  .nav-hover-btn {
-    position: relative;
-    margin-inline-start: 2.5rem;
-    font-family: "general";
-    font-size: 0.75rem;
-    line-height: 1rem;
-    text-transform: uppercase;
-    color: theme(colors.blue.50);
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
+@utility nav-hover-btn {
+  position: relative;
+  margin-inline-start: 2.5rem;
+  font-family: "general";
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  color: theme(colors.blue.50);
+  cursor: pointer;
 
-  /* Gradient text on hover */
-  .nav-hover-btn:hover {
-    background: linear-gradient(
-      120deg,
-      theme(colors.emerald.400),
-      theme(colors.cyan.400),
-      theme(colors.blue.400)
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: gradientShift 3s ease infinite;
-    transform: translateY(-2px);
-  }
-
-  /* Animated underline */
-  .nav-hover-btn::after {
+  &::after {
     content: "";
     position: absolute;
     bottom: -0.125rem;
@@ -103,128 +83,22 @@ body {
     width: 100%;
     transform-origin: bottom right;
     scale: 0 1;
-    background: linear-gradient(
-      90deg,
-      theme(colors.emerald.500),
-      theme(colors.cyan.500),
-      theme(colors.blue.500)
-    );
-    background-size: 200% 100%;
-    transition: all 0.4s cubic-bezier(0.65, 0.05, 0.36, 1);
-    box-shadow: 0 0 10px theme(colors.cyan.400 / 50%);
+    background-color: theme(colors.neutral.800);
+    transition-property: transform;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
   }
 
-  .nav-hover-btn:hover::after {
+  &:hover::after {
     transform-origin: bottom left;
     scale: 1 1;
-    animation: shimmerUnderline 2s linear infinite;
   }
 
-  /* Glowing dot before text */
-  .nav-hover-btn::before {
-    content: "";
-    position: absolute;
-    inset-inline-start: -1rem;
-    inset-block-start: 50%;
-    translate: 0 -50%;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: theme(colors.emerald.400);
-    opacity: 0;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
-      0 0 10px theme(colors.emerald.400),
-      0 0 20px theme(colors.emerald.400 / 50%);
+  @media (prefers-color-scheme: dark) {
+    &::after {
+      background-color: theme('colors.white');
+    }
   }
-
-  .nav-hover-btn:hover::before {
-    opacity: 1;
-    animation: pulse 1.5s ease-in-out infinite;
-  }
-}
-
-/* Gradient animation */
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Underline shimmer effect */
-@keyframes shimmerUnderline {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Pulse animation for dot */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 0.8;
-  }
-}
-
-/* Gradient text shimmer animation */
-@keyframes gradientShimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-/* Title entrance animation */
-@keyframes titleEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(50px) rotateX(-10deg);
-    filter: blur(4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-    filter: blur(0px);
-  }
-}
-
-/* Subtle glow pulse */
-@keyframes glowPulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 5px rgba(34, 211, 238, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 15px rgba(34, 211, 238, 0.6));
-  }
-}
-
-/* Enhanced gradient text */
-.gradient-text-shimmer {
-  background: linear-gradient(
-    90deg,
-    #06b6d4 0%,
-    #10b981 25%,
-    #06b6d4 50%,
-    #3b82f6 75%,
-    #06b6d4 100%
-  );
-  background-size: 200% 100%;
-  animation: gradientShimmer 8s linear infinite;
 }
 
 @utility floating-nav {
@@ -382,10 +256,8 @@ body {
   height: 90vh;
   width: 100%;
   filter: url("#flt_tag");
-
-  @media (width >= 768px) {
-    height: 100dvh;
-  }
+  overflow: hidden;
+  border-radius: 1.5rem; /* or use rounded-3xl in Tailwind */
 }
 
 @utility story-img-mask {
@@ -620,3 +492,4 @@ body {
 .skill-badge {
   transform-style: preserve-3d;
 }
+
