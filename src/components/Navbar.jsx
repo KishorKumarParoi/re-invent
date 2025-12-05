@@ -1,14 +1,52 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Button from './Button'
 import { TiLocationArrow } from 'react-icons/ti'
+import { useWindowScroll } from 'react-use'
+import gsap from 'gsap'
 
 const navItems = ['Nexus', 'Vault', 'Prologue', 'About', 'Contact']
 
 const Navbar = () => {
-    const containerRef = useRef(null)
+    const navContainerRef = useRef(null)
     const audioRef = useRef(null)
     const [isAudioPlaying, setIsAudioPlaying] = useState(false)
     const [isIndicatorActive, setIsIndicatorActive] = useState(false)
+    const lastScrollYRef = useRef(0);
+    const [isNavVisible, setIsNavVisible] = useState(false);
+
+
+    const { y: currentScrollY } = useWindowScroll();
+
+    useEffect(() => {
+        // Use a ref to track the previous scroll position to avoid cascading state updates,
+        // and defer setState calls to the next animation frame.
+        const prevY = lastScrollYRef.current;
+
+        if (currentScrollY === 0) {
+            // At the top of the page
+            navContainerRef.current.classList.remove('floating-nav')
+            window.requestAnimationFrame(() => setIsNavVisible(true))
+        } else if (currentScrollY > prevY) {
+            // Scrolling down
+            navContainerRef.current.classList.add('floating-nav')
+            window.requestAnimationFrame(() => setIsNavVisible(false))
+        } else {
+            // Scrolling up
+            navContainerRef.current.classList.remove('floating-nav')
+            window.requestAnimationFrame(() => setIsNavVisible(true))
+        }
+
+        lastScrollYRef.current = currentScrollY;
+    }, [currentScrollY]);
+
+    useEffect(() => {
+        gsap.to(navContainerRef.current, {
+            y: isNavVisible ? 0 : -100,
+            opacity: isNavVisible ? 1 : 0,
+            duration: 0.5,
+            ease: 'power2.inOut'
+        })
+    }, [navContainerRef, isNavVisible])
 
     const toggleAudioIndicator = () => {
         setIsAudioPlaying((prev) => !prev)
@@ -25,7 +63,7 @@ const Navbar = () => {
     }, [isAudioPlaying])
 
     return (
-        <div ref={containerRef} className='fixed inset-x-0 
+        <div ref={navContainerRef} className='fixed inset-x-0 
         top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6'>
             <header className='absolute top-1/2 w-full -translate-y-1/2'>
                 <nav className='flex size-full items-center justify-between p-4'>
