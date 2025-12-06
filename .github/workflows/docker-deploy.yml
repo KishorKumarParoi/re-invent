@@ -1,0 +1,86 @@
+name: 🐳 Docker Build & Deploy
+
+on:
+    push:
+        branches: [main]
+    schedule:
+        - cron: "0 0 * * *" # Daily at midnight UTC
+
+env:
+    REGISTRY: docker.io
+    IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/reinvent
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+
+        steps:
+            - name: 📥 Checkout code
+              uses: actions/checkout@v3
+
+            - name: 🔧 Set up Docker Buildx
+              uses: docker/setup-buildx-action@v2
+
+            - name: 🔐 Login to Docker Hub
+              uses: docker/login-action@v2
+              with:
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_PASSWORD }}
+
+            - name: 📦 Build and push Docker image
+              uses: docker/build-push-action@v4
+              with:
+                  context: .
+                  file: ./Dockerfile
+                  push: true
+                  tags: |
+                      ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+                      ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+                  cache-from: type=gha
+                  cache-to: type=gha,mode=max
+
+            - name: ✅ Image build successful
+              run: echo "✅ Docker image built and pushed successfully!"
+
+            - name: 🔄 Trigger visitor count reset
+              run: |
+                  echo "Triggering visitor count reset..."
+                  response=$(curl -s -X POST ${{ secrets.API_URL }}/api/update-visitors \
+                    -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+                    -H "Content-Type: application/json" \
+                    -w "\n%{http_code}")
+
+                  http_code=$(echo "$response" | tail -n 1)
+                  body=$(echo "$response" | sed '$d')
+
+                  if [ "$http_code" = "200" ]; then
+                    echo "✅ Visitor count reset: $body"
+                  else
+                    echo "❌ Failed with status $http_code: $body"
+                    exit 1
+                  fi
+
+            - name: 📊 Workflow summary
+              run: |
+                  echo "📊 Deployment Summary"
+                  echo "===================="
+                  echo "✅ Docker image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+                  echo "✅ Commit: ${{ github.sha }}"
+                  echo "✅ Branch: ${{ github.ref }}"
+                  echo "✅ Timestamp: $(date)"
+
+            - name: 🚨 Notify on failure
+              if: failure()
+              uses: actions/github-script@v6
+              with:
+                  script: |
+                      github.rest.repos.createCommitComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        commit_sha: context.sha,
+                        body: '❌ Docker build or deployment failed!\n\n' +
+                              'Check the workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+                      })
