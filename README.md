@@ -3,6 +3,7 @@
 > A stunning, interactive portfolio website showcasing innovation, competitive programming mastery, and real-world problem-solving.
 
 **🌐 Live Demo:** https://re-invent-rust.vercel.app/
+**⏳ Visitors Count:** https://re-invent-rust.vercel.app/api/visitors
 
 ---
 
@@ -12,9 +13,9 @@
 
 ### ✨ Welcome to My Digital Universe ✨
 
-![Visitors](https://img.shields.io/badge/dynamic/json?url=https://re-invent-rust.vercel.app/api/visitors&query=count&label=👥%20Total%20Visitors&color=00d9ff&style=for-the-badge&logo=eye&logoColor=white&labelColor=000000)
+![Visitors](https://img.shields.io/badge/dynamic/json?url=https://re-invent-rust.vercel.app/api/visitors&query=count&label=👥%20TOTAL%20VISITORS&color=FFD700&style=for-the-badge&logo=eye&logoColor=000000&labelColor=FF1493&cacheSeconds=60)
 
-[![Status](https://img.shields.io/badge/Status-🟢%20Live-00ff9f?style=for-the-badge&labelColor=000000)](https://re-invent-rust.vercel.app/)
+[![Status](https://img.shields.io/badge/Status-🟢%20LIVE-00ff9f?style=for-the-badge&labelColor=000000)](https://re-invent-rust.vercel.app/)
 [![Deployed](https://img.shields.io/badge/Hosted%20on-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white&labelColor=1a1a1a)](https://vercel.com)
 [![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge&labelColor=000000)](LICENSE)
 
@@ -24,11 +25,11 @@
 
 | 🔥 Metric | 📈 Status |
 |-----------|-----------|
-| **Total Visitors** | Live Count from Supabase |
-| **Platform** | Vercel Edge Network |
-| **Database** | PostgreSQL (Supabase) |
-| **Update Frequency** | Real-time |
-| **Tracking Method** | localStorage + Server |
+| **👥 Total Visitors** | **✨ LIVE COUNT ✨** |
+| **🌍 Platform** | Vercel Edge Network |
+| **🗄️ Database** | PostgreSQL (Supabase) |
+| **⚡ Update Frequency** | Real-time |
+| **📊 Tracking Method** | localStorage + Server |
 
 ---
 
@@ -36,7 +37,7 @@
 
 </div>
 
----
+---****
 
 ## ✨ Standout Features
 
@@ -45,7 +46,7 @@
 - 📱 **100% Responsive** - Flawless experience on mobile, tablet, desktop
 - 🌟 **3D Perspective** - Interactive 3D rotations and transforms
 - 💌 **Smart Email System** - Supabase-powered newsletter
-- 👥 **Live Visitor Tracker** - Real-time counter with smooth animations
+- 👥 **Live Visitor Tracker** - Real-time counter with smooth animations ⭐
 - 🔗 **Social Integration** - All major platforms connected
 - 🎯 **Competitive Programming** - Problem-solving philosophy showcase
 - ⚡ **Lightning Performance** - Sub-100ms load times
@@ -57,43 +58,46 @@
 ### 🎨 Frontend Architecture
 | Technology | Purpose | Version |
 |-----------|---------|---------|
-| **React** | UI Library | 18.3.1+ |
-| **Vite** | Build Tool | 5.0.8+ |
-| **Tailwind CSS** | Styling | 3.3.6+ |
+| **React** | UI Library | 19.2.0+ |
+| **Vite** | Build Tool (Rolldown) | 7.2.5+ |
+| **Tailwind CSS** | Styling | 4.1.17+ |
 
 ### 🎬 Animation & Interaction
-| Library | Features |
-|---------|----------|
-| **GSAP 3.12.2** | Advanced animations |
-| **ScrollTrigger** | Scroll-based effects |
-| **@gsap/react** | React integration |
+| Library | Features | Version |
+|---------|----------|---------|
+| **GSAP** | Advanced animations | 3.13.0+ |
+| **ScrollTrigger** | Scroll-based effects | Included |
+| **@gsap/react** | React integration | 2.1.2+ |
 
 ### 🗄️ Backend & Data
-| Service | Function |
-|---------|----------|
-| **Supabase** | PostgreSQL database |
-| **Visitor API** | Real-time counting |
-| **Email Storage** | Newsletter management |
+| Service | Function | Version |
+|---------|----------|---------|
+| **Supabase** | PostgreSQL database | 2.86.1+ |
+| **Visitor API** | Real-time counting | Custom |
+| **Email Storage** | Newsletter management | Supabase |
 
 ### 🎭 UI & Components
-| Package | Details |
-|---------|---------|
-| **React Icons** | 5.0.1 - Icon library |
-| **Font Awesome** | Social media icons |
-| **Clsx** | Conditional styling |
+| Package | Details | Version |
+|---------|---------|---------|
+| **React Icons** | Icon library | 5.5.0+ |
+| **Lucide React** | Modern icons | 0.555.0+ |
+| **Clsx** | Conditional styling | 2.1.1+ |
 
-### 🛠️ Developer Tools
-| Tool | Purpose |
-|------|---------|
-| **ESLint** | Code quality |
-| **PostCSS** | CSS processing |
-| **HMR** | Hot reloads |
+### 🛠️ Developer Tools & Utilities
+| Tool | Purpose | Version |
+|------|---------|---------|
+| **ESLint** | Code quality | 9.39.1+ |
+| **Tailwind Animate** | CSS animations | 1.0.7+ |
+| **React Use** | React hooks utilities | 17.6.0+ |
+| **PostCSS** | CSS processing | Included |
+| **HMR** | Hot reloads | Vite |
 
-### 🚀 Deployment
-| Platform | Role |
-|----------|------|
-| **Vercel** | Hosting & CDN |
-| **GitHub** | Version control |
+### 📊 Analytics & Deployment
+| Platform | Role | Version |
+|----------|------|---------|
+| **Vercel Analytics** | Performance tracking | 1.6.1+ |
+| **Vercel** | Hosting & CDN | Latest |
+| **GitHub** | Version control | - |
 
 ---
 
@@ -102,36 +106,40 @@
 ```json
 {
   "name": "reinvent",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "gsap": "^3.12.2",
-    "@gsap/react": "^2.1.1",
-    "react-icons": "^5.0.1",
-    "@supabase/supabase-js": "^2.38.4",
-    "clsx": "^2.0.0"
+    "@gsap/react": "^2.1.2",
+    "@supabase/supabase-js": "^2.86.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "@vercel/analytics": "^1.6.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.13.0",
+    "lucide-react": "^0.555.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-icons": "^5.5.0",
+    "react-use": "^17.6.0",
+    "tailwindcss": "^4.1.17",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8",
-    "rolldown-vite": "^7.2.5",
-    "tailwindcss": "^3.3.6",
-    "postcss": "^8.4.31",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5"
+    "@eslint/js": "^9.39.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "vite": "npm:rolldown-vite@7.2.5"
   }
 }
 ```
@@ -187,7 +195,7 @@
 
 ### 6️⃣ Visitor Analytics
 ```
-👥 Real-time Counter
+👥 Real-time Counter ⭐ HIGHLIGHTED
 ├── Supabase Integration
 ├── GSAP Animation
 ├── Newsletter Signup
@@ -266,6 +274,8 @@ Increment Count in Supabase
 GSAP Smooth Animation
     ↓
 Display with Real-time Update
+    ↓
+API Badge Shows Live Count ⭐
 ```
 
 ### Features
@@ -275,6 +285,7 @@ Display with Real-time Update
 - ✅ **Email Integration** - Newsletter signup
 - ✅ **API Endpoint** - `/api/visitors` for badges
 - ✅ **Real-time Updates** - Live count refresh
+- ✅ **Highlighted Badge** - Gold & Pink eye-catching colors ⭐
 
 ### Database Schema
 ```sql
@@ -311,6 +322,11 @@ Highlight Fuchsia
 ├── Light: #f472b6
 ├── Medium: #ec4899
 └── Dark: #be185d
+
+🌟 VISITOR BADGE HIGHLIGHT
+├── Gold Text: #FFD700
+├── Deep Pink Label: #FF1493
+└── Black Icon: #000000
 
 Background Black
 ├── Pure: #000000
@@ -386,11 +402,12 @@ Settings → Environment Variables
 
 | Platform | Link | Status |
 |----------|------|--------|
-| 💼 LinkedIn | [kkp007](https://linkedin.com/in/kkp007) | 🟢 Active |
-| 🐙 GitHub | [kkp007](https://github.com/kkp007) | 🟢 Active |
+| 💼 LinkedIn | [Kishor_Paroi](https://www.linkedin.com/in/kishor-paroi-b06344166/) | 🟢 Active |
+| 🐙 GitHub | [KishorKumarParoi](https://github.com/KishorKumarParoi) | 🟢 Active |
 | 🐦 Twitter | [@paroi_kishor](https://twitter.com/paroi_kishor) | 🟢 Active |
+| 💬 Whatsapp | [@KishorKumarParoi](https://api.whatsapp.com/send/?phone=8801724714156&text=Hi+Kishor%2C+I+saw+your+portfolio.&type=phone_number&app_absent=0) | 🟢 Active |
 | 📧 Email | kishor.ruet.cse@gmail.com | 🟢 Available |
-| 📰 Medium | [@kkp007](https://medium.com/@kkp007) | 🟢 Writing |
+| 📰 Medium | [@Kishor_Paroi](https://medium.com/@Kishor_Paroi) | 🟢 Writing |
 | 💻 Portfolio | [re-invent](https://re-invent-rust.vercel.app) | 🟢 Live |
 
 </div>
@@ -413,7 +430,7 @@ reinvent/
 │   │   ├── Features.jsx            # Technology highlights
 │   │   ├── Contact.jsx             # 3D contact section
 │   │   ├── Footer.jsx              # Social links & info
-│   │   ├── VisitorCount.jsx        # Real-time visitor counter
+│   │   ├── VisitorCount.jsx        # Real-time visitor counter ⭐
 │   │   ├── AnimatedTitle.jsx       # Animated text component
 │   │   ├── RoundedCorner.jsx       # Design element
 │   │   └── Button.jsx              # Reusable button
@@ -442,10 +459,11 @@ reinvent/
 - [x] Bio section with gradients
 - [x] Story section with quotes
 - [x] Contact section (3D parallax)
-- [x] Real-time visitor tracking
+- [x] Real-time visitor tracking ⭐
 - [x] Email newsletter system
 - [x] Social media integration
 - [x] Production deployment
+- [x] Highlighted visitor badge ⭐
 
 ### 🔄 In Progress
 - [ ] Blog section
