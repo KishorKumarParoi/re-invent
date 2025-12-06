@@ -8,7 +8,16 @@
 
 ## 📊 Portfolio Statistics
 
-![Visitors](https://img.shields.io/badge/dynamic/json?url=https://re-invent-rust.vercel.app/api/visitors&query=count&label=Total%20Visitors&color=00d9ff&style=for-the-badge&logo=eye)
+<div align="center">
+
+[![Visitors](https://img.shields.io/endpoint?url=https://re-invent-rust.vercel.app/api/visitors?query=count&label=Total%20Visitors&color=00d9ff&style=for-the-badge&logo=eye&logoColor=white)](https://re-invent-rust.vercel.app/)
+
+[![Status](https://img.shields.io/badge/Status-Live-00ff9f?style=for-the-badge&logo=circle)](https://re-invent-rust.vercel.app/)
+[![Deployed](https://img.shields.io/badge/Deployed-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
+
+**Live URL:** [https://re-invent-rust.vercel.app/](https://re-invent-rust.vercel.app/)
+
+</div>
 
 ---
 
