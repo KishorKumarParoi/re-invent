@@ -1,0 +1,11 @@
+# Make sure you're logged in
+gh auth login
+
+# Set all secrets at once
+gh secret set DOCKER_USERNAME -b "test_name"
+gh secret set DOCKER_PASSWORD -b "dckr_pat_FudsfzZdZCCLhnbmbV9FuSVnxH-hdLM"
+gh secret set API_URL -b "https://re-invent-rust.vercel.app"
+gh secret set CRON_SECRET -b "K7mPq2wXyZ9dbsdfLnRsT4vH6jF8gD0eA3cB5uIpOkMxNz="
+
+# Verify secrets are set
+gh secret list

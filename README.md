@@ -2,10 +2,17 @@
 
 > A stunning, interactive portfolio website showcasing innovation, competitive programming mastery, and real-world problem-solving.
 
-**🌐 Live Demo:** https://re-invent-rust.vercel.app/
-**⏳ Visitors Count:** https://re-invent-rust.vercel.app/api/visitors
+---
+
+## 🔗 Quick Links
+
+| Link | URL |
+|------|-----|
+| 🌐 **Live Demo** | https://re-invent-rust.vercel.app/ |
+| 📊 **Visitors Count** | https://re-invent-rust.vercel.app/api/visitors |
 
 ---
+
 
 ## 📊 Portfolio Statistics
 
@@ -67,7 +74,7 @@
 |---------|----------|---------|
 | **GSAP** | Advanced animations | 3.13.0+ |
 | **ScrollTrigger** | Scroll-based effects | Included |
-| **@gsap/react** | React integration | 2.1.2+ |
+|
 
 ### 🗄️ Backend & Data
 | Service | Function | Version |
@@ -393,6 +400,112 @@ Settings → Environment Variables
 - 🎯 **GPU Acceleration** - GSAP transforms
 - 📊 **Tree Shaking** - Unused code removal
 - 🚀 **Edge Caching** - Vercel CDN
+
+---
+
+## 🐳 Docker & DevOps Setup
+
+### Prerequisites
+- Docker 20.10+
+- Docker Compose 2.0+
+- Node.js 20+
+
+### Build & Run with Docker
+
+```bash
+# Build Docker image
+docker build -t reinvent:latest .
+
+# Run with Docker Compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f app
+
+# Stop containers
+docker-compose down
+
+# Stop and remove volumes
+docker-compose down -v
+```
+
+### Docker Services
+
+| Service | Port | Purpose |
+|---------|------|---------|
+| **App** | 3000 | Main application |
+| **Nginx** | 80/443 | Reverse proxy |
+| **PostgreSQL** | 5432 | Database |
+
+### Environment Variables
+
+```bash
+# .env file for Docker
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_anon_key
+CRON_SECRET=your_secret_key
+```
+
+### 24-Hour Automated Tasks
+
+**Visitor Count Reset (Midnight UTC)**
+```
+Time: 00:00 UTC daily
+Endpoint: /api/update-visitors
+Action: Reset daily visitor count
+Logs: Check docker-compose logs app
+```
+
+### Docker Commands
+
+```bash
+# View running containers
+docker ps
+
+# Check container logs
+docker logs reinvent-app
+
+# Execute command in container
+docker exec reinvent-app npm run build
+
+# Rebuild image
+docker-compose build --no-cache
+
+# Development mode with hot reload
+docker-compose up -d
+# Changes to src/ are reflected live
+
+# Production build
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### Health Checks
+
+The application includes built-in health checks:
+
+```bash
+# Check app health
+curl http://localhost:3000/
+
+# Check visitor API
+curl http://localhost:3000/api/visitors
+
+# Check via Nginx
+curl http://localhost/api/visitors
+```
+
+### Performance Monitoring
+
+```bash
+# Monitor container stats
+docker stats reinvent-app
+
+# View container processes
+docker top reinvent-app
+
+# Inspect container
+docker inspect reinvent-app
+```
 
 ---
 
