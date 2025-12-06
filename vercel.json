@@ -1,7 +1,0 @@
-{
-    "functions": {
-        "api/visitors.js": {
-            "runtime": "nodejs20.x"
-        }
-    }
-}
