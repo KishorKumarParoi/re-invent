@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#070a14"/>
+    </linearGradient>
+    <linearGradient id="secGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843"/>
+      <stop offset="100%" stop-color="#9d174d"/>
+    </linearGradient>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="ragGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="mcpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#581c87"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+    <linearGradient id="obsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a3412"/>
+      <stop offset="100%" stop-color="#c2410c"/>
+    </linearGradient>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f472b6"/>
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="660" fill="url(#bgGrad)"/>
+  <rect x="15" y="15" width="1170" height="630" rx="12" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Title Banner -->
+  <text x="40" y="55" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700">Enterprise AI Security &amp; Resilient Agent Mesh Platform</text>
+  <text x="40" y="80" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Zero-Trust BotShield WAF, LangGraph Supervisor Mesh, Dual-Tier Reranking, FastMCP Server Tools &amp; HITL Governance</text>
+
+  <!-- Tier 1: BotShield Edge WAF & Security -->
+  <rect x="40" y="120" width="205" height="480" rx="10" fill="url(#secGrad)" stroke="#be185d" stroke-width="1.5"/>
+  <text x="55" y="155" fill="#fbcfe8" font-family="sans-serif" font-size="14" font-weight="700">1. BOTSHIELD WAF</text>
+
+  <rect x="55" y="175" width="175" height="85" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1"/>
+  <text x="68" y="200" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Rate Limiter &amp; Trap</text>
+  <text x="68" y="218" fill="#fbcfe8" font-family="sans-serif" font-size="11">Sliding-Window Limiter</text>
+  <text x="68" y="234" fill="#94a3b8" font-family="sans-serif" font-size="10">Honeypot endpoints</text>
+  <text x="68" y="248" fill="#ef4444" font-family="sans-serif" font-size="10">Instant 600s IP ban</text>
+
+  <rect x="55" y="275" width="175" height="85" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1"/>
+  <text x="68" y="300" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Anti-Jailbreak Guard</text>
+  <text x="68" y="318" fill="#fbcfe8" font-family="sans-serif" font-size="11">NeMo Guardrails &amp; Scan</text>
+  <text x="68" y="334" fill="#94a3b8" font-family="sans-serif" font-size="10">Prompt injection filter</text>
+  <text x="68" y="348" fill="#10b981" font-family="sans-serif" font-size="10">Zero instruction override</text>
+
+  <rect x="55" y="375" width="175" height="85" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1"/>
+  <text x="68" y="400" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">PII Masking Engine</text>
+  <text x="68" y="418" fill="#fbcfe8" font-family="sans-serif" font-size="11">Regex + NER Sanitizer</text>
+  <text x="68" y="434" fill="#94a3b8" font-family="sans-serif" font-size="10">Redacts SSN, Cards, Keys</text>
+  <text x="68" y="448" fill="#38bdf8" font-family="sans-serif" font-size="10">GDPR &amp; HIPAA Compliant</text>
+
+  <rect x="55" y="475" width="175" height="105" rx="8" fill="#500724" stroke="#f472b6" stroke-width="1"/>
+  <text x="68" y="500" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Security SLA</text>
+  <text x="68" y="518" fill="#fbcfe8" font-family="sans-serif" font-size="11">Evaluation: &lt; 8ms</text>
+  <text x="68" y="534" fill="#10b981" font-family="sans-serif" font-size="10">99.8% Adversarial Block</text>
+  <text x="68" y="550" fill="#38bdf8" font-family="sans-serif" font-size="10">Clean Payload Transit</text>
+
+  <!-- Tier 2: Supervisor Multi-Agent Mesh -->
+  <rect x="265" y="120" width="220" height="480" rx="10" fill="url(#agentGrad)" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="282" y="155" fill="#bfdbfe" font-family="sans-serif" font-size="14" font-weight="700">2. AGENT SUPERVISOR</text>
+
+  <rect x="280" y="175" width="190" height="85" rx="8" fill="#172554" stroke="#3b82f6" stroke-width="1"/>
+  <text x="292" y="200" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">LangGraph Supervisor</text>
+  <text x="292" y="218" fill="#bfdbfe" font-family="sans-serif" font-size="11">Master State Orchestrator</text>
+  <text x="292" y="234" fill="#94a3b8" font-family="sans-serif" font-size="10">Cyclic FSM &amp; Router</text>
+  <text x="292" y="248" fill="#10b981" font-family="sans-serif" font-size="10">Deterministic Fallbacks</text>
+
+  <rect x="280" y="275" width="190" height="85" rx="8" fill="#172554" stroke="#3b82f6" stroke-width="1"/>
+  <text x="292" y="300" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Specialist Agents</text>
+  <text x="292" y="318" fill="#bfdbfe" font-family="sans-serif" font-size="11">RAG Researcher Agent</text>
+  <text x="292" y="334" fill="#94a3b8" font-family="sans-serif" font-size="10">SQL Data Analyst Agent</text>
+  <text x="292" y="348" fill="#38bdf8" font-family="sans-serif" font-size="10">Code &amp; Security Auditor</text>
+
+  <rect x="280" y="375" width="190" height="85" rx="8" fill="#172554" stroke="#3b82f6" stroke-width="1"/>
+  <text x="292" y="400" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">LangGraph Checkpointer</text>
+  <text x="292" y="418" fill="#bfdbfe" font-family="sans-serif" font-size="11">PostgreSQL 16 Engine</text>
+  <text x="292" y="434" fill="#94a3b8" font-family="sans-serif" font-size="10">Thread state persistence</text>
+  <text x="292" y="448" fill="#10b981" font-family="sans-serif" font-size="10">Zero memory leaks</text>
+
+  <rect x="280" y="475" width="190" height="105" rx="8" fill="#172554" stroke="#3b82f6" stroke-width="1"/>
+  <text x="292" y="500" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">HITL Approval Gate</text>
+  <text x="292" y="518" fill="#bfdbfe" font-family="sans-serif" font-size="11">Break-glass authorization</text>
+  <text x="292" y="534" fill="#ef4444" font-family="sans-serif" font-size="10">Suspends dangerous ops</text>
+  <text x="292" y="550" fill="#10b981" font-family="sans-serif" font-size="10">Admin review &amp; resume</text>
+
+  <!-- Tier 3: Hybrid Retrieval & Dual-Tier Reranker -->
+  <rect x="505" y="120" width="225" height="480" rx="10" fill="url(#ragGrad)" stroke="#059669" stroke-width="1.5"/>
+  <text x="522" y="155" fill="#a7f3d0" font-family="sans-serif" font-size="14" font-weight="700">3. HYBRID RAG &amp; RERANK</text>
+
+  <rect x="520" y="175" width="195" height="85" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <text x="532" y="200" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Hybrid Dense + Sparse</text>
+  <text x="532" y="218" fill="#a7f3d0" font-family="sans-serif" font-size="11">Qdrant HNSW + BM25</text>
+  <text x="532" y="234" fill="#94a3b8" font-family="sans-serif" font-size="10">All-MiniLM-L6-v2 Embeds</text>
+  <text x="532" y="248" fill="#38bdf8" font-family="sans-serif" font-size="10">Reciprocal Rank Fusion</text>
+
+  <rect x="520" y="275" width="195" height="85" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <text x="532" y="300" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Tier-1 FlashRank Rerank</text>
+  <text x="532" y="318" fill="#a7f3d0" font-family="sans-serif" font-size="11">Local ONNX Execution</text>
+  <text x="532" y="334" fill="#94a3b8" font-family="sans-serif" font-size="10">Sub-15ms Latency</text>
+  <text x="532" y="348" fill="#10b981" font-family="sans-serif" font-size="10">Filters Top-100 to Top-15</text>
+
+  <rect x="520" y="375" width="195" height="85" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <text x="532" y="400" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Tier-2 Cohere v3.5</text>
+  <text x="532" y="418" fill="#a7f3d0" font-family="sans-serif" font-size="11">Cross-Encoder Precision</text>
+  <text x="532" y="434" fill="#94a3b8" font-family="sans-serif" font-size="10">Deep context alignment</text>
+  <text x="532" y="448" fill="#c084fc" font-family="sans-serif" font-size="10">Top-5 Pristine Context</text>
+
+  <rect x="520" y="475" width="195" height="105" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+  <text x="532" y="500" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Semantic Caching</text>
+  <text x="532" y="518" fill="#a7f3d0" font-family="sans-serif" font-size="11">Redis Fuzzy Match</text>
+  <text x="532" y="534" fill="#94a3b8" font-family="sans-serif" font-size="10">Threshold: Cosine &gt; 0.92</text>
+  <text x="532" y="550" fill="#10b981" font-family="sans-serif" font-size="10">Sub-50ms Cache Hit</text>
+
+  <!-- Tier 4: Model Context Protocol (FastMCP) -->
+  <rect x="750" y="120" width="205" height="480" rx="10" fill="url(#mcpGrad)" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="765" y="155" fill="#e9d5ff" font-family="sans-serif" font-size="14" font-weight="700">4. MCP TOOL MESH</text>
+
+  <rect x="760" y="175" width="185" height="85" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="772" y="200" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">FastMCP Microservices</text>
+  <text x="772" y="218" fill="#d8b4fe" font-family="sans-serif" font-size="11">Standardized Tool Protocol</text>
+  <text x="772" y="234" fill="#94a3b8" font-family="sans-serif" font-size="10">Decoupled execution</text>
+  <text x="772" y="248" fill="#10b981" font-family="sans-serif" font-size="10">JSON-RPC over SSE</text>
+
+  <rect x="760" y="275" width="185" height="85" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="772" y="300" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Knowledge Tools</text>
+  <text x="772" y="318" fill="#d8b4fe" font-family="sans-serif" font-size="11">Vector Search Tool</text>
+  <text x="772" y="334" fill="#94a3b8" font-family="sans-serif" font-size="10">SQL Execution Sandbox</text>
+  <text x="772" y="348" fill="#38bdf8" font-family="sans-serif" font-size="10">Live Web Search API</text>
+
+  <rect x="760" y="375" width="185" height="85" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="772" y="400" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">LiteLLM Gateway</text>
+  <text x="772" y="418" fill="#d8b4fe" font-family="sans-serif" font-size="11">Multi-Provider Router</text>
+  <text x="772" y="434" fill="#94a3b8" font-family="sans-serif" font-size="10">OpenAI, Anthropic, Gemini</text>
+  <text x="772" y="448" fill="#10b981" font-family="sans-serif" font-size="10">Automated 3-strike failover</text>
+
+  <rect x="760" y="475" width="185" height="105" rx="8" fill="#3b0764" stroke="#a855f7" stroke-width="1"/>
+  <text x="772" y="500" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Zero-Cost Teardown</text>
+  <text x="772" y="518" fill="#d8b4fe" font-family="sans-serif" font-size="11">./clear.sh Purges Stack</text>
+  <text x="772" y="534" fill="#94a3b8" font-family="sans-serif" font-size="10">Cleans EC2, ECS, VPC</text>
+  <text x="772" y="550" fill="#10b981" font-family="sans-serif" font-size="10">$0.00 idle footprint</text>
+
+  <!-- Tier 5: Observability & RAGAS Harness -->
+  <rect x="975" y="120" width="185" height="480" rx="10" fill="url(#obsGrad)" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="988" y="155" fill="#fed7aa" font-family="sans-serif" font-size="14" font-weight="700">5. OBSERVABILITY</text>
+
+  <rect x="985" y="175" width="165" height="90" rx="8" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="996" y="200" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">OpenTelemetry</text>
+  <text x="996" y="218" fill="#fed7aa" font-family="sans-serif" font-size="11">Distributed Tracing</text>
+  <text x="996" y="234" fill="#94a3b8" font-family="sans-serif" font-size="10">Spans per agent step</text>
+  <text x="996" y="248" fill="#38bdf8" font-family="sans-serif" font-size="10">Jaeger &amp; CloudWatch</text>
+
+  <rect x="985" y="280" width="165" height="90" rx="8" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="996" y="305" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">Prometheus Telemetry</text>
+  <text x="996" y="325" fill="#fed7aa" font-family="sans-serif" font-size="11">Port: 8000/metrics</text>
+  <text x="996" y="343" fill="#94a3b8" font-family="sans-serif" font-size="10">Tokens, Latency p95/p99</text>
+  <text x="996" y="359" fill="#10b981" font-family="sans-serif" font-size="10">Grafana Executive Board</text>
+
+  <rect x="985" y="385" width="165" height="95" rx="8" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="996" y="410" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">RAGAS Evaluation</text>
+  <text x="996" y="430" fill="#fed7aa" font-family="sans-serif" font-size="11">Faithfulness: &gt; 0.90</text>
+  <text x="996" y="448" fill="#94a3b8" font-family="sans-serif" font-size="10">Answer Relevancy &gt; 0.88</text>
+  <text x="996" y="466" fill="#10b981" font-family="sans-serif" font-size="10">Context Recall &gt; 0.92</text>
+
+  <rect x="985" y="495" width="165" height="85" rx="8" fill="#431407" stroke="#f97316" stroke-width="1"/>
+  <text x="996" y="520" fill="#f1f5f9" font-family="sans-serif" font-size="12" font-weight="600">CI/CD Golden Path</text>
+  <text x="996" y="540" fill="#fed7aa" font-family="sans-serif" font-size="11">GitHub Actions</text>
+  <text x="996" y="558" fill="#10b981" font-family="sans-serif" font-size="10">Automated regression test</text>
+
+  <!-- Connective Arrows -->
+  <path d="M 245 215 L 280 215" stroke="#f472b6" stroke-width="2" fill="none" marker-end="url(#arrow-pink)"/>
+  <path d="M 485 215 L 520 215" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 730 215 L 760 215" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrow-green)"/>
+  <path d="M 955 215 L 985 215" stroke="#c084fc" stroke-width="2" fill="none" marker-end="url(#arrow-purple)"/>
+
+</svg>
