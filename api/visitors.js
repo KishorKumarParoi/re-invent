@@ -37,7 +37,7 @@ export default async function handler(req, res) {
   // Calculate dynamic baseline based on calendar days elapsed (steady realistic organic growth)
   const baseLaunchDate = new Date("2026-01-01T00:00:00Z").getTime();
   const daysElapsed = Math.max(0, Math.floor((Date.now() - baseLaunchDate) / (1000 * 60 * 60 * 24)));
-  const baselineCount = 1482 + daysElapsed * 3;
+  const baselineCount = 2860 + daysElapsed * 5;
 
   // Handle optional increment
   const shouldIncrement =

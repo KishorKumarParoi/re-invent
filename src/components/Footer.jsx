@@ -10,11 +10,17 @@ import {
     FaGithub,
     FaFacebook,
     FaInstagram,
-    FaWhatsapp
+    FaWhatsapp,
+    FaApple
 } from 'react-icons/fa';
 import { Sparkles, Terminal, Shield, ArrowUp, Coffee } from 'lucide-react'
 
 const socialLinks = [
+    {
+        href: "https://kishor-paroi.vercel.app/",
+        icon: <FaApple />,
+        label: "macOS Portfolio"
+    },
     {
         href: "https://linkedin.com/in/kishor-kumar-paroi-b06344166",
         icon: <FaLinkedin />,
@@ -87,7 +93,7 @@ const Footer = () => {
                                 <span>KISHOR KUMAR PAROI (kkp_007)</span>
                             </div>
                             <p className="text-xs text-gray-400 font-sans">
-                                Principal AI Systems Architect • Founder @ <a href="https://koom-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">KoomAI</a> • B.Sc. CSE @ RUET (Rank 483rd)
+                                Principal AI Systems Architect • Founder @ <a href="https://koom-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline font-semibold">KoomAI</a> • Creator @ <a href="https://kishor-paroi.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-emerald-300 hover:underline font-semibold">macOS Portfolio</a> • B.Sc. CSE @ RUET (Rank 483rd)
                             </p>
                         </div>
 
@@ -109,8 +115,19 @@ const Footer = () => {
                             ))}
                         </div>
 
-                        {/* Right: Back to Top & Quick Status */}
+                        {/* Right: macOS Portfolio Direct Link & Back to Top */}
                         <div className="flex items-center gap-3">
+                            <a
+                                href="https://kishor-paroi.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-linear-to-r from-gray-900 via-gray-950 to-black hover:from-black hover:to-gray-900 border border-white/20 hover:border-cyan-400 text-xs font-mono text-gray-200 hover:text-white transition-all hover:scale-105 shadow-md shadow-cyan-500/10 cursor-pointer"
+                                title="Open interactive macOS Desktop Portfolio in browser"
+                            >
+                                <FaApple className="text-sm text-white" />
+                                <span>macOS Portfolio ↗</span>
+                            </a>
+
                             <button
                                 onClick={scrollToTop}
                                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-gray-300 hover:text-white transition cursor-pointer"
@@ -127,7 +144,12 @@ const Footer = () => {
                         <div>
                             <span>© 2026 Kishor Kumar Paroi. All rights reserved. Zero-Trust IaC.</span>
                         </div>
-                        <div className='flex items-center gap-2 text-[11px] bg-white/5 border border-white/10 px-3 py-1 rounded-full'>
+                        <div className='flex items-center gap-2 text-[11px] bg-white/5 border border-white/10 px-3 py-1 rounded-full flex-wrap justify-center'>
+                            <a href="https://kishor-paroi.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline flex items-center gap-1 font-bold">
+                                <FaApple className="text-xs" />
+                                <span>macOS Tahoe Live</span>
+                            </a>
+                            <span>•</span>
                             <span className='inline-flex items-center gap-1.5 text-emerald-400 font-bold'>
                                 <span className='size-2 rounded-full bg-emerald-400 animate-ping' />
                                 99.9% Uptime SLA

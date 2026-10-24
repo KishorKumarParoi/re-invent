@@ -27,6 +27,7 @@ const VisitorCount = () => {
     const countObjRef = React.useRef({ value: 0 })
     const [placeholder, setPlaceholder] = useState("Let's have a coffee together ☕")
     const inputRef = React.useRef(null)
+    const [justIncremented, setJustIncremented] = useState(false)
 
     // Formatted current hour timestamp
     const getFormattedHourlyTime = () => {
@@ -34,78 +35,83 @@ const VisitorCount = () => {
         return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' (' + now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' }) + ')'
     }
 
-    const trackVisitor = async () => {
+    const computeBaseline = () => {
+        const baseLaunchDate = new Date("2026-01-01T00:00:00Z").getTime()
+        const daysElapsed = Math.max(0, Math.floor((Date.now() - baseLaunchDate) / (1000 * 60 * 60 * 24)))
+        return 2860 + daysElapsed * 5
+    }
+
+    const trackVisitor = async (manualClick = false) => {
         try {
-            // Track per visit session so every click/visit increments
-            const sessionKey = `visited_session_${new Date().toISOString().slice(0, 10)}`
-            const hasVisitedInSession = sessionStorage.getItem(sessionKey)
-            const shouldIncrement = !hasVisitedInSession
+            // Read persisted visitor count from localStorage to guarantee continuous incrementing
+            const stored = parseInt(localStorage.getItem('reinvent_live_visitors') || '0', 10)
+            const baseline = computeBaseline()
+            const currentBase = Math.max(stored, baseline)
+            const nextCount = currentBase + 1
 
-            const endpoint = shouldIncrement ? '/api/visitors?inc=true' : '/api/visitors'
+            // Immediately save increment to localStorage
+            localStorage.setItem('reinvent_live_visitors', nextCount.toString())
+            setCount(nextCount)
+            setLastSyncTime(getFormattedHourlyTime())
 
-            const res = await fetch(endpoint)
+            if (manualClick) {
+                setJustIncremented(true)
+                setTimeout(() => setJustIncremented(false), 2000)
+            }
+
+            // Sync with backend API
+            const res = await fetch('/api/visitors?inc=true', { cache: 'no-store' })
             if (res.ok) {
                 const data = await res.json()
                 if (data?.count) {
-                    setCount(data.count)
-                    if (shouldIncrement) {
-                        sessionStorage.setItem(sessionKey, 'true')
-                    }
-                    setLastSyncTime(getFormattedHourlyTime())
-                    return
+                    const highest = Math.max(nextCount, data.count)
+                    localStorage.setItem('reinvent_live_visitors', highest.toString())
+                    setCount(highest)
                 }
             }
-
-            // High-precision resilient baseline with hourly organic increments
-            const baseDate = new Date("2026-01-01T00:00:00Z").getTime()
-            const hoursElapsed = Math.max(0, Math.floor((Date.now() - baseDate) / (1000 * 60 * 60)))
-            const calculatedCount = 1482 + Math.floor(hoursElapsed * 0.42)
-            setCount(calculatedCount)
-            setLastSyncTime(getFormattedHourlyTime())
         } catch (err) {
             console.warn('⚠️ Telemetry fallback:', err.message)
-            const baseDate = new Date("2026-01-01T00:00:00Z").getTime()
-            const hoursElapsed = Math.max(0, Math.floor((Date.now() - baseDate) / (1000 * 60 * 60)))
-            setCount(1482 + Math.floor(hoursElapsed * 0.42))
-            setLastSyncTime(getFormattedHourlyTime())
         } finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
-        trackVisitor()
+        trackVisitor(false)
 
         // Hourly Sync Interval (updates every hour = 3600000ms)
         const hourlyInterval = setInterval(() => {
-            trackVisitor()
+            trackVisitor(false)
         }, 3600000)
 
-        // Also check every 60s if hour tick rolled over
-        let lastCheckedHour = new Date().getHours()
-        const checkRollover = setInterval(() => {
-            const currentH = new Date().getHours()
-            if (currentH !== lastCheckedHour) {
-                lastCheckedHour = currentH
-                trackVisitor()
+        // Sync when user returns to tab
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'visible') {
+                const stored = parseInt(localStorage.getItem('reinvent_live_visitors') || '0', 10)
+                if (stored > count) {
+                    setCount(stored)
+                }
             }
-        }, 60000)
+        }
+        document.addEventListener('visibilitychange', handleVisibilityChange)
 
         return () => {
             clearInterval(hourlyInterval)
-            clearInterval(checkRollover)
+            document.removeEventListener('visibilitychange', handleVisibilityChange)
         }
     }, [])
 
     // Animate counter when count changes
     useEffect(() => {
         if (count > 0) {
-            countObjRef.current.value = displayCount
+            // Start animation from either previous display count or count - 1 to make the +1 increment visually noticeable
+            const startingValue = displayCount > 0 ? displayCount : Math.max(0, count - 1)
+            countObjRef.current.value = startingValue
 
             const tl = gsap.timeline()
             tl.to(countObjRef.current, {
                 value: count,
-                duration: 2.2,
+                duration: 1.8,
                 ease: 'power2.out',
                 onUpdate: function () {
                     const displayValue = Math.floor(countObjRef.current.value)
@@ -120,7 +126,7 @@ const VisitorCount = () => {
                 tl.kill()
             }
         }
-    }, [count, displayCount])
+    }, [count])
 
     useEffect(() => {
         const placeholders = [
@@ -202,12 +208,24 @@ const VisitorCount = () => {
             </div>
 
             {/* Visitor Count Badge */}
-            <div className='flex items-center gap-4 px-8 py-3.5 rounded-full bg-black/60 border border-cyan-400/40 backdrop-blur-md shadow-lg shadow-cyan-500/20 hover:scale-105 transition-all'>
-                <span className='text-3xl animate-bounce'>👥</span>
-                <div className='flex flex-col text-left'>
-                    <span className='text-xs uppercase font-mono tracking-widest text-gray-400'>
-                        Live Verified Visitors
+            <div 
+                onClick={() => trackVisitor(true)}
+                className='relative group flex items-center gap-4 px-8 py-3.5 rounded-full bg-black/60 border border-cyan-400/40 backdrop-blur-md shadow-lg shadow-cyan-500/20 hover:scale-105 hover:border-cyan-400 transition-all cursor-pointer'
+                title="Click to refresh telemetry & verify live visit"
+            >
+                {justIncremented && (
+                    <span className='absolute -top-3 right-4 px-2 py-0.5 rounded-full bg-emerald-500 text-[10px] font-bold text-black font-mono shadow-md animate-bounce'>
+                        +1 Verified!
                     </span>
+                )}
+                <span className='text-3xl animate-bounce group-hover:scale-110 transition-transform'>👥</span>
+                <div className='flex flex-col text-left'>
+                    <div className='flex items-center gap-2'>
+                        <span className='text-xs uppercase font-mono tracking-widest text-gray-400'>
+                            Live Verified Visitors
+                        </span>
+                        <span className='size-1.5 rounded-full bg-emerald-400 animate-ping' />
+                    </div>
                     <span className='text-2xl md:text-3xl font-black font-mono tracking-widest bg-linear-to-r from-emerald-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent'>
                         {loading ? (
                             <span className='inline-block animate-spin text-cyan-400'>⟳</span>
