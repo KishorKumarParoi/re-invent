@@ -18,6 +18,8 @@ const VisitorCount = () => {
     const [email, setEmail] = useState('')
     const [subscribed, setSubscribed] = useState(false)
     const [subscribing, setSubscribing] = useState(false)
+    const [lastUpdated, setLastUpdated] = useState('October 2026')
+    const [version, setVersion] = useState('v3.2.0-prod')
     const counterRef = React.useRef(null)
     const containerRef = React.useRef(null)
     const countObjRef = React.useRef({ value: 0 })
@@ -27,16 +29,23 @@ const VisitorCount = () => {
     useEffect(() => {
         const trackVisitor = async () => {
             try {
-                const todayKey = `visited_${new Date().toDateString()}`
-                const hasVisitedToday = localStorage.getItem(todayKey)
-                const endpoint = hasVisitedToday ? '/api/visitors' : '/api/visitors?inc=true'
+                // Track per visit session so every click/visit increments
+                const sessionKey = `visited_session_${new Date().toISOString().slice(0, 10)}`
+                const hasVisitedInSession = sessionStorage.getItem(sessionKey)
+                const shouldIncrement = !hasVisitedInSession
+
+                const endpoint = shouldIncrement ? '/api/visitors?inc=true' : '/api/visitors'
 
                 const res = await fetch(endpoint)
                 if (res.ok) {
                     const data = await res.json()
                     if (data?.count) {
                         setCount(data.count)
-                        localStorage.setItem(todayKey, 'true')
+                        if (data.lastUpdated) setLastUpdated(data.lastUpdated)
+                        if (data.version) setVersion(data.version)
+                        if (shouldIncrement) {
+                            sessionStorage.setItem(sessionKey, 'true')
+                        }
                         return
                     }
                 }
@@ -262,6 +271,17 @@ const VisitorCount = () => {
                     Subscribe on Substack
                 </a>
             </p>
+
+            {/* Live Telemetry & Update Status */}
+            <div className='flex flex-wrap items-center justify-center gap-3 pt-2 border-t border-blue-400/20 w-full max-w-lg'>
+                <div className='inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/70 border border-emerald-500/40 text-[11px] text-emerald-300 font-medium'>
+                    <span className='w-2 h-2 rounded-full bg-emerald-400 animate-pulse'></span>
+                    <span>Live Traffic Operational</span>
+                </div>
+                <div className='inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/70 border border-slate-700/60 text-[11px] text-slate-300 font-medium'>
+                    <span>🕒 Updated: <strong className='text-emerald-300'>{lastUpdated}</strong> ({version})</span>
+                </div>
+            </div>
         </div>
     )
 }

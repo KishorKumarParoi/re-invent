@@ -89,6 +89,8 @@ export default async function handler(req, res) {
     formatted: finalCount.toLocaleString(),
     status: "healthy",
     source: telemetrySource,
+    lastUpdated: "October 2026",
+    version: "v3.2.0-prod",
     uptime: "99.99%",
     timestamp: new Date().toISOString(),
   });

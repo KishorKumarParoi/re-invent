@@ -109,15 +109,22 @@ const Footer = () => {
                     </a>
                 </div>
 
-                {/* Decorative divider */}
-                <div className="mt-4 pt-4 border-t border-white/10">
-                    <div className='font-circular-web mt-2 text-center text-sm text-blue-300'>
-                        <p> Made with 💚 by Kishor Kumar Paroi (kkp_007) </p>
+                {/* Decorative divider & Permanent Update Info */}
+                <div className="mt-4 pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-blue-300">
+                    <div className='font-circular-web text-center md:text-left'>
+                        <p>Made with 💚 by Kishor Kumar Paroi (kkp_007)</p>
+                    </div>
+                    <div className='flex items-center gap-3 text-[11px] text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full'>
+                        <span className='inline-flex items-center gap-1 text-emerald-400'>
+                            <span className='w-2 h-2 rounded-full bg-emerald-400 animate-ping'></span>
+                            99.9% Uptime
+                        </span>
+                        <span>•</span>
+                        <span>Updated: <strong className='text-cyan-300'>October 2026</strong> (v3.2.0-prod)</span>
                     </div>
                 </div>
             </section>
         </div>
-        // </footer>
     )
 }
 
