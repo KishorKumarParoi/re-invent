@@ -118,6 +118,8 @@ const Features = () => {
                         </>}
                         description="Hybrid Anime Intelligence & LLMOps: vLLM Multi-LoRA serving, Qdrant 384-dim dense vector search, BM25 lexical retrieval, RRF fusion, and sub-10ms ONNX neural re-ranking (99.8% latency reduction)."
                         isComingSoon={false}
+                        href="https://github.com/KishorKumarParoi/Hybrid-Anime-Recommender"
+                        linkLabel="GitHub Repo ↗"
                     />
                 </BentoTilt>
 
@@ -127,6 +129,8 @@ const Features = () => {
                             src={"videos/feature-2.mp4"}
                             title={<>AI <b>S</b>ecurity</>}
                             description={"Enterprise Zero-Trust AI Gateway & RAG: NVIDIA NeMo Guardrails, BotShield adaptive WAF, FastMCP tool execution, and sub-50ms semantic caching."}
+                            href="https://github.com/KishorKumarParoi/AI_Security_Production_App"
+                            linkLabel="GitHub Repo ↗"
                         />
                     </BentoTilt>
 
@@ -135,6 +139,8 @@ const Features = () => {
                             src={"videos/feature-3.mp4"}
                             title={<>Z<b>o</b>mato Lakehouse</>}
                             description={"Multi-Cloud Lakehouse & Multimodal Engine: PySpark Delta Lake medallion pipeline, Snowflake warehousing, Feast feature store, and visual recommendations."}
+                            href="https://github.com/KishorKumarParoi/zomato-analysis"
+                            linkLabel="GitHub Repo ↗"
                         />
                     </BentoTilt>
 
@@ -143,6 +149,8 @@ const Features = () => {
                             src={"videos/feature-4.mp4"}
                             title={<>Smart <b>M</b>anufacturing</>}
                             description={"Industrial AI & MLOps Platform: Rust SIMD telemetry ingestion, Go gateway, Next.js 15 3D digital twin cockpit, and sub-5ms anomaly detection."}
+                            href="https://github.com/KishorKumarParoi/smart-manufacturing"
+                            linkLabel="GitHub Repo ↗"
                         />
                     </BentoTilt>
 
