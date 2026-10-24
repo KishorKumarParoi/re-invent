@@ -274,9 +274,9 @@ const Contact = () => {
                                         </div>
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2 rounded-lg bg-white/5 border border-white/5">
                                             <div>
-                                                <strong className="text-white">Secondary School Certificate (SSC)</strong> — Police Lines High School
+                                                <strong className="text-white">Secondary School Certificate (SSC)</strong> — S.J Govt Model High School (Gopalganj)
                                             </div>
-                                            <div className="text-amber-400 font-bold">GPA 5.00 / 5.00</div>
+                                            <div className="text-amber-400 font-bold">Merit Rank 90th in Dhaka Board (GPA 5.00 / 5.00)</div>
                                         </div>
                                     </div>
                                 </div>
