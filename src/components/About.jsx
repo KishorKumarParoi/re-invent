@@ -258,7 +258,7 @@ const About = () => {
     ]
 
     return (
-        <div id='about' className='relative min-h-screen w-screen bg-slate-900 overflow-hidden'>
+        <div id='about' className='relative min-h-screen w-screen bg-linear-to-b from-black via-[#070b24] to-black overflow-hidden transform-gpu will-change-transform'>
             {/* Interactive Shooting Stars Canvas with Click-to-Fall Physics & Sarcastic Hacker Alerts */}
             <ShootingStarsCanvas />
 

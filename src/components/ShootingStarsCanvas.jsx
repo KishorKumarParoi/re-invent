@@ -1,269 +1,331 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Terminal, AlertTriangle, X, Sparkles, Coffee } from 'lucide-react'
+import { AlertTriangle, Coffee, Sparkles, X, Stars } from 'lucide-react'
 
-// Sarcastic Hacker Threats for visitors
 const HACKER_MESSAGES = [
     {
-        title: "⚠️ 0xDEADBEEF: UNAUTHORIZED REPO APPRECIATION",
-        message: "Intrusion detected! You've been inspecting 15 Medallion Lakehouses without starring the GitHub repository. As punishment, your smart microwave is now mining Bitcoin. Just kidding! Relax and let's connect over coffee ☕",
-        code: "ERR_CODE_STAR_MISSING",
+        title: "⚡ STELLAR ARCHITECTURE DISLODGED",
+        message: "You just knocked a star out of orbit! Luckily, Rust SIMD vector indexing recalculates gravitational trajectories in <0.5ms.",
     },
     {
-        title: "🚨 ROOT KERNEL BREACH DETECTED",
-        message: "Warning: Your browser just downloaded 15 distributed systems with <0.5ms SIMD scoring. Firewalls breached by sheer engineering awe! Immediate remediation: Schedule an interview with Kishor.",
-        code: "ERR_OVERWHELMED_RECRUITER",
+        title: "✨ CELESTIAL LAKEHOUSE EVENT",
+        message: "Star fragment captured into Snowflake Bronze layer. Deduplicated via dbt Core SCD-2 with zero data loss.",
     },
     {
-        title: "👾 CYBER SENTRY PROTOCOL 404",
-        message: "Alert: Our NVIDIA NeMo Guardrails detected 0% chance you'll find a more qualified Principal AI Architect. Resistance is futile. Grab a cup of tea and examine the Snowflake pipeline!",
-        code: "WARN_MAX_COMPETENCE",
+        title: "🛡️ COSMIC NEUTRALIZATION",
+        message: "NVIDIA NeMo Guardrails intercepted falling cosmic debris. 99.8% prompt injection and space anomaly blocked.",
     },
     {
-        title: "⚡ DANGER: CPU CLOCK SYNCHRONIZED TO SANSKRIT",
-        message: "Your machine's neural core has been blessed by Om Shanti Stotras. All your bugs are now officially features. You may proceed to explore the 3D Metaverse safely.",
-        code: "STOTRA_SANCTIFIED",
-    },
-    {
-        title: "🛡️ THREAT LEVEL: COFFEE OVERFLOW",
-        message: "Warning! Prolonged portfolio browsing without a virtual coffee chat will cause heap memory fragmentation. Click 'Let's Connect' to defragment your caffeine levels.",
-        code: "TEA_DEFICIENCY_ALERT",
+        title: "🌌 MULTIVERSE METRIC CONFIRMED",
+        message: "RUET CSE 483rd merit rank calculation confirmed: star particle trajectory matches optimal dynamic programming curves.",
     },
 ]
 
 export const ShootingStarsCanvas = () => {
     const canvasRef = useRef(null)
     const [hackerAlert, setHackerAlert] = useState(null)
+    const [fallCount, setFallCount] = useState(0)
     const alertTimeoutRef = useRef(null)
 
-    // Trigger sarcastic hacker alert
+    // Trigger witty alert on star fall
     const triggerHackerAlert = () => {
         const randomMsg = HACKER_MESSAGES[Math.floor(Math.random() * HACKER_MESSAGES.length)]
         setHackerAlert(randomMsg)
         if (alertTimeoutRef.current) clearTimeout(alertTimeoutRef.current)
         alertTimeoutRef.current = setTimeout(() => {
             setHackerAlert(null)
-        }, 9000)
+        }, 7000)
     }
-
-    // Every 60s trigger sarcastic alert
-    useEffect(() => {
-        const initialDelay = setTimeout(() => {
-            triggerHackerAlert()
-        }, 15000) // first alert at 15s
-
-        const interval = setInterval(() => {
-            triggerHackerAlert()
-        }, 60000) // every 1 minute
-
-        return () => {
-            clearTimeout(initialDelay)
-            clearInterval(interval)
-            if (alertTimeoutRef.current) clearTimeout(alertTimeoutRef.current)
-        }
-    }, [])
 
     useEffect(() => {
         const canvas = canvasRef.current
         if (!canvas) return
-        const ctx = canvas.getContext('2d')
+        const ctx = canvas.getContext('2d', { alpha: true })
 
         let animationFrameId
-        let width = (canvas.width = canvas.parentElement.clientWidth)
-        let height = (canvas.height = canvas.parentElement.clientHeight)
+        let width = (canvas.width = canvas.parentElement.clientWidth || window.innerWidth)
+        let height = (canvas.height = canvas.parentElement.clientHeight || window.innerHeight)
 
         const handleResize = () => {
             if (!canvas.parentElement) return
-            width = canvas.width = canvas.parentElement.clientWidth
-            height = canvas.height = canvas.parentElement.clientHeight
+            width = canvas.width = canvas.parentElement.clientWidth || window.innerWidth
+            height = canvas.height = canvas.parentElement.clientHeight || window.innerHeight
         }
         window.addEventListener('resize', handleResize)
 
-        // 1. Static Twinkling Stars
-        const starCount = 120
-        const stars = Array.from({ length: starCount }, () => ({
+        // 1. Starfield: 160 multi-layered stars with realistic celestial color spectrum
+        const STAR_COLORS = ['#ffffff', '#bae6fd', '#fed7aa', '#fbcfe8', '#a7f3d0', '#c7d2fe']
+        const starCount = 160
+        let stars = Array.from({ length: starCount }, (_, i) => ({
+            id: i,
             x: Math.random() * width,
-            y: Math.random() * height,
-            radius: Math.random() * 1.5 + 0.5,
-            alpha: Math.random(),
-            twinkleSpeed: Math.random() * 0.02 + 0.005,
+            y: Math.random() * height * 0.9,
+            originX: 0,
+            originY: 0,
+            radius: Math.random() * 1.8 + 0.6,
+            color: STAR_COLORS[Math.floor(Math.random() * STAR_COLORS.length)],
+            alpha: Math.random() * 0.7 + 0.3,
+            twinkleSpeed: (Math.random() * 0.02 + 0.008) * (Math.random() > 0.5 ? 1 : -1),
+            isFalling: false,
+            vx: 0,
+            vy: 0,
+            gravity: 0,
+            sparkTimer: 0,
         }))
 
-        // 2. Autonomous Shooting Stars
-        let shootingStars = []
-        let lastShootingStarTime = 0
+        // Pre-store origin coordinates
+        stars.forEach(s => {
+            s.originX = s.x
+            s.originY = s.y
+        })
 
-        // 3. Falling Stars triggered by Click
+        // 2. Autonomous diagonal meteors
+        let meteors = []
+        let lastMeteorTime = performance.now()
+
+        // 3. Falling stars & GPU-friendly spark particles
         let fallingStars = []
-        let sparkParticles = []
+        let sparks = []
 
-        const spawnAutonomousShootingStar = () => {
-            shootingStars.push({
-                x: Math.random() * width * 0.8,
-                y: Math.random() * height * 0.4,
-                length: Math.random() * 80 + 40,
-                speed: Math.random() * 7 + 6,
-                angle: Math.PI / 4 + (Math.random() - 0.5) * 0.2, // ~45 degrees diagonal
-                opacity: 1,
+        const spawnAutonomousMeteor = () => {
+            meteors.push({
+                x: Math.random() * width * 0.85,
+                y: Math.random() * height * 0.35,
+                len: Math.random() * 90 + 50,
+                speed: Math.random() * 9 + 8,
+                angle: Math.PI / 4 + (Math.random() - 0.5) * 0.25,
+                alpha: 1,
             })
         }
 
-        // Click Handler: Click on canvas spawns falling star from sky!
-        const handleClick = (e) => {
+        // Star click & detachment physics
+        const dislodgeStar = (clickX, clickY) => {
+            // Find nearest non-falling star within 120px, or pick closest in the upper sky
+            let targetStar = null
+            let minDist = 140
+
+            for (const s of stars) {
+                if (s.isFalling) continue
+                const d = Math.hypot(s.x - clickX, s.y - clickY)
+                if (d < minDist) {
+                    minDist = d
+                    targetStar = s
+                }
+            }
+
+            // If no star is within reach, find any star in the general column above
+            if (!targetStar) {
+                const candidates = stars.filter(s => !s.isFalling && Math.abs(s.x - clickX) < 220)
+                if (candidates.length > 0) {
+                    targetStar = candidates[Math.floor(Math.random() * candidates.length)]
+                } else {
+                    targetStar = stars.find(s => !s.isFalling)
+                }
+            }
+
+            if (!targetStar) return
+
+            // Convert star to falling physics mode
+            targetStar.isFalling = true
+            targetStar.vx = (Math.random() - 0.5) * 4
+            targetStar.vy = Math.random() * 2 + 1
+            targetStar.gravity = 0.38
+            targetStar.trail = []
+
+            fallingStars.push(targetStar)
+            setFallCount(prev => prev + 1)
+            triggerHackerAlert()
+
+            // Initial burst of sparks upon detachment
+            for (let i = 0; i < 18; i++) {
+                const angle = Math.random() * Math.PI * 2
+                const spd = Math.random() * 4.5 + 1.5
+                sparks.push({
+                    x: targetStar.x,
+                    y: targetStar.y,
+                    vx: Math.cos(angle) * spd,
+                    vy: Math.sin(angle) * spd,
+                    color: Math.random() > 0.4 ? '#38bdf8' : '#fbbf24',
+                    size: Math.random() * 2.5 + 1,
+                    alpha: 1,
+                    decay: Math.random() * 0.03 + 0.02,
+                })
+            }
+        }
+
+        const handleCanvasClick = (e) => {
             const rect = canvas.getBoundingClientRect()
             const clickX = e.clientX - rect.left
             const clickY = e.clientY - rect.top
-
-            // Spawn a falling star starting from sky above and plunging down
-            fallingStars.push({
-                x: clickX,
-                y: 0,
-                targetY: clickY,
-                vy: 4,
-                gravity: 0.45,
-                color: '#38bdf8',
-                size: 3,
-                trail: [],
-            })
-
-            // Also burst immediate sparks at click point
-            for (let i = 0; i < 20; i++) {
-                const angle = Math.random() * Math.PI * 2
-                const speed = Math.random() * 4 + 1
-                sparkParticles.push({
-                    x: clickX,
-                    y: clickY,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    color: Math.random() > 0.5 ? '#38bdf8' : '#34d399',
-                    life: 40,
-                    maxLife: 40,
-                })
-            }
+            dislodgeStar(clickX, clickY)
         }
-        canvas.addEventListener('click', handleClick)
 
+        canvas.addEventListener('click', handleCanvasClick)
+
+        // Also allow clicking outside child containers in About section
+        const parentSection = canvas.closest('#about')
+        const handleParentClick = (e) => {
+            // If user clicked interactive links/buttons, don't interrupt
+            if (e.target.closest('a, button, input, textarea')) return
+            const rect = canvas.getBoundingClientRect()
+            const clickX = e.clientX - rect.left
+            const clickY = e.clientY - rect.top
+            dislodgeStar(clickX, clickY)
+        }
+        if (parentSection) {
+            parentSection.addEventListener('click', handleParentClick)
+        }
+
+        // High-Performance 60FPS Render Loop (Zero GC, Zero shadowBlur lag)
         const render = (now) => {
             ctx.clearRect(0, 0, width, height)
 
-            // 1. Draw Twinkling Stars
-            stars.forEach((s) => {
+            // Fast Additive Blending for zero-lag neon celestial glow
+            ctx.globalCompositeOperation = 'lighter'
+
+            // 1. Draw Twinkling Static Stars
+            for (let i = 0; i < stars.length; i++) {
+                const s = stars[i]
+                if (s.isFalling) continue
+
                 s.alpha += s.twinkleSpeed
-                if (s.alpha > 1 || s.alpha < 0.2) s.twinkleSpeed = -s.twinkleSpeed
-                ctx.fillStyle = `rgba(224, 242, 254, ${Math.abs(s.alpha)})`
+                if (s.alpha > 0.95 || s.alpha < 0.25) {
+                    s.twinkleSpeed = -s.twinkleSpeed
+                }
+
+                ctx.fillStyle = s.color
+                ctx.globalAlpha = Math.max(0.1, Math.min(1, s.alpha))
                 ctx.beginPath()
                 ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2)
                 ctx.fill()
-            })
-
-            // 2. Spawn periodic shooting stars
-            if (now - lastShootingStarTime > 2800) {
-                spawnAutonomousShootingStar()
-                lastShootingStarTime = now
             }
 
-            // Draw & update autonomous shooting stars
-            for (let i = shootingStars.length - 1; i >= 0; i--) {
-                const ss = shootingStars[i]
-                ss.x += Math.cos(ss.angle) * ss.speed
-                ss.y += Math.sin(ss.angle) * ss.speed
-                ss.opacity -= 0.015
+            // 2. Autonomous shooting meteors
+            if (now - lastMeteorTime > 3200) {
+                spawnAutonomousMeteor()
+                lastMeteorTime = now
+            }
 
-                if (ss.opacity <= 0 || ss.x > width || ss.y > height) {
-                    shootingStars.splice(i, 1)
+            for (let i = meteors.length - 1; i >= 0; i--) {
+                const m = meteors[i]
+                m.x += Math.cos(m.angle) * m.speed
+                m.y += Math.sin(m.angle) * m.speed
+                m.alpha -= 0.016
+
+                if (m.alpha <= 0 || m.x > width || m.y > height) {
+                    meteors.splice(i, 1)
                     continue
                 }
 
+                ctx.globalAlpha = m.alpha
                 const grad = ctx.createLinearGradient(
-                    ss.x,
-                    ss.y,
-                    ss.x - Math.cos(ss.angle) * ss.length,
-                    ss.y - Math.sin(ss.angle) * ss.length
+                    m.x,
+                    m.y,
+                    m.x - Math.cos(m.angle) * m.len,
+                    m.y - Math.sin(m.angle) * m.len
                 )
-                grad.addColorStop(0, `rgba(56, 189, 248, ${ss.opacity})`)
-                grad.addColorStop(0.3, `rgba(52, 211, 153, ${ss.opacity * 0.7})`)
-                grad.addColorStop(1, 'rgba(56, 189, 248, 0)')
+                grad.addColorStop(0, '#38bdf8')
+                grad.addColorStop(0.3, '#34d399')
+                grad.addColorStop(1, 'transparent')
 
                 ctx.strokeStyle = grad
-                ctx.lineWidth = 2
+                ctx.lineWidth = 2.2
                 ctx.beginPath()
-                ctx.moveTo(ss.x, ss.y)
+                ctx.moveTo(m.x, m.y)
                 ctx.lineTo(
-                    ss.x - Math.cos(ss.angle) * ss.length,
-                    ss.y - Math.sin(ss.angle) * ss.length
+                    m.x - Math.cos(m.angle) * m.len,
+                    m.y - Math.sin(m.angle) * m.len
                 )
                 ctx.stroke()
             }
 
-            // 3. Falling Stars (Triggered by Click)
+            // 3. Falling Stars with Gravity & Trailing Embers
             for (let i = fallingStars.length - 1; i >= 0; i--) {
                 const fs = fallingStars[i]
                 fs.vy += fs.gravity
+                fs.x += fs.vx
                 fs.y += fs.vy
 
-                // Trail
-                fs.trail.push({ x: fs.x, y: fs.y })
-                if (fs.trail.length > 10) fs.trail.shift()
-
-                // Draw Trail
-                ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)'
-                ctx.lineWidth = 3
-                ctx.beginPath()
-                fs.trail.forEach((t, idx) => {
-                    if (idx === 0) ctx.moveTo(t.x, t.y)
-                    else ctx.lineTo(t.x, t.y)
-                })
-                ctx.stroke()
+                // Emit trail spark every 2 frames
+                fs.sparkTimer = (fs.sparkTimer || 0) + 1
+                if (fs.sparkTimer % 2 === 0 && sparks.length < 250) {
+                    sparks.push({
+                        x: fs.x + (Math.random() - 0.5) * 4,
+                        y: fs.y + (Math.random() - 0.5) * 4,
+                        vx: -fs.vx * 0.3 + (Math.random() - 0.5) * 1.5,
+                        vy: -fs.vy * 0.2 + (Math.random() - 0.5) * 1.5,
+                        color: Math.random() > 0.5 ? '#67e8f9' : '#fde047',
+                        size: Math.random() * 2 + 0.8,
+                        alpha: 0.9,
+                        decay: 0.035,
+                    })
+                }
 
                 // Star Head
-                ctx.fillStyle = '#f8fafc'
-                ctx.shadowColor = '#38bdf8'
-                ctx.shadowBlur = 15
+                ctx.globalAlpha = 1
+                ctx.fillStyle = '#ffffff'
                 ctx.beginPath()
-                ctx.arc(fs.x, fs.y, fs.size, 0, Math.PI * 2)
+                ctx.arc(fs.x, fs.y, fs.radius * 1.6, 0, Math.PI * 2)
                 ctx.fill()
-                ctx.shadowBlur = 0
 
-                // Impact check
-                if (fs.y >= fs.targetY || fs.y >= height) {
-                    // Explode into firework sparks!
-                    for (let j = 0; j < 25; j++) {
-                        const angle = Math.random() * Math.PI * 2
-                        const speed = Math.random() * 5 + 1
-                        sparkParticles.push({
+                // Star Aura
+                ctx.fillStyle = '#38bdf8'
+                ctx.globalAlpha = 0.5
+                ctx.beginPath()
+                ctx.arc(fs.x, fs.y, fs.radius * 3.5, 0, Math.PI * 2)
+                ctx.fill()
+
+                // If hits bottom or leaves viewport: Impact detonation
+                if (fs.y > height - 40) {
+                    for (let p = 0; p < 24; p++) {
+                        const angle = Math.random() * Math.PI - Math.PI // Upward bouncing arc
+                        const spd = Math.random() * 6 + 2
+                        sparks.push({
                             x: fs.x,
-                            y: fs.targetY,
-                            vx: Math.cos(angle) * speed,
-                            vy: Math.sin(angle) * speed,
-                            color: Math.random() > 0.5 ? '#38bdf8' : '#fbbf24',
-                            life: 45,
-                            maxLife: 45,
+                            y: height - 40,
+                            vx: Math.cos(angle) * spd,
+                            vy: Math.sin(angle) * spd,
+                            color: Math.random() > 0.4 ? '#38bdf8' : '#f59e0b',
+                            size: Math.random() * 3 + 1,
+                            alpha: 1,
+                            decay: Math.random() * 0.03 + 0.02,
                         })
                     }
+
+                    // Reset star back to heavens
+                    fs.isFalling = false
+                    fs.x = Math.random() * width
+                    fs.y = Math.random() * height * 0.6
+                    fs.vx = 0
+                    fs.vy = 0
+                    fs.alpha = 0.2
                     fallingStars.splice(i, 1)
                 }
             }
 
-            // 4. Sparks Particles
-            for (let i = sparkParticles.length - 1; i >= 0; i--) {
-                const p = sparkParticles[i]
+            // 4. Sparks Physics & Rendering
+            for (let i = sparks.length - 1; i >= 0; i--) {
+                const p = sparks[i]
                 p.x += p.vx
                 p.y += p.vy
-                p.vy += 0.08 // gravity on sparks
-                p.life--
+                p.vy += 0.08 // Light gravity on sparks
+                p.vx *= 0.98 // Air resistance
+                p.alpha -= p.decay
 
-                if (p.life <= 0) {
-                    sparkParticles.splice(i, 1)
+                if (p.alpha <= 0) {
+                    sparks.splice(i, 1)
                     continue
                 }
 
-                const alpha = p.life / p.maxLife
+                ctx.globalAlpha = Math.max(0, p.alpha)
                 ctx.fillStyle = p.color
-                ctx.globalAlpha = alpha
                 ctx.beginPath()
-                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2)
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
                 ctx.fill()
-                ctx.globalAlpha = 1
             }
+
+            // Reset composite operation
+            ctx.globalCompositeOperation = 'source-over'
+            ctx.globalAlpha = 1.0
 
             animationFrameId = requestAnimationFrame(render)
         }
@@ -272,30 +334,40 @@ export const ShootingStarsCanvas = () => {
 
         return () => {
             window.removeEventListener('resize', handleResize)
-            canvas.removeEventListener('click', handleClick)
+            canvas.removeEventListener('click', handleCanvasClick)
+            if (parentSection) {
+                parentSection.removeEventListener('click', handleParentClick)
+            }
             cancelAnimationFrame(animationFrameId)
         }
     }, [])
 
     return (
         <>
+            {/* Deep Cosmic Night Sky Canvas */}
             <canvas
                 ref={canvasRef}
-                className="absolute inset-0 size-full pointer-events-auto cursor-pointer z-0 opacity-80"
-                title="Click anywhere to call down a shooting star!"
+                className="absolute inset-0 size-full pointer-events-auto cursor-crosshair z-0"
+                title="Click anywhere to dislodge a star and watch it fall with sparks!"
             />
 
-            {/* Sarcastic Hacker Toast Alert (Every 60s) */}
+            {/* Subtle Interactive Instruction Pill */}
+            <div className="absolute top-6 right-6 z-20 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 border border-cyan-500/30 text-[11px] font-mono text-cyan-300 backdrop-blur-md pointer-events-none select-none shadow-lg">
+                <Stars className="size-3.5 text-amber-400 animate-spin" />
+                <span>Click sky to dislodge stars ({fallCount} fallen)</span>
+            </div>
+
+            {/* Sarcastic Hacker Toast Alert */}
             {hackerAlert && (
-                <div className="fixed top-24 left-6 z-100 max-w-sm p-4 bg-gray-950/95 backdrop-blur-2xl border-2 border-rose-500/80 rounded-2xl shadow-2xl shadow-rose-500/30 text-white animate-in slide-in-from-left duration-300">
+                <div className="fixed top-24 left-6 z-50 max-w-sm p-4 bg-gray-950/95 backdrop-blur-2xl border-2 border-cyan-500/70 rounded-2xl shadow-2xl shadow-cyan-500/30 text-white animate-in slide-in-from-left duration-300">
                     <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="flex items-center gap-2 text-rose-400 font-mono text-xs font-bold uppercase">
-                            <AlertTriangle className="size-4 animate-bounce text-amber-400" />
+                        <div className="flex items-center gap-2 text-cyan-300 font-mono text-xs font-bold uppercase">
+                            <Sparkles className="size-4 animate-bounce text-amber-400" />
                             <span>{hackerAlert.title}</span>
                         </div>
                         <button
                             onClick={() => setHackerAlert(null)}
-                            className="text-gray-400 hover:text-white p-1 rounded-full hover:bg-white/10"
+                            className="text-gray-400 hover:text-white p-1 rounded-full hover:bg-white/10 cursor-pointer"
                         >
                             <X className="size-3.5" />
                         </button>
@@ -306,14 +378,14 @@ export const ShootingStarsCanvas = () => {
                     </p>
 
                     <div className="flex items-center justify-between text-[10px] font-mono border-t border-white/10 pt-2 text-gray-400">
-                        <span className="text-cyan-400">STATUS: RECRUITER_CHARMED</span>
+                        <span className="text-emerald-400">TELEMETRY: STABLE</span>
                         <a
                             href="#contact"
                             onClick={() => setHackerAlert(null)}
                             className="text-amber-400 font-bold hover:underline flex items-center gap-1"
                         >
                             <Coffee className="size-3" />
-                            <span>Let's have tea ☕</span>
+                            <span>Tea with Zoro 🍵</span>
                         </a>
                     </div>
                 </div>
