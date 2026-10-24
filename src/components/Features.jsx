@@ -5,7 +5,7 @@ import BentoCard, { BentoTilt } from './BentoCard'
 import ProjectModal from './ProjectModal'
 import ProjectRobot from './ProjectRobot'
 import { TiLocationArrow } from 'react-icons/ti'
-import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio } from 'lucide-react'
+import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio, Zap } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 

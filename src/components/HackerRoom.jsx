@@ -6,32 +6,47 @@ export const HackerRoom = () => {
     const mountRef = useRef(null)
     const [activeTab, setActiveTab] = useState('telemetry')
     const [isHovered, setIsHovered] = useState(false)
+    const [hasWebGLError, setHasWebGLError] = useState(false)
 
     useEffect(() => {
         const mount = mountRef.current
         if (!mount) return
 
-        // 1. Scene, Camera, Renderer
-        const scene = new THREE.Scene()
-        scene.fog = new THREE.FogExp2(0x030712, 0.04)
+        let renderer
+        let animationFrameId
+        let handleMouseMove
+        let handleResize
 
-        const width = mount.clientWidth || 800
-        const height = mount.clientHeight || 500
+        try {
+            // Check if WebGL context can be created
+            const canvas = document.createElement('canvas')
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+            if (!gl) {
+                setHasWebGLError(true)
+                return
+            }
 
-        const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
-        camera.position.set(0, 3, 10)
-        camera.lookAt(0, 0, 0)
+            // 1. Scene, Camera, Renderer
+            const scene = new THREE.Scene()
+            scene.fog = new THREE.FogExp2(0x030712, 0.04)
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-        renderer.setSize(width, height)
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        renderer.toneMapping = THREE.ACESFilmicToneMapping
-        mount.appendChild(renderer.domElement)
+            const width = mount.clientWidth || 800
+            const height = mount.clientHeight || 500
 
-        // 2. Cyber Grid Floor
-        const gridHelper = new THREE.GridHelper(30, 30, 0x06b6d4, 0x1e293b)
-        gridHelper.position.y = -2
-        scene.add(gridHelper)
+            const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
+            camera.position.set(0, 3, 10)
+            camera.lookAt(0, 0, 0)
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+            renderer.setSize(width, height)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            renderer.toneMapping = THREE.ACESFilmicToneMapping
+            mount.appendChild(renderer.domElement)
+
+            // 2. Cyber Grid Floor
+            const gridHelper = new THREE.GridHelper(30, 30, 0x06b6d4, 0x1e293b)
+            gridHelper.position.y = -2
+            scene.add(gridHelper)
 
         // 3. Central 3D Cyber Console / CRT Monitor
         const monitorGroup = new THREE.Group()
@@ -150,7 +165,7 @@ export const HackerRoom = () => {
         let targetX = 0
         let targetY = 0
 
-        const handleMouseMove = (e) => {
+        handleMouseMove = (e) => {
             const rect = mount.getBoundingClientRect()
             mouseX = ((e.clientX - rect.left) / rect.width) * 2 - 1
             mouseY = -(((e.clientY - rect.top) / rect.height) * 2 - 1)
@@ -197,7 +212,6 @@ export const HackerRoom = () => {
         }
 
         // 8. Animation Loop
-        let animationFrameId
         let clock = new THREE.Clock()
 
         const animate = () => {
@@ -236,7 +250,7 @@ export const HackerRoom = () => {
         animate()
 
         // Resize handler
-        const handleResize = () => {
+        handleResize = () => {
             if (!mount) return
             const w = mount.clientWidth
             const h = mount.clientHeight
@@ -245,12 +259,18 @@ export const HackerRoom = () => {
             renderer.setSize(w, h)
         }
         window.addEventListener('resize', handleResize)
+        } catch (err) {
+            console.warn('WebGL initialization failed, switching to telemetry fallback:', err)
+            setHasWebGLError(true)
+            return
+        }
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove)
-            window.removeEventListener('resize', handleResize)
-            cancelAnimationFrame(animationFrameId)
-            mount.innerHTML = ''
+            if (handleMouseMove) window.removeEventListener('mousemove', handleMouseMove)
+            if (handleResize) window.removeEventListener('resize', handleResize)
+            if (animationFrameId) cancelAnimationFrame(animationFrameId)
+            if (renderer) renderer.dispose()
+            if (mount) mount.innerHTML = ''
         }
     }, [])
 
@@ -280,8 +300,41 @@ export const HackerRoom = () => {
 
                 {/* 3D Canvas Container */}
                 <div className="relative w-full h-[540px] rounded-3xl border border-white/10 bg-radial from-cyan-950/20 via-black to-black shadow-2xl shadow-cyan-500/10 overflow-hidden">
-                    {/* Three.js Canvas Mount */}
-                    <div ref={mountRef} className="size-full cursor-grab active:cursor-grabbing" />
+                    {/* Three.js Canvas Mount or Telemetry Standby Fallback */}
+                    {!hasWebGLError ? (
+                        <div ref={mountRef} className="size-full cursor-grab active:cursor-grabbing" />
+                    ) : (
+                        <div className="size-full flex flex-col items-center justify-center p-8 relative overflow-hidden bg-gradient-to-b from-gray-950 via-cyan-950/20 to-black">
+                            <div className="relative z-10 text-center max-w-xl space-y-4">
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono">
+                                    <Cpu className="size-4 animate-spin text-emerald-400" />
+                                    <span>REAL-TIME TELEMETRY ENGINE ACTIVE</span>
+                                </div>
+                                <h3 className="text-2xl md:text-3xl font-black text-white">Interactive Cockpit Telemetry</h3>
+                                <p className="text-xs md:text-sm text-gray-400 font-mono">
+                                    WebGL GPU context in standby. Continuous telemetry pipeline running in high-performance mode:
+                                </p>
+                                <div className="grid grid-cols-2 gap-3 text-left font-mono text-xs pt-2">
+                                    <div className="p-3.5 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-md">
+                                        <div className="text-emerald-400 font-bold mb-1">RUST SIMD ENGINE</div>
+                                        <div className="text-gray-400">&lt;0.5ms p99 Latency SLA</div>
+                                    </div>
+                                    <div className="p-3.5 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-md">
+                                        <div className="text-cyan-400 font-bold mb-1">ICEBERG LAKEHOUSE</div>
+                                        <div className="text-gray-400">35M+ Events Deduplicated</div>
+                                    </div>
+                                    <div className="p-3.5 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-md">
+                                        <div className="text-purple-400 font-bold mb-1">NEMO GUARDRAILS</div>
+                                        <div className="text-gray-400">99.8% Jailbreak Prevention</div>
+                                    </div>
+                                    <div className="p-3.5 rounded-2xl bg-black/70 border border-white/10 backdrop-blur-md">
+                                        <div className="text-amber-400 font-bold mb-1">FASTMCP GATEWAY</div>
+                                        <div className="text-gray-400">12 Enterprise AI Tools</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
                     {/* Cockpit HUD Overlay (Top Left) */}
                     <div className="absolute top-6 left-6 z-10 pointer-events-none space-y-2">
