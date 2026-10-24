@@ -12,10 +12,11 @@ import {
     FaInstagram,
     FaWhatsapp
 } from 'react-icons/fa';
+import { Sparkles, Terminal, Shield, ArrowUp, Coffee } from 'lucide-react'
 
 const socialLinks = [
     {
-        href: "https://www.linkedin.com/in/kishor-paroi-b06344166/",
+        href: "https://linkedin.com/in/kishor-kumar-paroi-b06344166",
         icon: <FaLinkedin />,
         label: "LinkedIn"
     },
@@ -25,9 +26,9 @@ const socialLinks = [
         label: "GitHub"
     },
     {
-        href: "https://twitter.com/paroi_kishor",
+        href: "https://x.com/Mr_paroi",
         icon: <FaTwitter />,
-        label: "Twitter"
+        label: "Twitter / X"
     },
     {
         href: "https://www.facebook.com/codewithparoi/",
@@ -55,80 +56,91 @@ const socialLinks = [
         label: "Medium"
     },
     {
-        href: "https://api.whatsapp.com/send/?phone=8801724714156&text=Hi+Kishor%2C+I+saw+your+portfolio.&type=phone_number&app_absent=0",
+        href: "https://wa.me/8801724714156",
         icon: <FaWhatsapp />,
         label: "WhatsApp"
     }
 ];
 
 const Footer = () => {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
-        // <footer className='w-full bg-linear-to-b from-purple-600 to-purple-800 py-12'>
-        <div className='max-w-6xl mx-auto px-5 md:px-10 pb-16'>
-            {/* Cyber Cityscape: Digital Neon Waterfall, Flying Tesla Cyber-Car & Robotics Hub */}
-            <CyberFooterAnimation />
+        <footer className='relative w-full bg-linear-to-b from-black via-slate-950 to-black pt-10 pb-16 text-white overflow-hidden border-t border-white/10'>
+            <div className='max-w-6xl mx-auto px-5 md:px-10'>
+                {/* Cyber Cityscape: Digital Neon Waterfall, Flying Tesla Cyber-Car & Robotics Hub */}
+                <CyberFooterAnimation />
 
-            <VisitorCount />
+                {/* Real-time Visitor & Analytics Telemetry */}
+                <div className='my-6'>
+                    <VisitorCount />
+                </div>
 
-            <section className="py-4 mt-2 rounded-xl text-white">
-                <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 md:flex-row">
-                    <p className="text-center text-sm md:text-left font-semibold">
-                        © 2026 All rights reserved
-                    </p>
+                <div className="py-6 rounded-2xl bg-black/40 border border-white/5 backdrop-blur-md px-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                        {/* Left: Architect Attribution */}
+                        <div className="text-center md:text-left space-y-1">
+                            <div className="flex items-center justify-center md:justify-start gap-2 text-cyan-400 font-mono text-xs font-bold">
+                                <Sparkles className="size-3.5 text-emerald-400" />
+                                <span>KISHOR KUMAR PAROI (kkp_007)</span>
+                            </div>
+                            <p className="text-xs text-gray-400 font-sans">
+                                Principal AI Systems Architect • Founder @ <a href="https://koom-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline">KoomAI</a> • B.Sc. CSE @ RUET (Rank 483rd)
+                            </p>
+                        </div>
 
-                    {/* Social Links Grid */}
-                    <div className="flex justify-center gap-5 flex-wrap md:justify-center">
-                        {socialLinks.map((link, index) => (
-                            <a
-                                key={index}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative text-white transition-all duration-300 ease-in-out hover:text-cyan-300"
-                                title={link.label}
-                            >
-                                {/* Icon wrapper with hover effect */}
-                                <div className="relative p-2 rounded-lg hover:bg-white/10 transition-all duration-300">
-                                    <span className="text-lg md:text-xl group-hover:scale-125 transition-transform duration-300 inline-block">
+                        {/* Middle: Social Network Grid */}
+                        <div className="flex justify-center gap-2 flex-wrap">
+                            {socialLinks.map((link, index) => (
+                                <a
+                                    key={index}
+                                    href={link.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group relative p-2.5 rounded-xl bg-white/5 hover:bg-cyan-500/20 text-gray-300 hover:text-cyan-300 border border-white/5 hover:border-cyan-400/50 transition-all duration-300 hover:scale-110"
+                                    title={link.label}
+                                >
+                                    <span className="text-base md:text-lg block">
                                         {link.icon}
                                     </span>
+                                </a>
+                            ))}
+                        </div>
 
-                                    {/* Tooltip */}
-                                    <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-cyan-400 text-black text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap font-semibold">
-                                        {link.label}
-                                    </span>
-
-                                    {/* Glow effect on hover */}
-                                    <div className="absolute inset-0 rounded-lg bg-cyan-400/20 opacity-0 group-hover:opacity-100 blur transition-opacity duration-300"></div>
-                                </div>
-                            </a>
-                        ))}
+                        {/* Right: Back to Top & Quick Status */}
+                        <div className="flex items-center gap-3">
+                            <button
+                                onClick={scrollToTop}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-xs font-mono text-gray-300 hover:text-white transition cursor-pointer"
+                                title="Scroll to top of platform"
+                            >
+                                <ArrowUp className="size-3.5 text-cyan-400" />
+                                <span>Back to Top</span>
+                            </button>
+                        </div>
                     </div>
 
-                    <a
-                        href="#privacy-policy"
-                        className="text-center text-sm hover:text-cyan-300 transition-colors duration-300 md:text-right font-semibold"
-                    >
-                        Privacy Policy
-                    </a>
+                    {/* Bottom Status & Verified Metadata Bar */}
+                    <div className="mt-6 pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-400 font-mono">
+                        <div>
+                            <span>© 2026 Kishor Kumar Paroi. All rights reserved. Zero-Trust IaC.</span>
+                        </div>
+                        <div className='flex items-center gap-2 text-[11px] bg-white/5 border border-white/10 px-3 py-1 rounded-full'>
+                            <span className='inline-flex items-center gap-1.5 text-emerald-400 font-bold'>
+                                <span className='size-2 rounded-full bg-emerald-400 animate-ping' />
+                                99.9% Uptime SLA
+                            </span>
+                            <span>•</span>
+                            <span>Living Resume v5.4-prod</span>
+                            <span>•</span>
+                            <span className="text-cyan-300">Dhaka / Global Remote</span>
+                        </div>
+                    </div>
                 </div>
-
-                {/* Decorative divider & Permanent Update Info */}
-                <div className="mt-4 pt-4 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-blue-300">
-                    <div className='font-circular-web text-center md:text-left'>
-                        <p>Made with 💚 by Kishor Kumar Paroi (kkp_007)</p>
-                    </div>
-                    <div className='flex items-center gap-3 text-[11px] text-slate-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full'>
-                        <span className='inline-flex items-center gap-1 text-emerald-400'>
-                            <span className='w-2 h-2 rounded-full bg-emerald-400 animate-ping'></span>
-                            99.9% Uptime
-                        </span>
-                        <span>•</span>
-                        <span>Updated: <strong className='text-cyan-300'>October 2026</strong> (v3.2.0-prod)</span>
-                    </div>
-                </div>
-            </section>
-        </div>
+            </div>
+        </footer>
     )
 }
 

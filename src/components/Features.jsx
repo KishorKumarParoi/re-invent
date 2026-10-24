@@ -5,7 +5,7 @@ import BentoCard, { BentoTilt } from './BentoCard'
 import ProjectModal from './ProjectModal'
 import ProjectRobot from './ProjectRobot'
 import { TiLocationArrow } from 'react-icons/ti'
-import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio, Zap } from 'lucide-react'
+import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio, Zap, RotateCw, LayoutGrid } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -263,6 +263,15 @@ const Features = () => {
     const containerRef = useRef(null)
     const [selectedProject, setSelectedProject] = useState(null)
     const [copiedId, setCopiedId] = useState(null)
+    const [viewMode, setViewMode] = useState('flashcards')
+    const [flippedCards, setFlippedCards] = useState({})
+
+    const toggleCard = (id) => {
+        setFlippedCards((prev) => ({
+            ...prev,
+            [id]: !prev[id],
+        }))
+    }
 
     const copyDeploy = (id, cmd, e) => {
         e.stopPropagation()
@@ -459,10 +468,207 @@ const Features = () => {
 
                     {/* CYBERNETIC ARCHITECT ROBOT WALKING THROUGH PROJECTS */}
                     <ProjectRobot onSelectProject={(proj) => setSelectedProject(FEATURE_PROJECTS[proj.projectId])} />
+
+                    {/* TOP OF TECHNICAL ARSENAL: VIEW MODE SWITCHER & ARCHITECTURAL METRICS */}
+                    <div className='my-10 p-5 rounded-3xl bg-linear-to-r from-cyan-950/40 via-black to-purple-950/40 border border-cyan-500/30 backdrop-blur-xl shadow-2xl'>
+                        <div className='flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-4'>
+                            <div>
+                                <div className='flex items-center gap-2 text-xs font-mono font-bold text-cyan-300 uppercase'>
+                                    <Sparkles className='size-3.5 text-amber-400' />
+                                    <span>Interactive Project Showcase Engine</span>
+                                </div>
+                                <h3 className='text-xl md:text-2xl font-black text-white'>12 Flagship Architectures from RESUME.pdf</h3>
+                            </div>
+
+                            {/* View Switcher: 3D Flashcards Deck vs Bento Grid */}
+                            <div className='inline-flex p-1 rounded-2xl bg-black/80 border border-white/10 text-xs font-mono'>
+                                <button
+                                    onClick={() => setViewMode('flashcards')}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all cursor-pointer ${
+                                        viewMode === 'flashcards'
+                                            ? 'bg-linear-to-r from-cyan-400 to-emerald-400 text-black shadow-lg shadow-cyan-500/30'
+                                            : 'text-gray-400 hover:text-white'
+                                    }`}
+                                >
+                                    <RotateCw className='size-3.5' />
+                                    <span>3D Flashcards Deck 🎴</span>
+                                </button>
+                                <button
+                                    onClick={() => setViewMode('bento')}
+                                    className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all cursor-pointer ${
+                                        viewMode === 'bento'
+                                            ? 'bg-linear-to-r from-cyan-400 to-blue-500 text-black shadow-lg shadow-cyan-500/30'
+                                            : 'text-gray-400 hover:text-white'
+                                    }`}
+                                >
+                                    <LayoutGrid className='size-3.5' />
+                                    <span>Architecture Bento Grid 📐</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Quantitative SLO Benchmarks */}
+                        <div className='grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-mono'>
+                            <div className='p-2.5 rounded-xl bg-black/50 border border-white/5'>
+                                <div className='text-cyan-400 font-bold'>&lt;0.5ms SIMD</div>
+                                <div className='text-[10px] text-gray-400'>Rust 1.85 Bare-Metal Scoring</div>
+                            </div>
+                            <div className='p-2.5 rounded-xl bg-black/50 border border-white/5'>
+                                <div className='text-emerald-400 font-bold'>35M+ Orders</div>
+                                <div className='text-[10px] text-gray-400'>Snowflake &amp; Delta SCD-2</div>
+                            </div>
+                            <div className='p-2.5 rounded-xl bg-black/50 border border-white/5'>
+                                <div className='text-purple-400 font-bold'>99.8% WAF Block</div>
+                                <div className='text-[10px] text-gray-400'>NVIDIA NeMo &amp; PyRIT Redteam</div>
+                            </div>
+                            <div className='p-2.5 rounded-xl bg-black/50 border border-white/5'>
+                                <div className='text-amber-400 font-bold'>FastMCP Tools</div>
+                                <div className='text-[10px] text-gray-400'>Human-in-the-Loop Safe</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* 1. TOP HERO CARD: Hybrid Anime Intelligence */}
-                <BentoTilt className='border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] rounded-7xl'>
+                {viewMode === 'flashcards' ? (
+                    /* 3D FLASHCARDS DECK (RESUME.PDF BULLET POINTS) */
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 my-6'>
+                        {Object.values(FEATURE_PROJECTS).map((proj) => {
+                            const isFlipped = !!flippedCards[proj.id]
+                            return (
+                                <div
+                                    key={proj.id}
+                                    className='group relative h-[490px] perspective cursor-pointer'
+                                    onClick={() => toggleCard(proj.id)}
+                                >
+                                    <div
+                                        className={`relative size-full rounded-3xl transition-transform duration-700 preserve-3d shadow-2xl ${
+                                            isFlipped ? 'rotate-y-180' : ''
+                                        }`}
+                                    >
+                                        {/* FRONT OF PROJECT FLASHCARD */}
+                                        <div className='absolute inset-0 backface-hidden rounded-3xl p-6 flex flex-col justify-between bg-linear-to-b from-gray-950 via-slate-950 to-black border border-white/10 group-hover:border-cyan-400/60 backdrop-blur-xl shadow-xl transition-all duration-300'>
+                                            <div>
+                                                <div className='flex items-center justify-between gap-2 mb-3'>
+                                                    <span className='text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-800/50 text-cyan-300'>
+                                                        {proj.category}
+                                                    </span>
+                                                    <span className='text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-emerald-950/80 border border-emerald-800/50 text-emerald-300'>
+                                                        {proj.sla.split('•')[0]}
+                                                    </span>
+                                                </div>
+
+                                                <h3 className='text-lg font-bold text-white mb-2 group-hover:text-cyan-300 transition line-clamp-2'>
+                                                    {proj.title}
+                                                </h3>
+
+                                                <p className='text-xs text-gray-400 leading-relaxed mb-4 line-clamp-3 font-sans'>
+                                                    {proj.description}
+                                                </p>
+
+                                                {/* Tech Stack Badges */}
+                                                <div className='flex flex-wrap gap-1.5 mb-4'>
+                                                    {proj.techStack.slice(0, 5).map((tech, i) => (
+                                                        <span key={i} className='text-[10px] font-mono bg-white/5 border border-white/10 text-gray-300 px-2 py-0.5 rounded'>
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <div className='space-y-3 pt-3 border-t border-white/10'>
+                                                {/* Deploy Command Snippet */}
+                                                <div
+                                                    onClick={(e) => copyDeploy(proj.id, proj.deployCommand, e)}
+                                                    className='flex items-center justify-between p-2 rounded-xl bg-black/60 border border-white/10 hover:border-cyan-400/40 text-[11px] font-mono text-gray-300 transition'
+                                                >
+                                                    <span className='truncate text-[10px] text-cyan-300 mr-2'>
+                                                        {proj.deployCommand.length > 32 ? proj.deployCommand.slice(0, 32) + '...' : proj.deployCommand}
+                                                    </span>
+                                                    <span className='shrink-0 text-gray-400 hover:text-white'>
+                                                        {copiedId === proj.id ? <Check className='size-3 text-emerald-400' /> : <Copy className='size-3' />}
+                                                    </span>
+                                                </div>
+
+                                                {/* Card Flip Prompt */}
+                                                <div className='flex items-center justify-between text-xs font-mono pt-1'>
+                                                    <span className='text-cyan-400 font-bold flex items-center gap-1.5'>
+                                                        <RotateCw className='size-3.5' />
+                                                        <span>Flip for RESUME.pdf Bullets 🎴</span>
+                                                    </span>
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setSelectedProject(proj)
+                                                        }}
+                                                        className='text-gray-400 hover:text-white text-[11px] underline'
+                                                    >
+                                                        Specs
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* BACK OF PROJECT FLASHCARD (RESUME.PDF BULLETS) */}
+                                        <div className='absolute inset-0 backface-hidden rotate-y-180 rounded-3xl p-6 flex flex-col justify-between bg-linear-to-b from-slate-950 via-gray-950 to-black border-2 border-cyan-500/50 backdrop-blur-2xl shadow-2xl overflow-y-auto'>
+                                            <div>
+                                                <div className='flex items-center justify-between pb-2 mb-3 border-b border-white/10'>
+                                                    <div className='text-xs font-mono font-bold text-cyan-400 flex items-center gap-1.5'>
+                                                        <Sparkles className='size-3.5 text-amber-400' />
+                                                        <span>RESUME.pdf Highlights</span>
+                                                    </div>
+                                                    <span className='text-[10px] font-mono text-gray-400'>
+                                                        {proj.highlights.length} Bullets
+                                                    </span>
+                                                </div>
+
+                                                <ul className='space-y-2 text-[11px] text-gray-300 font-sans leading-relaxed'>
+                                                    {proj.highlights.map((bullet, idx) => (
+                                                        <li key={idx} className='flex items-start gap-2'>
+                                                            <CheckCircle2 className='size-3.5 text-emerald-400 shrink-0 mt-0.5' />
+                                                            <span>{bullet}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <div className='pt-3 border-t border-white/10 space-y-2 mt-3'>
+                                                <div className='flex items-center justify-between gap-2 text-xs font-mono'>
+                                                    <a
+                                                        href={proj.repoUrl}
+                                                        target='_blank'
+                                                        rel='noopener noreferrer'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className='text-cyan-300 hover:text-white flex items-center gap-1 hover:underline'
+                                                    >
+                                                        <span>GitHub</span>
+                                                        <ExternalLink className='size-3' />
+                                                    </a>
+                                                    <a
+                                                        href={proj.archUrl}
+                                                        target='_blank'
+                                                        rel='noopener noreferrer'
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className='text-emerald-300 hover:text-white flex items-center gap-1 hover:underline'
+                                                    >
+                                                        <span>Architecture</span>
+                                                        <ExternalLink className='size-3' />
+                                                    </a>
+                                                </div>
+
+                                                <div className='text-center text-[10px] font-mono text-gray-400 pt-1'>
+                                                    <span>Click anywhere on card to flip back ↩</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                ) : (
+                    <>
+                        {/* 1. TOP HERO CARD: Hybrid Anime Intelligence */}
+                        <BentoTilt className='border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh] rounded-7xl'>
                     <BentoCard
                         src='videos/feature-1.mp4'
                         title={
@@ -845,6 +1051,8 @@ const Features = () => {
                         </div>
                     </div>
                 </div>
+                </>
+                )}
             </div>
         </section>
     )
