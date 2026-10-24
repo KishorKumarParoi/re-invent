@@ -327,25 +327,28 @@ const About = () => {
                     </p>
 
                     {/* Resume Download CTAs */}
-                    <div className='flex flex-wrap justify-center gap-4 pt-4'>
-                        <a
-                            href='/files/resume.pdf'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-950/40 px-6 py-3 font-semibold text-cyan-300 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cyan-300 hover:bg-cyan-900/60 hover:shadow-lg hover:shadow-cyan-500/30'
-                        >
-                            <span>📄</span>
-                            <span>1-Page Academic Resume (PDF)</span>
-                        </a>
-                        <a
-                            href='/files/resume_single_column.pdf'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-950/40 px-6 py-3 font-semibold text-emerald-300 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-900/60 hover:shadow-lg hover:shadow-emerald-500/30'
-                        >
-                            <span>📑</span>
-                            <span>2-Page Detailed ATS Resume (PDF)</span>
-                        </a>
+                    <div className='flex flex-col items-center gap-3 pt-4'>
+                        <div className='text-xs uppercase tracking-wider text-cyan-400 font-semibold'>Download Resume (All Formats)</div>
+                        <div className='flex flex-wrap justify-center gap-3'>
+                            {/* 1-Page Academic Split */}
+                            <div className='flex items-center rounded-2xl border border-cyan-400/40 bg-cyan-950/40 px-3 py-2 backdrop-blur-md shadow-lg shadow-cyan-500/20'>
+                                <span className='mr-2 text-xs font-bold text-cyan-300'>📄 1-Page Academic:</span>
+                                <div className='flex gap-1.5'>
+                                    <a href='/files/resume.pdf' target='_blank' rel='noopener noreferrer' download className='rounded-lg bg-cyan-500/20 px-2 py-1 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-500/40 hover:text-white'>PDF</a>
+                                    <a href='/files/resume.docx' download className='rounded-lg bg-cyan-500/20 px-2 py-1 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-500/40 hover:text-white'>DOCX</a>
+                                    <a href='/files/resume.tex' download className='rounded-lg bg-cyan-500/20 px-2 py-1 text-xs font-semibold text-cyan-200 transition hover:bg-cyan-500/40 hover:text-white'>LaTeX</a>
+                                </div>
+                            </div>
+                            {/* 2-Page Detailed ATS Single Column */}
+                            <div className='flex items-center rounded-2xl border border-emerald-400/40 bg-emerald-950/40 px-3 py-2 backdrop-blur-md shadow-lg shadow-emerald-500/20'>
+                                <span className='mr-2 text-xs font-bold text-emerald-300'>📑 2-Page ATS:</span>
+                                <div className='flex gap-1.5'>
+                                    <a href='/files/resume_single_column.pdf' target='_blank' rel='noopener noreferrer' download className='rounded-lg bg-emerald-500/20 px-2 py-1 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-500/40 hover:text-white'>PDF</a>
+                                    <a href='/files/resume_single_column.docx' download className='rounded-lg bg-emerald-500/20 px-2 py-1 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-500/40 hover:text-white'>DOCX</a>
+                                    <a href='/files/resume_single_column.tex' download className='rounded-lg bg-emerald-500/20 px-2 py-1 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-500/40 hover:text-white'>LaTeX</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -363,7 +366,7 @@ const About = () => {
                         <div className='absolute inset-0 bg-linear-to-br from-cyan-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
                         <h3 className='relative mb-3 text-xl font-bold text-cyan-300'>⚡ Competitive Programming</h3>
                         <p className='relative text-sm leading-relaxed text-blue-200/80'>
-                            Rank 232nd Codeforces Div-2 (Blue Coder), 5★ CodeChef, 17th IUPC, Meta Hacker Cup R3 qualifier with 1,000+ algorithmic problems solved.
+                            Rank 232nd Codeforces Div-2 (Blue Coder), 5★ CodeChef, 17th IUPC, Meta Hacker Cup R3 qualifier; 2000+ DSA, participated system design hackathon.
                         </p>
                     </div>
 
