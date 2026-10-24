@@ -513,6 +513,16 @@ const Contact = () => {
                         </a>
 
                         <a
+                            href="https://macos-portofolio.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-cyan-300 hover:text-white transition hover:scale-110"
+                        >
+                            <Terminal className="size-4 text-cyan-400" />
+                            <span>macOS Portfolio ↗</span>
+                        </a>
+
+                        <a
                             href="https://koom-ai.vercel.app/"
                             target="_blank"
                             rel="noopener noreferrer"
