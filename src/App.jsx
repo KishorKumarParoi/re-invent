@@ -7,21 +7,52 @@ import { inject } from '@vercel/analytics'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Features from './components/Features'
+import HackerRoom from './components/HackerRoom'
+import Certificates from './components/Certificates'
+import Reviews from './components/Reviews'
 import Story from './components/Story'
 import Contact from './components/Contact'
+import MusicPlayer from './components/MusicPlayer'
 
 inject()
 
 const App = () => {
   return (
-    <main className='relative min-h-screen w-screen overflow-x-hidden'>
+    <main className='relative min-h-screen w-screen overflow-x-hidden bg-black text-white'>
+      {/* Persistent 30s Motivation Music Engine (M: Play/Pause, N: Next, P: Prev) */}
+      <MusicPlayer />
+
+      {/* Top Floating Glass Navigation with Full Resume & Flashy Gaming button */}
       <Navbar />
+
+      {/* Cinematic Hero Video Canvas */}
       <Hero />
+
+      {/* Principal Architect Bio */}
       <Bio />
+
+      {/* About & Sacred Sanskrit Stotras */}
       <About />
+
+      {/* Technical Projects & Flagship Architectures from RESUME_SINGLE_COLUMN.pdf */}
       <Features />
+
+      {/* 3D Hacker Room & Real-Time Three.js Metaverse Telemetry */}
+      <HackerRoom />
+
+      {/* Certifications & Lifelong Learning 3D Flashcards */}
+      <Certificates />
+
+      {/* 10 Verified Client & Freelance Testimonials Moving Up and Down */}
+      <Reviews />
+
+      {/* Cinematic Story Realm */}
       <Story />
+
+      {/* Eye-Catchy Contact Section */}
       <Contact />
+
+      {/* Footer with Hourly Telemetry Sync & Social Links */}
       <Footer />
     </main>
   )

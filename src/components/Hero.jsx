@@ -121,13 +121,7 @@ const Hero = () => {
     }, [])
 
     React.useEffect(() => {
-        if (!audioRef.current) return
-        audioRef.current.muted = isMuted
-        if (!isMuted) {
-            audioRef.current.play().catch(() => { })
-        } else {
-            audioRef.current.pause()
-        }
+        // Coordinated with global MusicPlayer
     }, [isMuted])
 
     // Hide notification after 3 seconds
@@ -179,14 +173,6 @@ const Hero = () => {
                 </div>
             )}
 
-            {/* Background music element */}
-            <audio
-                ref={audioRef}
-                src="/audio/audio-5.mp3"
-                loop
-                autoPlay
-                preload="auto"
-            />
 
             <div id='video-frame' className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
                 <video

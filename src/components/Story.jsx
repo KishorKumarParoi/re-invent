@@ -8,165 +8,89 @@ const Story = () => {
     const frameRef = useRef(null)
 
     const handleMouseLeave = () => {
-        const element = frameRef.current;
-        if (!element) return;
-
-        const rotateX = 0;
-        const rotateY = 0;
+        const element = frameRef.current
+        if (!element) return
 
         gsap.to(element, {
             duration: 0.3,
-            rotateX, rotateY,
+            rotateX: 0,
+            rotateY: 0,
             ease: 'power1.inOut'
         })
     }
 
     const handleMouseMove = (e) => {
-        const { clientX, clientY } = e;
-        const element = frameRef.current;
+        const { clientX, clientY } = e
+        const element = frameRef.current
+        if (!element) return
 
-        if (!element) return;
+        const rect = element.getBoundingClientRect()
+        const x = clientX - rect.left
+        const y = clientY - rect.top
 
-        const rect = element.getBoundingClientRect();
-        const x = clientX - rect.left;
-        const y = clientY - rect.top;
+        const centerX = rect.width / 2
+        const centerY = rect.height / 2
 
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = ((y - centerY) / centerY) * 10;
-        const rotateY = ((x - centerX) / centerX) * -10;
+        const rotateX = ((y - centerY) / centerY) * 10
+        const rotateY = ((x - centerX) / centerX) * -10
 
         gsap.to(element, {
             duration: 0.3,
-            rotateX, rotateY,
+            rotateX,
+            rotateY,
             transformPerspective: 500,
             ease: 'power2.inOut'
         })
     }
 
     return (
-        <section id="story" className='min-h-dvh w-screen text-blue-100'>
-            <div className='flex size-full flex-col items-center py-10 pb-24'>
-                <p className='font-general text-lg uppercase md:text-[10px]'>
+        <section id="story" className="min-h-dvh w-screen text-blue-100 py-16">
+            <div className="flex size-full flex-col items-center py-10 pb-24">
+                <p className="font-general text-xs uppercase tracking-widest text-cyan-400 mb-2">
                     The Multiversal Metaverse World
                 </p>
-                <div className='relative size-full'>
-                    {/* Project Certificate Section */}
-                    <div className='relative z-500 my-16 px-4'>
-                        {/* Cool Animated Heading */}
-                        <div className='text-center mb-20'>
-                            <h1 className='text-4xl md:text-7xl lg:text-8xl font-black tracking-none mb-4'>
-                                <span className='bg-linear-to-r from-cyan-300 via-emerald-300 to-blue-400 bg-clip-text text-transparent'>
-                                    Proj<span className='relative '>
-                                        <b className='text-fuchsia-500'>e</b>
-                                        <span className='absolute inset-0 bg-linear-to-r from-cyan-400 to-emerald-400 text-transparent bg-clip-text animate-pulse'></span>
-                                    </span>ct
-                                </span>
-                                {' '}
-                                <span className='text-white drop-shadow-lg'>&</span>
-                                {' '}
-                                <span className='relative inline-block'>
-                                    <span className='absolute -inset-2 bg-linear-to-r from-cyan-500 to-emerald-500 rounded-lg blur opacity-30 animate-pulse'></span>
-                                    <span className='relative bg-linear-to-r from-emerald-300 via-cyan-300 to-blue-400 bg-clip-text text-transparent'>
-                                        Cert<span className='relative text-blue-600'>
-                                            i
-                                            <span className='absolute inset-0 bg-linear-to-r from-emerald-400 to-blue-400 text-transparent bg-clip-text animate-pulse'></span>
-                                        </span>ficate
-                                    </span>
-                                </span>
-                            </h1>
 
-                            {/* Decorative line and dots */}
-                            <div className='flex justify-center items-center gap-4 mt-6'>
-                                <div className='h-1 w-12 bg-linear-to-r from-transparent to-cyan-400'></div>
-                                <div className='w-3 h-3 rounded-full bg-cyan-400 animate-pulse'></div>
-                                <div className='h-1 w-12 bg-linear-to-l from-transparent to-emerald-400'></div>
-                            </div>
+                <AnimatedTitle
+                    title={"The st<b>o</b>ry of <br/> a hidden real<b>m</b>"}
+                    sectionId="#story"
+                    containerClass="pointer-events-none mix-blend-difference relative z-10 mb-8"
+                />
 
-                            {/* Subtitle */}
-                            <p className='text-sm md:text-base text-emerald-300 mt-6 tracking-widest uppercase font-semibold'>
-                                Achievements & Recognition
-                            </p>
-                        </div>
-
-                        <AnimatedTitle
-                            title={"The st<b>o</b>ry of <br/> a hidden real<b>m</b>"}
-                            sectionId="#story"
-                            containerClass="pointer-events-none mix-blend-difference relative z-10 bottom-20"
-                        />
-
-                        {/* Image container with rounded corners */}
-                        <div className='story-img-container relative overflow-hidden rounded-3xl bottom-52'>
-                            <div className='story-img-mask'>
-                                <div className='story-img-content'>
-                                    <img
-                                        ref={frameRef}
-                                        onMouseLeave={handleMouseLeave}
-                                        onMouseUp={handleMouseLeave}
-                                        onMouseEnter={handleMouseLeave}
-                                        onMouseMove={handleMouseMove}
-                                        src='/img/entrance.webp'
-                                        alt='entrance'
-                                        className='object-contain object-center'
-                                    />
-                                </div>
-                            </div>
-                            {/* RoundedCorners positioned absolutely over the image */}
-                            <div className='absolute inset-0 pointer-events-none z-20'>
-                                <RoundedCorners />
+                <div className="relative size-full">
+                    {/* Image container with rounded corners */}
+                    <div className="story-img-container relative overflow-hidden rounded-3xl mx-auto max-w-4xl">
+                        <div className="story-img-mask">
+                            <div className="story-img-content">
+                                <img
+                                    ref={frameRef}
+                                    onMouseLeave={handleMouseLeave}
+                                    onMouseUp={handleMouseLeave}
+                                    onMouseEnter={handleMouseLeave}
+                                    onMouseMove={handleMouseMove}
+                                    src="/img/entrance.webp"
+                                    alt="entrance"
+                                    className="object-contain object-center w-full"
+                                />
                             </div>
                         </div>
-
-                        <div className='-mt-64 flex w-full justify-center md:-mt-124 md:me-44 md:justify-end'>
-                            <div className='flex h-full w-fit flex-col items-center md:items-start'>
-                                <p className='mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start '>
-                                    “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.”
-                                </p>
-                                <p className='italic'>~ Linus Torvalds (Linux Creator) </p>
-                                <Button id="realm-button" title="discover prologue" containerClass="mt-6 bg-linear-to-r from-cyan-300 to-purple-400 to-blue-400" />
-                            </div>
-                        </div>
-
-
-                        {/* Certificate Cards Grid */}
-                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mt-12'>
-                            {/* Certificate Card 1 */}
-                            <div className='group relative'>
-                                <div className='absolute -inset-0.5 bg-linear-to-r from-cyan-400 to-emerald-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
-                                <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-cyan-500/20 hover:border-cyan-500/60 transition'>
-                                    <div className='text-4xl mb-3'>🏆</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>Codeforces Div-2 Rank 232nd</h3>
-                                    <p className='text-sm text-cyan-300 mb-4'>Blue Coder (Peak 1680+), 5★ CodeChef (Peak 2000+), 17th IUPC National & Meta Hacker Cup R3 Qualifier.</p>
-                                    <span className='text-xs text-emerald-400 font-semibold'>1,000+ Algorithmic Solves</span>
-                                </div>
-                            </div>
-
-                            {/* Certificate Card 2 */}
-                            <div className='group relative'>
-                                <div className='absolute -inset-0.5 bg-linear-to-r from-emerald-400 to-blue-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
-                                <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-emerald-500/20 hover:border-emerald-500/60 transition'>
-                                    <div className='text-4xl mb-3'>🎓</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>RUET CSE Rank 483rd</h3>
-                                    <p className='text-sm text-emerald-300 mb-4'>B.Sc. in CSE (3.25/4.00 D.O, Rank 483rd in Bangladesh), Saint Joseph Dhaka (HSC Rank 85th), S.J Govt Model High School Gopalganj (SSC Rank 90th).</p>
-                                    <span className='text-xs text-blue-400 font-semibold'>Academic Distinction</span>
-                                </div>
-                            </div>
-
-                            {/* Certificate Card 3 */}
-                            <div className='group relative'>
-                                <div className='absolute -inset-0.5 bg-linear-to-r from-blue-400 to-purple-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
-                                <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-blue-500/20 hover:border-blue-500/60 transition'>
-                                    <div className='text-4xl mb-3'>🚀</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>AI-Agents Masterclass Leader</h3>
-                                    <p className='text-sm text-blue-300 mb-4'>Conducted in-person hands-on AI-Agents masterclass. Mentored 100+ students in Machine Learning, AI Agents, DevOps & MLOps.</p>
-                                    <span className='text-xs text-purple-400 font-semibold'>100+ Engineers Mentored</span>
-                                </div>
-                            </div>
+                        <div className="absolute inset-0 pointer-events-none z-20">
+                            <RoundedCorners />
                         </div>
                     </div>
 
-
+                    <div className="mt-8 flex w-full justify-center md:me-44 md:justify-end">
+                        <div className="flex h-full w-fit flex-col items-center md:items-start max-w-md px-6 text-center md:text-left">
+                            <p className="font-circular-web text-violet-50 text-sm md:text-base leading-relaxed">
+                                “Bad programmers worry about the code. Good programmers worry about data structures and their relationships.”
+                            </p>
+                            <p className="italic text-xs text-cyan-300 mt-1">~ Linus Torvalds (Linux Creator)</p>
+                            <Button
+                                id="realm-button"
+                                title="discover prologue"
+                                containerClass="mt-5 bg-linear-to-r from-cyan-300 via-purple-400 to-blue-400 text-black font-bold"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
