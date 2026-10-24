@@ -6,13 +6,30 @@
 
 ## 🔗 Quick Links
 
-| Link | URL |
-|------|-----|
-| 🌐 **Live Demo** | https://re-invent-rust.vercel.app/ |
-| 📊 **Visitors Count** | https://re-invent-rust.vercel.app/api/visitors |
+| Link | URL | Description |
+|------|-----|-------------|
+| 🌐 **Live Demo** | https://re-invent-rust.vercel.app/ | Interactive 3D Portfolio Platform |
+| 📄 **Executive Resume (PDF)** | https://re-invent-rust.vercel.app/files/resume.pdf | Official 1-Page Vector PDF Resume |
+| 📑 **Comprehensive ATS Resume** | https://re-invent-rust.vercel.app/files/resume_single_column.pdf | Detailed Single-Column ATS Resume |
+| 📊 **Visitors Count API** | https://re-invent-rust.vercel.app/api/visitors | Real-Time Supabase PostgreSQL Telemetry |
 
 ---
 
+## 📄 Executive Resume & Technical Dossier
+
+<div align="center">
+
+[![Download Resume](https://img.shields.io/badge/📄%20Executive%20Resume-Download%20PDF-641C26?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://re-invent-rust.vercel.app/files/resume.pdf)
+[![Detailed ATS Resume](https://img.shields.io/badge/📑%20ATS%20Resume-Download%20Single--Column-1a1a1a?style=for-the-badge&logo=files&logoColor=white)](https://re-invent-rust.vercel.app/files/resume_single_column.pdf)
+
+</div>
+
+| Format | Document | Target Audience & Specifications | Direct Download |
+| :--- | :--- | :--- | :--- |
+| **Academic / Executive** | `resume.pdf` | **Strict 1-Page A4 PDF:** High-DPI typography, burgundy accents, RUET CSE credentials, competitive programming mastery, and core production ML/AI systems. | [📥 **Download `resume.pdf`**](https://re-invent-rust.vercel.app/files/resume.pdf) |
+| **Comprehensive ATS** | `resume_single_column.pdf` | **Comprehensive ATS Format:** Deep architectural breakdown across all 11 production projects (Zomato Lakehouse, Anime Multi-LoRA, Agentic RAG, Smart Mfg, SageMaker, Real-time MLOps). | [📥 **Download `resume_single_column.pdf`**](https://re-invent-rust.vercel.app/files/resume_single_column.pdf) |
+
+---
 
 ## 📊 Portfolio Statistics
 
@@ -44,7 +61,7 @@
 
 </div>
 
----****
+---
 
 ## ✨ Standout Features
 
