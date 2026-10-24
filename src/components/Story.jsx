@@ -136,9 +136,9 @@ const Story = () => {
                                 <div className='absolute -inset-0.5 bg-linear-to-r from-cyan-400 to-emerald-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
                                 <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-cyan-500/20 hover:border-cyan-500/60 transition'>
                                     <div className='text-4xl mb-3'>🏆</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>Excellence Award</h3>
-                                    <p className='text-sm text-cyan-300 mb-4'>Recognized for outstanding leading and impact</p>
-                                    <span className='text-xs text-emerald-400 font-semibold'>2023</span>
+                                    <h3 className='text-lg font-black text-white mb-2'>Codeforces Div-2 Rank 232nd</h3>
+                                    <p className='text-sm text-cyan-300 mb-4'>Blue Coder (Peak 1680+), 5★ CodeChef (Peak 2000+), 17th IUPC National & Meta Hacker Cup R3 Qualifier.</p>
+                                    <span className='text-xs text-emerald-400 font-semibold'>1,000+ Algorithmic Solves</span>
                                 </div>
                             </div>
 
@@ -146,10 +146,10 @@ const Story = () => {
                             <div className='group relative'>
                                 <div className='absolute -inset-0.5 bg-linear-to-r from-emerald-400 to-blue-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
                                 <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-emerald-500/20 hover:border-emerald-500/60 transition'>
-                                    <div className='text-4xl mb-3'>⭐</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>Innovation Leader</h3>
-                                    <p className='text-sm text-emerald-300 mb-4'>Leading breakthrough solutions in AI & Tech</p>
-                                    <span className='text-xs text-blue-400 font-semibold'>2025</span>
+                                    <div className='text-4xl mb-3'>🎓</div>
+                                    <h3 className='text-lg font-black text-white mb-2'>RUET CSE Rank 483rd</h3>
+                                    <p className='text-sm text-emerald-300 mb-4'>B.Sc. in CSE (3.25/4.00 D.O, Rank 483rd in Bangladesh), Saint Joseph Dhaka (HSC Rank 85th), S.J Govt Model High School Gopalganj (SSC Rank 90th).</p>
+                                    <span className='text-xs text-blue-400 font-semibold'>Academic Distinction</span>
                                 </div>
                             </div>
 
@@ -157,10 +157,10 @@ const Story = () => {
                             <div className='group relative'>
                                 <div className='absolute -inset-0.5 bg-linear-to-r from-blue-400 to-purple-400 rounded-xl blur opacity-20 group-hover:opacity-100 transition duration-500'></div>
                                 <div className='relative px-6 py-8 bg-black/50 backdrop-blur-xl rounded-xl border border-blue-500/20 hover:border-blue-500/60 transition'>
-                                    <div className='text-4xl mb-3'>🎯</div>
-                                    <h3 className='text-lg font-black text-white mb-2'>Global Impact</h3>
-                                    <p className='text-sm text-blue-300 mb-4'>Transforming millions of lives worldwide</p>
-                                    <span className='text-xs text-purple-400 font-semibold'>2024</span>
+                                    <div className='text-4xl mb-3'>🚀</div>
+                                    <h3 className='text-lg font-black text-white mb-2'>AI-Agents Masterclass Leader</h3>
+                                    <p className='text-sm text-blue-300 mb-4'>Conducted in-person hands-on AI-Agents masterclass. Mentored 100+ students in Machine Learning, AI Agents, DevOps & MLOps.</p>
+                                    <span className='text-xs text-purple-400 font-semibold'>100+ Engineers Mentored</span>
                                 </div>
                             </div>
                         </div>

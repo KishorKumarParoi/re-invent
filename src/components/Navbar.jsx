@@ -4,7 +4,7 @@ import { TiLocationArrow } from 'react-icons/ti'
 import { useWindowScroll } from 'react-use'
 import gsap from 'gsap'
 
-const navItems = ['Nexus', 'Vault', 'Prologue', 'About', 'Contact']
+const navItems = ['Features', 'About', 'Story', 'Contact']
 
 const Navbar = () => {
     const navContainerRef = useRef(null)
@@ -76,7 +76,7 @@ const Navbar = () => {
                         />
                     </div>
                     <div className='flex h-full items-center'>
-                        <div className='hidden md:block'>
+                        <div className='hidden md:flex items-center'>
                             {
                                 navItems.map((item, index) => (
                                     <a
@@ -90,6 +90,14 @@ const Navbar = () => {
 
                                 ))
                             }
+                            <a
+                                href="/files/resume.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="ml-5 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-black transition-all hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/40"
+                            >
+                                Resume
+                            </a>
                         </div>
 
                         <button className='ml-10 flex items-center space-x-0.5' onClick={toggleAudioIndicator}

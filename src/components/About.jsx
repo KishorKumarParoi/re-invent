@@ -226,17 +226,16 @@ const About = () => {
     }
 
     const skills = [
-        'TypeScript', 'Python', 'C/C++', 'Rust', 'Java', 'React', 'Next.js', 'Node.js', 'Express.js',
-        'Linux', 'Git', 'Spring Boot', 'ElasticSearch', 'MongoDB', 'PostgreSQL', 'Redis', 'Docker',
-        'Kubernetes', 'CI/CD', 'AWS', 'GCP', 'Azure', 'Grafana', 'Prometheus', 'Jenkins', 'Kafka',
-        'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'Pinecone', 'Web3', 'Blockchain',
-        'Solidity', 'Three.js', 'Blender', 'Figma', 'Data Science', 'Machine Learning', 'AI/ML', 'OS',
-        'System Design', 'Microservices', 'Agile Methodologies', 'RESTful APIs', 'GraphQL', 'Drizzle',
-        'Django', 'Flask', 'FastAPI', 'Data Structures', 'Algorithms', 'Design Patterns', 'Networking',
-        'WebRTC', 'Socket.io', 'gRPC', 'OpenAI API', 'LangChain', 'AutoGPT', 'AI Agents', 'WebVR', 'trpc', 'Nx'
+        'LangGraph', 'vLLM', 'FastMCP', 'NVIDIA NeMo', 'DeepEval', 'LangSmith', 'Feast', 'Snowflake',
+        'Qdrant', 'Rust SIMD', 'PyTorch', 'PySpark', 'FastAPI', 'Next.js 15', 'Three.js', 'GSAP',
+        'TypeScript', 'Python', 'C/C++', 'Rust', 'Go', 'Docker', 'Kubernetes', 'Terraform',
+        'AWS SageMaker', 'GCP', 'PostgreSQL', 'Redis', 'Kafka', 'ElasticSearch', 'Delta Lake',
+        'WebRTC', 'Triton Server', 'ONNX Runtime', 'Hugging Face', 'MLflow', 'Airflow', 'Argo',
+        'Prometheus', 'Grafana', 'OpenTelemetry', 'gRPC', 'GraphQL', 'TailwindCSS', 'React Three Fiber',
+        'Competitive Programming', 'System Design', 'Distributed Systems', 'CI/CD Pipelines'
     ]
 
-    console.log('Total skills:', skills.length) // Should log 60
+    console.log('Total skills:', skills.length)
 
     const meanings = [
         {
@@ -313,44 +312,66 @@ const About = () => {
                 {/* About Intro */}
                 <div className='about-intro max-w-3xl space-y-6 text-center text-lg leading-relaxed text-blue-200/90'>
                     <div className='orks-greeting'>
-                        <span className='text-5xl font-bold text-red-500 italic'>
-                            Hello, Orks! (bug fighter 😂)  <br />
-                            I am Kishor Kumar Paroi aka KKP
+                        <span className='text-4xl md:text-5xl font-bold text-red-500 italic'>
+                            Hello, Builders! (Bug Fighter 😂)  <br />
+                            I am Kishor Kumar Paroi (KKP)
                         </span>
                     </div>
 
                     <p>
-                        {splitIntoWords('an aspiring Software/Data Engineer with')} <span className='inline-block mr-1'><span className='font-bold text-cyan-400'>4+ years</span></span> {splitIntoWords('of industry experience (both remote and hybrid) from Bangladesh. A CS Enthusiast aiming for becoming the top 1% among AI/ML Engineers.')}
+                        {splitIntoWords('Senior AI Systems Engineer & Competitive Programmer with')} <span className='inline-block mr-1'><span className='font-bold text-cyan-400'>4+ years</span></span> {splitIntoWords('of production experience building high-throughput LLMOps architectures, real-time distributed platforms, and multi-agent systems.')}
                     </p>
 
                     <p>
-                        {splitIntoWords('Currently I am doing remote job in a')} <span className='inline-block mr-1'><b className='font-bold text-blue-600'>Y-Combinator</b></span> {splitIntoWords('Startup and founder of')} <span className='inline-block mr-1'><b className='text-cyan-500'>Koom-AI</b></span> {splitIntoWords(', which is an integrated solution for Freelancers, Remote job holders. Another one is')} <span className='inline-block mr-1'><b className=' text-green-600'> Kepi.AI</b></span> {splitIntoWords('- B2B Microservice Application, for accelerating')} <span className='inline-block mr-1'><b className='text-orange-600'>AI/ML adoption</b></span> {splitIntoWords('in Enterprises & Testing ground of AI Automation and AI Agent.')}
+                        {splitIntoWords('Founder of')} <span className='inline-block mr-1'><a href='https://koom-ai.vercel.app' target='_blank' rel='noopener noreferrer' className='text-cyan-400 font-bold hover:underline'>Koom-AI</a></span> {splitIntoWords('(autonomous screen recording & transcription cockpit), former Forward Deployment Engineer at')} <span className='inline-block mr-1'><b className='font-bold text-blue-400'>phi0.ai</b></span> {splitIntoWords('(San Francisco), and ML Systems Engineer at')} <span className='inline-block mr-1'><b className='text-emerald-400 font-bold'>Samsung AI Core</b></span> {splitIntoWords('and')} <span className='inline-block mr-1'><b className='text-purple-400 font-bold'>QuantAI</b></span>.
                     </p>
+
+                    {/* Resume Download CTAs */}
+                    <div className='flex flex-wrap justify-center gap-4 pt-4'>
+                        <a
+                            href='/files/resume.pdf'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-cyan-950/40 px-6 py-3 font-semibold text-cyan-300 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-cyan-300 hover:bg-cyan-900/60 hover:shadow-lg hover:shadow-cyan-500/30'
+                        >
+                            <span>📄</span>
+                            <span>1-Page Academic Resume (PDF)</span>
+                        </a>
+                        <a
+                            href='/files/resume_single_column.pdf'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-950/40 px-6 py-3 font-semibold text-emerald-300 backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-emerald-300 hover:bg-emerald-900/60 hover:shadow-lg hover:shadow-emerald-500/30'
+                        >
+                            <span>📑</span>
+                            <span>2-Page Detailed ATS Resume (PDF)</span>
+                        </a>
+                    </div>
                 </div>
 
                 {/* Journey Cards */}
                 <div className='journey-section grid w-full max-w-5xl gap-6 md:grid-cols-3'>
                     <div className='journey-card group relative overflow-hidden rounded-2xl border border-violet-500/20 bg-linear-to-br from-violet-900/30 to-purple-900/20 p-6 transition-all duration-300 hover:scale-105 hover:border-violet-400/40 hover:shadow-2xl hover:shadow-violet-500/20'>
                         <div className='absolute inset-0 bg-linear-to-br from-violet-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
-                        <h3 className='relative mb-3 text-xl font-bold text-violet-300'>🚀 Entrepreneurial Spirit</h3>
+                        <h3 className='relative mb-3 text-xl font-bold text-violet-300'>🧠 AI Systems & LLMOps</h3>
                         <p className='relative text-sm leading-relaxed text-blue-200/80'>
-                            Two failed startup projects—one in Fashion, another in Fintech. Each failure taught me resilience and innovation.
+                            vLLM Multi-LoRA serving, Qdrant dense vector search, Reciprocal Rank Fusion, NeMo guardrails, and sub-10ms neural re-ranking across multi-cloud deployments.
                         </p>
                     </div>
 
                     <div className='journey-card group relative overflow-hidden rounded-2xl border border-cyan-500/20 bg-linear-to-br from-cyan-900/30 to-blue-900/20 p-6 transition-all duration-300 hover:scale-105 hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/20'>
                         <div className='absolute inset-0 bg-linear-to-br from-cyan-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
-                        <h3 className='relative mb-3 text-xl font-bold text-cyan-300'>⚙️ Full-Stack Mastery</h3>
+                        <h3 className='relative mb-3 text-xl font-bold text-cyan-300'>⚡ Competitive Programming</h3>
                         <p className='relative text-sm leading-relaxed text-blue-200/80'>
-                            System Design to Scaling, Frontend to Backend, Design to Deployment—efficiently addressing system bottlenecks.
+                            Rank 232nd Codeforces Div-2 (Blue Coder), 5★ CodeChef, 17th IUPC, Meta Hacker Cup R3 qualifier with 1,000+ algorithmic problems solved.
                         </p>
                     </div>
 
-                    <div className='journey-card group relative overflow-hidden rounded-2xl border border-yellow-500/20 bg-linear-to-br from-yellow-900/30 to-orange-900/20 p-6 transition-all duration-300 hover:scale-105 hover:border-yellow-400/40 hover:shadow-2xl hover:shadow-yellow-500/20'>
-                        <div className='absolute inset-0 bg-linear-to-br from-yellow-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
-                        <h3 className='relative mb-3 text-xl font-bold text-yellow-300'>🏊 Swimming Against the Tide</h3>
+                    <div className='journey-card group relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-linear-to-br from-emerald-900/30 to-teal-900/20 p-6 transition-all duration-300 hover:scale-105 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/20'>
+                        <div className='absolute inset-0 bg-linear-to-br from-emerald-500/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'></div>
+                        <h3 className='relative mb-3 text-xl font-bold text-emerald-300'>🎓 Elite Education & Mentorship</h3>
                         <p className='relative text-sm leading-relaxed text-blue-200/80'>
-                            Self-taught in System Design, 3D Animation, Blockchain, AI/ML, Geopolitics, Financial Prediction, History & Data Science.
+                            RUET B.Sc. in CSE (Rank 483rd in Bangladesh, CGPA 3.25 D.O), Saint Joseph Dhaka (HSC Rank 85th), S.J Govt Model High School Gopalganj (SSC Rank 90th). Mentored 100+ engineers.
                         </p>
                     </div>
                 </div>

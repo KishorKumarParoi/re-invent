@@ -69,7 +69,7 @@ const Footer = () => {
             <section className="py-4 mt-2 rounded-xl text-white">
                 <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-4 md:flex-row">
                     <p className="text-center text-sm md:text-left font-semibold">
-                        © 2025 All rights reserved
+                        © 2026 All rights reserved
                     </p>
 
                     {/* Social Links Grid */}

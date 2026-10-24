@@ -63,7 +63,7 @@ const Features = () => {
     }, [])
 
     return (
-        <section className='pb-52'>
+        <section id='features' className='pb-52'>
             <div className='container mx-auto px-3 md:px-10'>
                 <div ref={containerRef} className='px-5 py-32'>
                     {/* Main Title with linear and glow */}
@@ -106,17 +106,17 @@ const Features = () => {
                         src="videos/feature-1.mp4"
                         title={<>
                             <span className='bg-linear-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent'>
-                                R<b>a</b>
-                                <b className='text-purple-600'>d</b>
-                                i
-                                <b>a</b>
+                                H<b>y</b>
+                                <b className='text-purple-600'>b</b>
+                                r
+                                <b>i</b>
                             </span>
-                            <b className='text-blue-400'>n</b>
+                            <b className='text-blue-400'>d</b>
                             <span className='bg-linear-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent'>
-                                <b>t</b>
+                                <b> AI</b>
                             </span>
                         </>}
-                        description="A fully immersive 3D metaverse-inspired portfolio showcasing interactive projects, innovative solutions, and creative excellence in a connected digital universe."
+                        description="Hybrid Anime Intelligence & LLMOps: vLLM Multi-LoRA serving, Qdrant 384-dim dense vector search, BM25 lexical retrieval, RRF fusion, and sub-10ms ONNX neural re-ranking (99.8% latency reduction)."
                         isComingSoon={false}
                     />
                 </BentoTilt>
@@ -125,35 +125,48 @@ const Features = () => {
                     <BentoTilt className='bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2 rounded-2xl'>
                         <BentoCard
                             src={"videos/feature-2.mp4"}
-                            title={<>zig<b>m</b>a</>}
-                            description={"An anime and gaming-inspired NFT collection - the IP primed for expansion"}
+                            title={<>AI <b>S</b>ecurity</>}
+                            description={"Enterprise Zero-Trust AI Gateway & RAG: NVIDIA NeMo Guardrails, BotShield adaptive WAF, FastMCP tool execution, and sub-50ms semantic caching."}
                         />
                     </BentoTilt>
 
                     <BentoTilt className='bento_tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0 rounded-4xl'>
                         <BentoCard
                             src={"videos/feature-3.mp4"}
-                            title={<>n<b>e</b>exus</>}
-                            description={"A Gamified Social hub, adding a new dimension of play to social iteraction for Web3 communities"}
+                            title={<>Z<b>o</b>mato Lakehouse</>}
+                            description={"Multi-Cloud Lakehouse & Multimodal Engine: PySpark Delta Lake medallion pipeline, Snowflake warehousing, Feast feature store, and visual recommendations."}
                         />
                     </BentoTilt>
 
                     <BentoTilt className='bento_tilt_1 me-14 md:col-span-1 md:me-0 rounded-3xl'>
                         <BentoCard
                             src={"videos/feature-4.mp4"}
-                            title={<>az<b>u</b>re</>}
-                            description={"A cross-world AI Agent - elevating your gameplay to be more fun and productive"}
+                            title={<>Smart <b>M</b>anufacturing</>}
+                            description={"Industrial AI & MLOps Platform: Rust SIMD telemetry ingestion, Go gateway, Next.js 15 3D digital twin cockpit, and sub-5ms anomaly detection."}
                         />
                     </BentoTilt>
 
                     <BentoTilt className='bento-tilt_2 rounded-2xl'>
-                        <div className='flex size-full flex-col justify-between bg-violet-700 p-5'>
-                            <h1 className='bento-title special-font max-w-64 text-black'>
-                                M<b>o</b>re co<b>m</b>ing s<b>o</b>on!
-                            </h1>
+                        <a 
+                            href="https://koom-ai.vercel.app" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className='flex size-full flex-col justify-between bg-violet-700 p-5 group transition-all duration-300 hover:bg-violet-600'
+                        >
+                            <div>
+                                <h1 className='bento-title special-font max-w-64 text-black'>
+                                    K<b>o</b>om-<b>A</b>I
+                                </h1>
+                                <p className='text-xs md:text-sm text-black/90 font-medium mt-2'>
+                                    Autonomous Screen-Recording & Intelligence Cockpit with WebRTC, Next.js 16, AWS S3, and real-time meeting transcription.
+                                </p>
+                            </div>
 
-                            <TiLocationArrow className='m-5 scale-[5] self-end' />
-                        </div>
+                            <div className='flex items-center justify-between w-full mt-4'>
+                                <span className='text-xs uppercase tracking-wider text-black font-bold'>Live Platform ↗</span>
+                                <TiLocationArrow className='text-black text-2xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform' />
+                            </div>
+                        </a>
                     </BentoTilt>
 
                     <BentoTilt className='bento-tilt_2 rounded-4xl'>
