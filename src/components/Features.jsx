@@ -3,8 +3,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import BentoCard, { BentoTilt } from './BentoCard'
 import ProjectModal from './ProjectModal'
+import ProjectRobot from './ProjectRobot'
 import { TiLocationArrow } from 'react-icons/ti'
-import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check } from 'lucide-react'
+import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -359,6 +360,105 @@ const Features = () => {
                             </div>
                         </div>
                     </div>
+
+                    {/* TOP OF TECHNICAL ARSENAL: STUNNING CAPABILITIES FROM RESUME.PDF */}
+                    <div className='mt-12'>
+                        <div className='flex items-center gap-2 mb-4'>
+                            <span className='size-2 rounded-full bg-cyan-400 animate-ping' />
+                            <h3 className='text-xs font-mono font-bold uppercase tracking-widest text-cyan-300'>
+                                Enterprise AI Architect Roadmap • Core Competencies & Quantitative Impact
+                            </h3>
+                        </div>
+
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                            {/* Capability 1: Polyglot SIMD & Low Latency */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-cyan-950/40 to-black/80 border border-cyan-500/30 hover:border-cyan-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <Cpu className='size-5 text-cyan-400' />
+                                    <span className='text-[10px] font-mono font-bold text-cyan-300 bg-cyan-950/70 border border-cyan-800/50 px-2 py-0.5 rounded-full'>
+                                        &lt;0.5ms SIMD
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Polyglot Systems & SIMD Optimization</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    Rust 1.85 SIMD vector scoring (<b className='text-cyan-300'>50x speedup</b>, 64% CPU cost cut), Go 1.24 gateway, zero-copy memory-mapped I/O, POSIX asynchronous concurrency.
+                                </p>
+                            </div>
+
+                            {/* Capability 2: Medallion Lakehouses */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-emerald-950/40 to-black/80 border border-emerald-500/30 hover:border-emerald-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <Database className='size-5 text-emerald-400' />
+                                    <span className='text-[10px] font-mono font-bold text-emerald-300 bg-emerald-950/70 border border-emerald-800/50 px-2 py-0.5 rounded-full'>
+                                        35M+ Records • $18K/mo
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Multi-Cloud Medallion Lakehouses</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    Snowflake & PySpark Delta Lake medallion pipeline with <b className='text-emerald-300'>dbt Core SCD-2</b> transformations, Feast feature store over Redis (&lt;5ms), and Debezium CDC.
+                                </p>
+                            </div>
+
+                            {/* Capability 3: Zero-Trust AI Security */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-rose-950/40 to-black/80 border border-rose-500/30 hover:border-rose-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <ShieldAlert className='size-5 text-rose-400' />
+                                    <span className='text-[10px] font-mono font-bold text-rose-300 bg-rose-950/70 border border-rose-800/50 px-2 py-0.5 rounded-full'>
+                                        95%+ Block • &lt;50ms
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Zero-Trust AI Security & NeMo</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    NVIDIA NeMo Guardrails, BotShield adaptive WAF, Microsoft PyRIT red-teaming CI/CD evaluation harness, and &lt;50ms semantic similarity caching (<b className='text-rose-300'>$8.4K/mo saved</b>).
+                                </p>
+                            </div>
+
+                            {/* Capability 4: Continuous LLMOps */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-purple-950/40 to-black/80 border border-purple-500/30 hover:border-purple-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <Zap className='size-5 text-purple-400' />
+                                    <span className='text-[10px] font-mono font-bold text-purple-300 bg-purple-950/70 border border-purple-800/50 px-2 py-0.5 rounded-full'>
+                                        68% GPU Cut • 3.4x
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Dynamic Multi-LoRA vLLM & RSLoRA</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    Dynamic adapter multiplexing on single GPU with continuous RSLoRA adaptation flywheel, Kubeflow v2 pipelines, and automated adapter hot-swapping on drift.
+                                </p>
+                            </div>
+
+                            {/* Capability 5: FastMCP & HITL Governance */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-amber-950/40 to-black/80 border border-amber-500/30 hover:border-amber-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <Sparkles className='size-5 text-amber-400' />
+                                    <span className='text-[10px] font-mono font-bold text-amber-300 bg-amber-950/70 border border-amber-800/50 px-2 py-0.5 rounded-full'>
+                                        FastMCP • 100% Audit
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Model Context Protocol & HITL</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    Standardized tool execution via Model Context Protocol (FastMCP) with Human-in-the-Loop financial approval gates, cyclic state recovery, and LangSmith tracing.
+                                </p>
+                            </div>
+
+                            {/* Capability 6: Algorithmic Rigor */}
+                            <div className='p-5 rounded-2xl bg-linear-to-b from-blue-950/40 to-black/80 border border-blue-500/30 hover:border-blue-400 transition-all hover:scale-[1.02] shadow-xl'>
+                                <div className='flex items-center justify-between mb-2'>
+                                    <Award className='size-5 text-blue-400' />
+                                    <span className='text-[10px] font-mono font-bold text-blue-300 bg-blue-950/70 border border-blue-800/50 px-2 py-0.5 rounded-full'>
+                                        CF Blue • 1000+ DSA
+                                    </span>
+                                </div>
+                                <h4 className='text-base font-bold text-white mb-1'>Algorithmic Foundations & Core CS</h4>
+                                <p className='text-xs text-gray-300 leading-relaxed'>
+                                    Codeforces Div-2 Rank 232nd (Blue 1680+), 5★ CodeChef (2000+), Meta Hacker Cup R3, RUET CSE Merit Rank 483rd, 1,000+ competitive algorithmic solves.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* CYBERNETIC ARCHITECT ROBOT WALKING THROUGH PROJECTS */}
+                    <ProjectRobot onSelectProject={(proj) => setSelectedProject(FEATURE_PROJECTS[proj.projectId])} />
                 </div>
 
                 {/* 1. TOP HERO CARD: Hybrid Anime Intelligence */}
@@ -443,33 +543,67 @@ const Features = () => {
                         </button>
                     </BentoTilt>
 
-                    {/* Card 5: Koom-AI */}
-                    <BentoTilt className='bento-tilt_2 rounded-2xl'>
-                        <div className='flex size-full flex-col justify-between bg-violet-700 p-5 group transition-all duration-300 hover:bg-violet-600 relative'>
-                            <div>
-                                <h1 className='bento-title special-font max-w-64 text-black'>
-                                    K<b>o</b>om-<b>A</b>I
-                                </h1>
-                                <p className='text-xs md:text-sm text-black/90 font-medium mt-2'>
-                                    High-Performance Loom Alternative with WebRTC (&lt;120ms), Electron desktop, MV3 Chrome extension, Next.js 16 cockpit, and $24K MRR.
-                                </p>
+                    {/* Card 5: Koom-AI (Upgraded 3D Cyber Card) */}
+                    <BentoTilt className='bento-tilt_2 rounded-3xl relative overflow-hidden border border-cyan-500/40 shadow-2xl shadow-purple-900/30'>
+                        <div className='relative size-full flex flex-col justify-between p-6 bg-gradient-to-br from-indigo-950 via-purple-950 to-black overflow-hidden group'>
+                            {/* Animated Cyber Grid & Glowing Nebula */}
+                            <div className='absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-cyan-500/20 via-purple-600/20 to-transparent pointer-events-none' />
+                            <div className='absolute -bottom-10 -right-10 size-48 bg-cyan-400/20 rounded-full blur-3xl pointer-events-none group-hover:scale-150 transition-all duration-700' />
+                            
+                            {/* Top Badge: 3D Live WebRTC Telemetry */}
+                            <div className='relative z-10 flex items-center justify-between'>
+                                <div className='flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-400/50 text-[10px] font-mono font-bold text-cyan-300'>
+                                    <Radio className='size-3 text-cyan-400 animate-pulse' />
+                                    <span>&lt;120ms WebRTC • 60 FPS</span>
+                                </div>
+                                <span className='text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/50 px-2.5 py-0.5 rounded-full'>
+                                    $24K MRR
+                                </span>
                             </div>
 
-                            <div className='flex items-center justify-between w-full mt-4'>
+                            {/* Middle Title & Description */}
+                            <div className='relative z-10 my-4'>
+                                <h1 className='text-3xl md:text-4xl font-black tracking-tight text-white mb-2 flex items-center gap-2'>
+                                    <span className='bg-linear-to-r from-cyan-300 via-white to-purple-300 bg-clip-text text-transparent'>
+                                        KOOM-AI
+                                    </span>
+                                    <Sparkles className='size-5 text-amber-400 animate-spin' />
+                                </h1>
+                                <p className='text-xs md:text-sm text-gray-200 leading-relaxed font-sans'>
+                                    Autonomous Video Recording & Intelligence Platform: Electron desktop with native NVENC/VideoToolbox capture, MV3 Chrome extension, Next.js 16 cockpit, and parallel AWS S3 multipart uploads.
+                                </p>
+
+                                {/* 3D Audio Frequency Waveform Visualizer */}
+                                <div className='flex items-end gap-1 h-6 mt-4 opacity-80'>
+                                    {[12, 18, 8, 22, 14, 26, 10, 20, 16, 24, 12, 18, 14, 22].map((h, i) => (
+                                        <div
+                                            key={i}
+                                            className='flex-1 rounded-full bg-linear-to-t from-cyan-400 to-purple-400 animate-pulse'
+                                            style={{
+                                                height: `${h}px`,
+                                                animationDuration: `${0.4 + (i % 5) * 0.15}s`,
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Bottom Buttons */}
+                            <div className='relative z-10 flex items-center justify-between pt-3 border-t border-white/10'>
                                 <a
                                     href='https://koom-ai.vercel.app'
                                     target='_blank'
                                     rel='noopener noreferrer'
-                                    className='inline-flex items-center gap-1 text-xs uppercase tracking-wider text-black font-bold hover:underline'
+                                    className='inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 text-black text-xs font-black uppercase tracking-wider hover:scale-105 transition-all shadow-lg shadow-cyan-500/30'
                                 >
                                     <span>Live Platform ↗</span>
-                                    <TiLocationArrow className='text-lg' />
+                                    <TiLocationArrow className='text-base' />
                                 </a>
                                 <button
                                     onClick={() => setSelectedProject(FEATURE_PROJECTS.koom)}
-                                    className='text-xs font-bold bg-black text-white px-3 py-1 rounded-full hover:bg-gray-800 transition cursor-pointer'
+                                    className='px-3.5 py-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold border border-white/20 transition cursor-pointer hover:border-cyan-400'
                                 >
-                                    Architecture
+                                    Architecture & Specs
                                 </button>
                             </div>
                         </div>

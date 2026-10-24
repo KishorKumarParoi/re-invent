@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import AnimatedTitle from './AnimatedTitle'
 import gsap from 'gsap'
 import RoundedCorners from './RoundedCorner.jsx'
@@ -6,45 +6,58 @@ import Button from './Button'
 
 const Story = () => {
     const frameRef = useRef(null)
+    const rafIdRef = useRef(null)
 
     const handleMouseLeave = () => {
         const element = frameRef.current
         if (!element) return
 
         gsap.to(element, {
-            duration: 0.3,
+            duration: 0.6,
             rotateX: 0,
             rotateY: 0,
-            ease: 'power1.inOut'
+            ease: 'power2.out',
+            overwrite: 'auto'
         })
     }
 
     const handleMouseMove = (e) => {
-        const { clientX, clientY } = e
-        const element = frameRef.current
-        if (!element) return
+        if (rafIdRef.current) return
 
-        const rect = element.getBoundingClientRect()
-        const x = clientX - rect.left
-        const y = clientY - rect.top
+        rafIdRef.current = requestAnimationFrame(() => {
+            rafIdRef.current = null
+            const element = frameRef.current
+            if (!element) return
 
-        const centerX = rect.width / 2
-        const centerY = rect.height / 2
+            const rect = element.getBoundingClientRect()
+            const x = e.clientX - rect.left
+            const y = e.clientY - rect.top
 
-        const rotateX = ((y - centerY) / centerY) * 10
-        const rotateY = ((x - centerX) / centerX) * -10
+            const centerX = rect.width / 2
+            const centerY = rect.height / 2
 
-        gsap.to(element, {
-            duration: 0.3,
-            rotateX,
-            rotateY,
-            transformPerspective: 500,
-            ease: 'power2.inOut'
+            const rotateX = ((y - centerY) / centerY) * 7
+            const rotateY = ((x - centerX) / centerX) * -7
+
+            gsap.to(element, {
+                duration: 0.4,
+                rotateX,
+                rotateY,
+                transformPerspective: 800,
+                ease: 'power1.out',
+                overwrite: 'auto'
+            })
         })
     }
 
+    useEffect(() => {
+        return () => {
+            if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current)
+        }
+    }, [])
+
     return (
-        <section id="story" className="min-h-dvh w-screen text-blue-100 py-16">
+        <section id="story" className="min-h-dvh w-screen text-blue-100 py-16 will-change-transform">
             <div className="flex size-full flex-col items-center py-10 pb-24">
                 <p className="font-general text-xs uppercase tracking-widest text-cyan-400 mb-2">
                     The Multiversal Metaverse World
@@ -57,19 +70,19 @@ const Story = () => {
                 />
 
                 <div className="relative size-full">
-                    {/* Image container with rounded corners */}
-                    <div className="story-img-container relative overflow-hidden rounded-3xl mx-auto max-w-4xl">
+                    {/* Image container with rounded corners and GPU optimization */}
+                    <div className="story-img-container relative overflow-hidden rounded-3xl mx-auto max-w-4xl will-change-transform">
                         <div className="story-img-mask">
                             <div className="story-img-content">
                                 <img
                                     ref={frameRef}
                                     onMouseLeave={handleMouseLeave}
-                                    onMouseUp={handleMouseLeave}
-                                    onMouseEnter={handleMouseLeave}
                                     onMouseMove={handleMouseMove}
                                     src="/img/entrance.webp"
                                     alt="entrance"
-                                    className="object-contain object-center w-full"
+                                    loading="eager"
+                                    className="object-contain object-center w-full transform-gpu"
+                                    style={{ willChange: 'transform' }}
                                 />
                             </div>
                         </div>

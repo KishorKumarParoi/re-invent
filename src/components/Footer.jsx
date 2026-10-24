@@ -1,5 +1,6 @@
 import React from 'react'
 import VisitorCount from './VisitorCount'
+import CyberFooterAnimation from './CyberFooterAnimation'
 import {
     FaDiscord,
     FaLinkedin,
@@ -63,7 +64,10 @@ const socialLinks = [
 const Footer = () => {
     return (
         // <footer className='w-full bg-linear-to-b from-purple-600 to-purple-800 py-12'>
-        <div className='max-w-6xl mx-auto px-5 md:px-10'>
+        <div className='max-w-6xl mx-auto px-5 md:px-10 pb-16'>
+            {/* Cyber Cityscape: Digital Neon Waterfall, Flying Tesla Cyber-Car & Robotics Hub */}
+            <CyberFooterAnimation />
+
             <VisitorCount />
 
             <section className="py-4 mt-2 rounded-xl text-white">

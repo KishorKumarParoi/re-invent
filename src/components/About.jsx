@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AnimatedTitle from './AnimatedTitle'
+import ShootingStarsCanvas from './ShootingStarsCanvas'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -257,8 +258,11 @@ const About = () => {
     ]
 
     return (
-        <div id='about' className='min-h-screen w-screen bg-slate-900'>
-            <div className='relative mx-auto flex max-w-6xl flex-col items-center gap-16 px-5 py-20'>
+        <div id='about' className='relative min-h-screen w-screen bg-slate-900 overflow-hidden'>
+            {/* Interactive Shooting Stars Canvas with Click-to-Fall Physics & Sarcastic Hacker Alerts */}
+            <ShootingStarsCanvas />
+
+            <div className='relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-16 px-5 py-20'>
 
                 {/* Mantra Section */}
                 <div id='mantra' className='mantra-container w-full max-w-4xl rounded-3xl border border-violet-500/30 bg-linear-to-br from-violet-950/40 to-purple-950/20 p-12 text-center shadow-2xl backdrop-blur-sm'>
