@@ -107,13 +107,29 @@ const Contact = () => {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        const subject = encodeURIComponent(`[${formState.topic}] Inquiry from ${formState.name}`);
+        const senderName = formState.name.trim() || "Portfolio Visitor";
+        const senderEmail = formState.email.trim() || "Not specified";
+        const topic = formState.topic || "Principal AI Architecture";
+        const subject = encodeURIComponent(`[${topic}] Inquiry from ${senderName}`);
         const body = encodeURIComponent(
-            `Hi Kishor,\n\n${formState.message}\n\nFrom: ${formState.name} (${formState.email})`
+            `Hi Kishor,\n\n${formState.message.trim()}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSender Name: ${senderName}\nSender Email: ${senderEmail}\nDomain Topic: ${topic}\nPlatform: Reinvent 3D Portfolio (https://re-invent-rust.vercel.app/)\nSent At: ${new Date().toLocaleString()}`
         );
-        window.open(`mailto:kishor.ruet.cse@gmail.com?subject=${subject}&body=${body}`, "_blank");
+        const recipient = "kishor.ruet.cse@gmail.com";
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+        const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+        // Directly pop up mail composer
+        try {
+            const popup = window.open(gmailUrl, "_blank", "width=800,height=650,left=150,top=100,scrollbars=yes,resizable=yes");
+            if (!popup || popup.closed || typeof popup.closed === "undefined") {
+                window.location.href = mailtoUrl;
+            }
+        } catch {
+            window.location.href = mailtoUrl;
+        }
+
         setIsSent(true);
-        setTimeout(() => setIsSent(false), 5000);
+        setTimeout(() => setIsSent(false), 6000);
     };
 
     const currentQuote = LEGEND_QUOTES[quoteIndex];
@@ -474,7 +490,7 @@ const Contact = () => {
 
                         {isSent && (
                             <p className="text-center text-xs font-mono text-emerald-400 pt-2 animate-pulse">
-                                ✓ Message client launched! I look forward to connecting with you.
+                                ✓ Email composer popped up! Directly sending to kishor.ruet.cse@gmail.com
                             </p>
                         )}
                     </form>
