@@ -215,11 +215,10 @@ const Contact = () => {
                                     <button
                                         key={tab.id}
                                         onClick={() => setActiveResumeTab(tab.id)}
-                                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
-                                            isActive
+                                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${isActive
                                                 ? "bg-linear-to-r from-cyan-400 to-emerald-400 text-black shadow-md shadow-cyan-500/30"
                                                 : "bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white border border-white/10"
-                                        }`}
+                                            }`}
                                     >
                                         <Icon className="size-3.5" />
                                         <span>{tab.label}</span>
@@ -513,7 +512,7 @@ const Contact = () => {
                         </a>
 
                         <a
-                            href="https://macos-portofolio.vercel.app/"
+                            href="https://macos-portofolio-virid.vercel.app/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 text-cyan-300 hover:text-white transition hover:scale-110"
