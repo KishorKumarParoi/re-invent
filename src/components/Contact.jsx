@@ -406,6 +406,30 @@ const Contact = () => {
                             </button>
                         </div>
 
+                        {/* LinkedIn Direct */}
+                        <a
+                            href="https://www.linkedin.com/in/kishor-kumar-paroi-b06344166/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0077b5]/20 hover:bg-[#0077b5]/35 border border-[#0077b5]/60 text-cyan-200 hover:text-white font-bold text-xs uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-md shadow-blue-500/10 cursor-pointer"
+                            title="Connect on LinkedIn"
+                        >
+                            <Linkedin className="size-3.5 text-cyan-400" />
+                            <span>LinkedIn ↗</span>
+                        </a>
+
+                        {/* Twitter / X Direct */}
+                        <a
+                            href="https://x.com/Mr_paroi"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-xs uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-md shadow-white/5 cursor-pointer"
+                            title="Follow on Twitter / X"
+                        >
+                            <Twitter className="size-3.5 text-sky-400" />
+                            <span>𝕏 / Twitter (@Mr_paroi) ↗</span>
+                        </a>
+
                         {/* WhatsApp Direct */}
                         <a
                             href="https://wa.me/8801724714156"
@@ -498,7 +522,7 @@ const Contact = () => {
                     {/* VERIFIED SOCIAL NETWORK BAR (RESUME.PDF CORRECTED) */}
                     <div className="flex flex-wrap items-center justify-center gap-6 pt-6 border-t border-white/10 w-full max-w-xl text-xs font-semibold">
                         <a
-                            href="https://linkedin.com/in/kishor-kumar-paroi-b06344166"
+                            href="https://www.linkedin.com/in/kishor-kumar-paroi-b06344166/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 text-cyan-300 hover:text-white transition hover:scale-110"
@@ -514,7 +538,7 @@ const Contact = () => {
                             className="flex items-center gap-1.5 text-sky-300 hover:text-white transition hover:scale-110"
                         >
                             <Twitter className="size-4 text-sky-400" />
-                            <span>Twitter / X ↗</span>
+                            <span>Twitter / X (@Mr_paroi) ↗</span>
                         </a>
 
                         <a

@@ -683,7 +683,7 @@ const About = () => {
                             💬 WhatsApp
                         </a>
                         <a
-                            href='https://www.linkedin.com/in/kishor-paroi-b06344166/'
+                            href='https://www.linkedin.com/in/kishor-kumar-paroi-b06344166/'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='rounded-full bg-purple-800 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-purple-900 hover:shadow-lg hover:shadow-blue-600/50'
@@ -699,12 +699,12 @@ const About = () => {
                             🐙 GitHub
                         </a>
                         <a
-                            href='https://twitter.com/paroi_kishor'
+                            href='https://x.com/Mr_paroi'
                             target='_blank'
                             rel='noopener noreferrer'
                             className='rounded-full bg-cyan-700 px-6 py-3 font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-cyan-900 hover:shadow-lg hover:shadow-blue-600/50'
                         >
-                            𝕏 Twitter
+                            𝕏 Twitter (@Mr_paroi)
                         </a>
                     </div>
                 </div>
