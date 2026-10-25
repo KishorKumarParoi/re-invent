@@ -1,13 +1,151 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import AnimatedTitle from './AnimatedTitle'
 import ShootingStarsCanvas from './ShootingStarsCanvas'
+import { Volume2, VolumeX, Play, Pause, Square, Music, Sparkles, RotateCcw, FastForward } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const About = () => {
+    // Arijit Singh "Asatoma Sadgamaya" Audio State
+    const audioRef = useRef(null)
+    const mantraRef = useRef(null)
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [isMuted, setIsMuted] = useState(false)
+    const [isVanished, setIsVanished] = useState(false)
+    const [hasStartedHover, setHasStartedHover] = useState(false)
+    const [audioProgress, setAudioProgress] = useState(0)
+    const [currentTimeStr, setCurrentTimeStr] = useState('0:00')
+    const [durationStr, setDurationStr] = useState('5:16')
+
+    // Initialize Arijit Singh "Asatoma Sadgamaya" audio
+    useEffect(() => {
+        const audio = new Audio('/audio/asato_ma_sadgamaya.mp3')
+        audio.preload = 'auto'
+        audio.volume = 0.5
+        audioRef.current = audio
+
+        const handleTimeUpdate = () => {
+            if (audio.duration) {
+                setAudioProgress((audio.currentTime / audio.duration) * 100)
+                const curMins = Math.floor(audio.currentTime / 60)
+                const curSecs = Math.floor(audio.currentTime % 60).toString().padStart(2, '0')
+                setCurrentTimeStr(`${curMins}:${curSecs}`)
+                const durMins = Math.floor(audio.duration / 60)
+                const durSecs = Math.floor(audio.duration % 60).toString().padStart(2, '0')
+                setDurationStr(`${durMins}:${durSecs}`)
+            }
+        }
+
+        // When the song finishes: the Sanskrit sloka section vanishes!
+        const handleEnded = () => {
+            setIsPlaying(false)
+            if (mantraRef.current) {
+                gsap.to(mantraRef.current, {
+                    opacity: 0,
+                    scale: 0.85,
+                    y: -40,
+                    filter: 'blur(14px)',
+                    duration: 1.8,
+                    ease: 'power3.inOut',
+                    onComplete: () => {
+                        setIsVanished(true)
+                    }
+                })
+            } else {
+                setIsVanished(true)
+            }
+        }
+
+        audio.addEventListener('timeupdate', handleTimeUpdate)
+        audio.addEventListener('ended', handleEnded)
+
+        return () => {
+            audio.pause()
+            audio.removeEventListener('timeupdate', handleTimeUpdate)
+            audio.removeEventListener('ended', handleEnded)
+            audioRef.current = null
+        }
+    }, [])
+
+    // Hover handler: when section is hovered, song plays
+    const handleSectionHover = () => {
+        if (isVanished) return
+        if (audioRef.current && !isPlaying && !hasStartedHover) {
+            audioRef.current.play()
+                .then(() => {
+                    setIsPlaying(true)
+                    setHasStartedHover(true)
+                })
+                .catch((err) => {
+                    console.log('Hover audio autoplay policy caught:', err)
+                })
+        }
+    }
+
+    const togglePlay = (e) => {
+        e?.stopPropagation()
+        if (!audioRef.current) return
+        if (isPlaying) {
+            audioRef.current.pause()
+            setIsPlaying(false)
+        } else {
+            audioRef.current.play()
+                .then(() => setIsPlaying(true))
+                .catch(console.error)
+        }
+    }
+
+    const stopAudio = (e) => {
+        e?.stopPropagation()
+        if (!audioRef.current) return
+        audioRef.current.pause()
+        audioRef.current.currentTime = 0
+        setIsPlaying(false)
+        setAudioProgress(0)
+        setCurrentTimeStr('0:00')
+    }
+
+    const toggleMute = (e) => {
+        e?.stopPropagation()
+        if (!audioRef.current) return
+        const nextMute = !isMuted
+        audioRef.current.muted = nextMute
+        setIsMuted(nextMute)
+    }
+
+    // Fast-forward to end to immediately test and experience the vanish effect
+    const fastForwardToEnd = (e) => {
+        e?.stopPropagation()
+        if (!audioRef.current) return
+        if (audioRef.current.duration) {
+            audioRef.current.currentTime = Math.max(0, audioRef.current.duration - 2)
+            if (!isPlaying) {
+                audioRef.current.play().then(() => setIsPlaying(true)).catch(console.error)
+            }
+        }
+    }
+
+    // Re-summon the Sanskrit sloka after it has finished and vanished
+    const summonMantra = () => {
+        setIsVanished(false)
+        setHasStartedHover(false)
+        if (audioRef.current) {
+            audioRef.current.currentTime = 0
+            audioRef.current.pause()
+            setIsPlaying(false)
+        }
+        setTimeout(() => {
+            if (mantraRef.current) {
+                gsap.fromTo(mantraRef.current,
+                    { opacity: 0, scale: 0.85, y: 40, filter: 'blur(14px)' },
+                    { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)', duration: 1.4, ease: 'power3.out' }
+                )
+            }
+        }, 60)
+    }
     useGSAP(() => {
         // Mantra entrance animation
         gsap.from('.mantra-container', {
@@ -264,54 +402,159 @@ const About = () => {
 
             <div className='relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-16 px-5 py-20'>
 
-                {/* Mantra Section */}
-                <div id='mantra' className='mantra-container w-full max-w-4xl rounded-3xl border border-violet-500/30 bg-linear-to-br from-violet-950/40 to-purple-950/20 p-12 text-center shadow-2xl backdrop-blur-sm'>
+                {/* Mantra Section with Arijit Singh "Asatoma Sadgamaya" Music & Vanish Effect */}
+                {!isVanished ? (
+                    <div 
+                        id='mantra' 
+                        ref={mantraRef}
+                        onMouseEnter={handleSectionHover}
+                        className='mantra-container group relative w-full max-w-4xl rounded-3xl border border-violet-500/35 bg-gradient-to-br from-violet-950/50 via-purple-950/30 to-violet-900/20 p-8 sm:p-12 text-center shadow-[0_0_50px_rgba(139,92,246,0.25)] backdrop-blur-md transition-all duration-700'
+                    >
+                        {/* Divine Audio Player Controller Bar */}
+                        <div className='mb-8 mx-auto max-w-2xl bg-black/60 border border-violet-400/30 backdrop-blur-xl rounded-2xl p-3 sm:px-4 shadow-xl text-xs select-none'>
+                            <div className='flex flex-wrap items-center justify-between gap-3'>
+                                <div className='flex items-center gap-2.5 text-left'>
+                                    <div className='relative flex items-center justify-center size-8 rounded-full bg-violet-600/30 border border-violet-400/50 text-violet-300'>
+                                        <Music className='size-4' />
+                                        {isPlaying && !isMuted && (
+                                            <span className='absolute -top-0.5 -right-0.5 size-2 rounded-full bg-emerald-400 animate-ping' />
+                                        )}
+                                    </div>
+                                    <div>
+                                        <p className='text-xs sm:text-sm font-bold text-violet-200 tracking-wide'>
+                                            Arijit Singh — Asatoma Sadgamaya
+                                        </p>
+                                        <p className='text-[10px] text-violet-300/80 font-mono'>
+                                            {isPlaying ? 'Now Playing • Hovering active' : 'Hover over sloka to play song'}
+                                        </p>
+                                    </div>
+                                </div>
 
-                    {/* Om Symbol */}
-                    <div className='mantra-om mb-8 inline-block'>
-                        <span className='text-8xl font-bold text-violet-300 drop-shadow-lg'>ॐ</span>
-                    </div>
+                                {/* Controls: Play, Stop, Mute, Fast Forward */}
+                                <div className='flex items-center gap-1.5'>
+                                    {/* Play / Pause Toggle */}
+                                    <button
+                                        onClick={togglePlay}
+                                        className='flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-violet-600/80 hover:bg-violet-500 text-white font-semibold shadow-md transition cursor-pointer'
+                                        title={isPlaying ? 'Pause Song' : 'Play Song'}
+                                    >
+                                        {isPlaying ? <Pause className='size-3.5' /> : <Play className='size-3.5' />}
+                                        <span className='hidden sm:inline'>{isPlaying ? 'Pause' : 'Play'}</span>
+                                    </button>
 
-                    {/* Sanskrit Text */}
-                    <div className='space-y-6 mb-8'>
-                        <div className='mantra-sanskrit text-3xl md:text-4xl leading-relaxed text-blue-100 font-semibold'>
-                            असतो मा सद्गमय ।<br />
-                            तमसो मा ज्योतिर्गमय ।<br />
-                            मृत्योर्मा अमृतं गमय ।<br />
-                            ॐ शान्तिः शान्तिः शान्तिः ॥
-                        </div>
-                    </div>
+                                    {/* Stop Button */}
+                                    <button
+                                        onClick={stopAudio}
+                                        className='p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white transition cursor-pointer'
+                                        title='Stop Song & Reset'
+                                    >
+                                        <Square className='size-3.5 text-red-400 fill-red-400/40' />
+                                    </button>
 
-                    {/* English Transliteration */}
-                    <div className='space-y-3 mb-10 border-t border-violet-500/20 pt-8'>
-                        <div className='mantra-english text-lg text-blue-200/90 italic'>
-                            Om Asato Maa Sad-Gamaya |
-                        </div>
-                        <div className='mantra-english text-lg text-blue-200/90 italic'>
-                            Tamaso Maa Jyotir-Gamaya |
-                        </div>
-                        <div className='mantra-english text-lg text-blue-200/90 italic'>
-                            Mrtyor-Maa Amrtam Gamaya |
-                        </div>
-                        <div className='mantra-english text-lg text-blue-200/90 italic'>
-                            Om Shaantih Shaantih Shaantih ||
-                        </div>
-                    </div>
+                                    {/* Mute / Unmute Toggle */}
+                                    <button
+                                        onClick={toggleMute}
+                                        className={`p-1.5 rounded-lg transition cursor-pointer ${
+                                            isMuted ? 'bg-red-500/20 text-red-300 border border-red-500/40' : 'bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white'
+                                        }`}
+                                        title={isMuted ? 'Unmute Song' : 'Mute Song'}
+                                    >
+                                        {isMuted ? <VolumeX className='size-3.5 text-red-400' /> : <Volume2 className='size-3.5 text-emerald-400' />}
+                                    </button>
 
-                    {/* Meanings */}
-                    <div className='mantra-meanings space-y-4 border-t border-violet-500/20 pt-8'>
-                        {meanings.map((meaning, idx) => (
-                            <div key={idx} className='mantra-meaning-item flex gap-4 text-left'>
-                                <span className='shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-linear-to-br from-violet-500 to-purple-600 font-bold text-white text-sm'>
-                                    {meaning.number}
-                                </span>
-                                <p className='text-blue-100/80 leading-relaxed pt-1'>
-                                    {meaning.text}
-                                </p>
+                                    {/* Test Vanish Button (Skips to end to trigger vanish) */}
+                                    <button
+                                        onClick={fastForwardToEnd}
+                                        className='flex items-center gap-1 px-2 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-400/40 text-[10px] font-mono transition cursor-pointer'
+                                        title='Skip to end to preview sloka vanishing effect'
+                                    >
+                                        <FastForward className='size-3 text-amber-300' />
+                                        <span className='hidden md:inline'>Test Vanish</span>
+                                    </button>
+                                </div>
                             </div>
-                        ))}
+
+                            {/* Audio Progress Scrubber & Live Time */}
+                            <div className='mt-2.5 pt-2 border-t border-white/10 flex items-center gap-3 text-[10px] font-mono text-gray-400'>
+                                <span>{currentTimeStr}</span>
+                                <div className='flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden'>
+                                    <div 
+                                        className='h-full bg-gradient-to-r from-violet-500 to-amber-400 rounded-full transition-all duration-200'
+                                        style={{ width: `${audioProgress}%` }}
+                                    />
+                                </div>
+                                <span>{durationStr}</span>
+                                <span className='text-amber-300/80 font-semibold hidden sm:inline'>
+                                    Auto-vanishes upon song completion
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Om Symbol */}
+                        <div className='mantra-om mb-8 inline-block'>
+                            <span className='text-8xl font-bold text-violet-300 drop-shadow-[0_0_30px_rgba(167,139,250,0.6)]'>ॐ</span>
+                        </div>
+
+                        {/* Sanskrit Text */}
+                        <div className='space-y-6 mb-8'>
+                            <div className='mantra-sanskrit text-3xl md:text-4xl leading-relaxed text-blue-100 font-semibold drop-shadow-[0_0_20px_rgba(147,197,253,0.4)]'>
+                                असतो मा सद्गमय ।<br />
+                                तमसो मा ज्योतिर्गमय ।<br />
+                                मृत्योर्मा अमृतं गमय ।<br />
+                                ॐ शान्तिः शान्तिः शान्तिः ॥
+                            </div>
+                        </div>
+
+                        {/* English Transliteration */}
+                        <div className='space-y-3 mb-10 border-t border-violet-500/20 pt-8'>
+                            <div className='mantra-english text-lg text-blue-200/90 italic'>
+                                Om Asato Maa Sad-Gamaya |
+                            </div>
+                            <div className='mantra-english text-lg text-blue-200/90 italic'>
+                                Tamaso Maa Jyotir-Gamaya |
+                            </div>
+                            <div className='mantra-english text-lg text-blue-200/90 italic'>
+                                Mrtyor-Maa Amrtam Gamaya |
+                            </div>
+                            <div className='mantra-english text-lg text-blue-200/90 italic'>
+                                Om Shaantih Shaantih Shaantih ||
+                            </div>
+                        </div>
+
+                        {/* Meanings */}
+                        <div className='mantra-meanings space-y-4 border-t border-violet-500/20 pt-8'>
+                            {meanings.map((meaning, idx) => (
+                                <div key={idx} className='mantra-meaning-item flex gap-4 text-left'>
+                                    <span className='shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-full bg-linear-to-br from-violet-500 to-purple-600 font-bold text-white text-sm'>
+                                        {meaning.number}
+                                    </span>
+                                    <p className='text-blue-100/80 leading-relaxed pt-1'>
+                                        {meaning.text}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    /* Sacred Golden Blessing Card shown when sloka finishes and vanishes */
+                    <div className='w-full max-w-4xl rounded-3xl border border-amber-400/40 bg-gradient-to-r from-amber-950/40 via-purple-950/30 to-amber-950/40 p-10 text-center shadow-[0_0_50px_rgba(251,191,36,0.25)] backdrop-blur-md animate-fade-in'>
+                        <span className='text-7xl font-bold text-amber-300 drop-shadow-[0_0_30px_rgba(251,191,36,0.6)]'>ॐ</span>
+                        <h4 className='text-2xl sm:text-3xl font-bold text-amber-200 mt-3'>
+                            ॐ शान्तिः शान्तिः शान्तिः
+                        </h4>
+                        <p className='text-xs sm:text-sm text-amber-200/80 font-mono mt-2 max-w-xl mx-auto leading-relaxed'>
+                            "Lead me from the unreal to the real, from darkness to light, from death to immortality."<br />
+                            The Sacred Sloka has completed its journey and merged into the cosmic light.
+                        </p>
+                        <button
+                            onClick={summonMantra}
+                            className='mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-violet-600 to-amber-500 hover:from-violet-500 hover:to-amber-400 text-white text-xs font-bold shadow-xl transition hover:scale-105 cursor-pointer'
+                        >
+                            <RotateCcw className='size-3.5' />
+                            <span>Re-summon Sacred Sanskrit Sloka &amp; Song</span>
+                        </button>
+                    </div>
+                )}
 
                 {/* About Intro */}
                 <div className='about-intro max-w-3xl space-y-6 text-center text-lg leading-relaxed text-blue-200/90'>
