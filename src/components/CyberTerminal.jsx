@@ -111,7 +111,7 @@ export const ALL_15_PROJECTS = [
         title: 'Koom-AI: Enterprise Asynchronous Video Intelligence Platform',
         stack: 'Next.js 16 • WebRTC • Whisper V3 • Redis Queue',
         desc: 'AI-first video interview analysis synthesizing facial micro-expressions, speech patterns, and technical accuracy.',
-        link: 'https://koom.kishor.tech',
+        link: 'https://koom-ai.vercel.app',
     },
     {
         id: 13,
