@@ -172,7 +172,9 @@ export const CyberTerminal = () => {
     const inputRef = useRef(null)
 
     useEffect(() => {
-        terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+        if (history.length > 1) {
+            terminalEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+        }
     }, [history])
 
     const handleRunCommand = (commandStr) => {
@@ -542,7 +544,6 @@ export const CyberTerminal = () => {
                                 onKeyDown={handleKeyDown}
                                 placeholder="Type 'projects' or click below..."
                                 className="flex-1 bg-transparent text-white outline-none font-mono text-xs md:text-[13px] caret-cyan-400"
-                                autoFocus
                             />
                         </div>
 
