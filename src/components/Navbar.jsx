@@ -154,6 +154,23 @@ export const Navbar = () => {
                                 </span>
                             </a>
 
+                            {/* FLAGSHIP MACOS PORTFOLIO: Navigate directly to kishor.tech */}
+                            <a
+                                href="https://kishor.tech"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center gap-1.5 px-3 py-1 bg-linear-to-r from-emerald-950/80 to-teal-950/80 hover:from-emerald-900 hover:to-teal-900 border border-emerald-500/50 hover:border-emerald-300 rounded-full text-xs font-bold text-white transition-all duration-300 hover:scale-105 shadow-md shadow-emerald-500/20"
+                                title="Open macOS Desktop Portfolio (kishor.tech)"
+                            >
+                                <span className="size-2 rounded-full bg-emerald-400 animate-ping" />
+                                <span className="bg-linear-to-r from-emerald-200 via-white to-cyan-300 bg-clip-text text-transparent">
+                                    kishor.tech
+                                </span>
+                                <span className="hidden sm:inline text-[9px] uppercase tracking-wider text-emerald-300 bg-emerald-950/80 border border-emerald-800/40 px-1 rounded">
+                                    macOS OS ↗
+                                </span>
+                            </a>
+
                             {/* Spotlight Search Trigger */}
                             <button
                                 onClick={() => setIsSpotlightOpen(true)}
