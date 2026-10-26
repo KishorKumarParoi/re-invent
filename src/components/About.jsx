@@ -15,17 +15,29 @@ const About = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [isMuted, setIsMuted] = useState(false)
     const [isVanished, setIsVanished] = useState(false)
+    const SLOKA_START_TIME = 40
     const [hasStartedHover, setHasStartedHover] = useState(false)
     const [audioProgress, setAudioProgress] = useState(0)
-    const [currentTimeStr, setCurrentTimeStr] = useState('0:00')
+    const [currentTimeStr, setCurrentTimeStr] = useState('0:40')
     const [durationStr, setDurationStr] = useState('5:16')
 
-    // Initialize Arijit Singh "Asatoma Sadgamaya" audio
+    // Initialize Arijit Singh "Asatoma Sadgamaya" audio (starting at 40s)
     useEffect(() => {
         const audio = new Audio('/audio/asato_ma_sadgamaya.mp3')
         audio.preload = 'auto'
         audio.volume = 0.5
-        audioRef.current = audio
+
+        const handleLoadedMetadata = () => {
+            if (audio.currentTime < SLOKA_START_TIME) {
+                audio.currentTime = SLOKA_START_TIME
+            }
+            if (audio.duration) {
+                setAudioProgress((SLOKA_START_TIME / audio.duration) * 100)
+                const durMins = Math.floor(audio.duration / 60)
+                const durSecs = Math.floor(audio.duration % 60).toString().padStart(2, '0')
+                setDurationStr(`${durMins}:${durSecs}`)
+            }
+        }
 
         const handleTimeUpdate = () => {
             if (audio.duration) {
@@ -59,21 +71,27 @@ const About = () => {
             }
         }
 
+        audio.addEventListener('loadedmetadata', handleLoadedMetadata)
         audio.addEventListener('timeupdate', handleTimeUpdate)
         audio.addEventListener('ended', handleEnded)
+        audioRef.current = audio
 
         return () => {
             audio.pause()
+            audio.removeEventListener('loadedmetadata', handleLoadedMetadata)
             audio.removeEventListener('timeupdate', handleTimeUpdate)
             audio.removeEventListener('ended', handleEnded)
             audioRef.current = null
         }
     }, [])
 
-    // Hover handler: when section is hovered, song plays
+    // Hover handler: when section is hovered, song plays from 40s
     const handleSectionHover = () => {
         if (isVanished) return
         if (audioRef.current && !isPlaying && !hasStartedHover) {
+            if (audioRef.current.currentTime < SLOKA_START_TIME) {
+                audioRef.current.currentTime = SLOKA_START_TIME
+            }
             audioRef.current.play()
                 .then(() => {
                     setIsPlaying(true)
@@ -92,6 +110,9 @@ const About = () => {
             audioRef.current.pause()
             setIsPlaying(false)
         } else {
+            if (audioRef.current.currentTime < SLOKA_START_TIME) {
+                audioRef.current.currentTime = SLOKA_START_TIME
+            }
             audioRef.current.play()
                 .then(() => setIsPlaying(true))
                 .catch(console.error)
@@ -102,10 +123,12 @@ const About = () => {
         e?.stopPropagation()
         if (!audioRef.current) return
         audioRef.current.pause()
-        audioRef.current.currentTime = 0
+        audioRef.current.currentTime = SLOKA_START_TIME
         setIsPlaying(false)
-        setAudioProgress(0)
-        setCurrentTimeStr('0:00')
+        if (audioRef.current.duration) {
+            setAudioProgress((SLOKA_START_TIME / audioRef.current.duration) * 100)
+        }
+        setCurrentTimeStr('0:40')
     }
 
     const toggleMute = (e) => {
@@ -133,9 +156,13 @@ const About = () => {
         setIsVanished(false)
         setHasStartedHover(false)
         if (audioRef.current) {
-            audioRef.current.currentTime = 0
+            audioRef.current.currentTime = SLOKA_START_TIME
             audioRef.current.pause()
             setIsPlaying(false)
+            if (audioRef.current.duration) {
+                setAudioProgress((SLOKA_START_TIME / audioRef.current.duration) * 100)
+            }
+            setCurrentTimeStr('0:40')
         }
         setTimeout(() => {
             if (mantraRef.current) {
