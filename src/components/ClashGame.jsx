@@ -119,8 +119,12 @@ export const ClashGame = ({ isOpen, onClose }) => {
         const canvas = canvasRef.current
         if (!canvas) return
         const rect = canvas.getBoundingClientRect()
-        const clickX = e.clientX - rect.left
-        const clickY = e.clientY - rect.top
+        const clientX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : 0))
+        const clientY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientY : 0))
+        const scaleX = canvas.width / (rect.width || 1)
+        const scaleY = canvas.height / (rect.height || 1)
+        const clickX = (clientX - rect.left) * scaleX
+        const clickY = (clientY - rect.top) * scaleY
 
         // Costs
         const costs = {
@@ -520,34 +524,34 @@ export const ClashGame = ({ isOpen, onClose }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-xl p-4 animate-in fade-in duration-200">
             <div className="relative w-full max-w-4xl bg-gray-950 border-2 border-amber-500/50 rounded-3xl shadow-2xl shadow-amber-500/20 overflow-hidden flex flex-col">
                 {/* Header HUD */}
-                <div className="flex items-center justify-between px-6 py-3 bg-linear-to-r from-amber-950/80 via-black to-emerald-950/80 border-b border-white/10">
-                    <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-amber-500/20 border border-amber-400 text-amber-400">
-                            <Shield className="size-6 animate-pulse" />
+                <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-linear-to-r from-amber-950/80 via-black to-emerald-950/80 border-b border-white/10">
+                    <div className="flex items-center gap-2.5">
+                        <div className="p-1.5 sm:p-2 rounded-xl bg-amber-500/20 border border-amber-400 text-amber-400">
+                            <Shield className="size-5 sm:size-6 animate-pulse" />
                         </div>
                         <div>
-                            <h2 className="text-lg font-black tracking-wider uppercase bg-linear-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+                            <h2 className="text-sm sm:text-lg font-black tracking-wider uppercase bg-linear-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
                                 Clash of Paroi: Village Defense RTS
                             </h2>
-                            <p className="text-[11px] text-gray-400">Defend the Town Hall against enemy waves!</p>
+                            <p className="text-[10px] sm:text-[11px] text-gray-400">Defend the Town Hall against enemy waves!</p>
                         </div>
                     </div>
 
                     {/* Stats & Trophies */}
-                    <div className="flex items-center gap-4 text-xs font-mono font-bold">
-                        <div className="flex items-center gap-1.5 bg-yellow-950/60 border border-yellow-700/50 px-3 py-1 rounded-full text-yellow-300">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono font-bold">
+                        <div className="flex items-center gap-1 bg-yellow-950/60 border border-yellow-700/50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-yellow-300">
                             <span>🪙 Gold:</span>
                             <span>{gold}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 bg-purple-950/60 border border-purple-700/50 px-3 py-1 rounded-full text-purple-300">
+                        <div className="flex items-center gap-1 bg-purple-950/60 border border-purple-700/50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-purple-300">
                             <span>🧪 Elixir:</span>
                             <span>{elixir}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 bg-cyan-950/60 border border-cyan-700/50 px-3 py-1 rounded-full text-cyan-300">
+                        <div className="flex items-center gap-1 bg-cyan-950/60 border border-cyan-700/50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-cyan-300">
                             <span>⏱️ Time:</span>
                             <span className="text-amber-400">{timeLeft}s</span>
                         </div>
-                        <div className="flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-700/50 px-3 py-1 rounded-full text-emerald-300">
+                        <div className="flex items-center gap-1 bg-emerald-950/60 border border-emerald-700/50 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-emerald-300">
                             <span>🏆 Score:</span>
                             <span>{score}</span>
                         </div>
@@ -621,7 +625,8 @@ export const ClashGame = ({ isOpen, onClose }) => {
                         width={700}
                         height={460}
                         onClick={handleCanvasClick}
-                        className="cursor-crosshair w-full max-w-[700px] h-[460px] object-contain shadow-inner"
+                        onTouchStart={handleCanvasClick}
+                        className="cursor-crosshair w-full max-w-[700px] h-[min(55vh,460px)] object-contain shadow-inner touch-none"
                     />
 
                     {/* Victory Screen */}

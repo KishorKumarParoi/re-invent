@@ -72,8 +72,9 @@ const Contact = () => {
         return () => clearInterval(interval);
     }, []);
 
-    // Optimized mouse tilt with zero lag
+    // Optimized mouse tilt with zero lag (disabled on touch devices to ensure smooth scrolling)
     const handleMouseMove = (e) => {
+        if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
         if (rafIdRef.current) return;
 
         rafIdRef.current = requestAnimationFrame(() => {
