@@ -138,9 +138,9 @@ export const Navbar = () => {
                                 <img src='/img/logo.png' alt='logo' className='w-8' />
                             </a>
 
-                            {/* PRODUCT NAVIGATION: Navigate directly to KOOM-AI */}
+                            {/* PRODUCT NAVIGATION: Navigate directly to KOOM-AI Subdomain */}
                             <a
-                                href="https://koom-ai.vercel.app"
+                                href="https://koom.kishor.tech"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="group flex items-center gap-1.5 px-3 py-1 bg-linear-to-r from-purple-950/80 to-indigo-950/80 hover:from-purple-900 hover:to-indigo-900 border border-purple-500/50 hover:border-cyan-400 rounded-full text-xs font-bold text-white transition-all duration-300 hover:scale-105 shadow-md shadow-purple-500/20"
