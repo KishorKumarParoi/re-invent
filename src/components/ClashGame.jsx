@@ -90,7 +90,12 @@ export const ClashGame = ({ isOpen, onClose }) => {
         running: false,
     })
 
-    const resetGame = () => {
+    const clickCooldownRef = useRef(0)
+
+    const resetGame = (e) => {
+        if (e?.stopPropagation) e.stopPropagation()
+        clickCooldownRef.current = Date.now() + 600 // 600ms immunity window against click-through from start/restart buttons
+
         gameRef.current = {
             townHall: { x: 350, y: 250, hp: 1200, maxHp: 1200, radius: 38 },
             defenses: [
@@ -113,9 +118,12 @@ export const ClashGame = ({ isOpen, onClose }) => {
         setWave(1)
     }
 
-    // Place Defense
+    // Place Defense (with debouncing to prevent automatic/accidental placement)
     const handleCanvasClick = (e) => {
         if (gameState !== 'playing') return
+        if (Date.now() < clickCooldownRef.current) return
+        if (e?.stopPropagation) e.stopPropagation()
+
         const canvas = canvasRef.current
         if (!canvas) return
         const rect = canvas.getBoundingClientRect()
@@ -126,6 +134,19 @@ export const ClashGame = ({ isOpen, onClose }) => {
         const clickX = (clientX - rect.left) * scaleX
         const clickY = (clientY - rect.top) * scaleY
 
+        // Canvas boundary check
+        if (clickX < 25 || clickX > 675 || clickY < 25 || clickY > 435) return
+
+        // Check distance from Town Hall (keep inner perimeter safe)
+        const distTH = Math.hypot(clickX - gameRef.current.townHall.x, clickY - gameRef.current.townHall.y)
+        if (distTH < 50) return // Too close to Town Hall
+
+        // Distance to existing defenses (prevent overlapping towers)
+        const tooClose = gameRef.current.defenses.some(
+            (d) => Math.hypot(clickX - d.x, clickY - d.y) < 36
+        )
+        if (tooClose) return
+
         // Costs
         const costs = {
             cannon: { gold: 100, elixir: 0, damage: 35, range: 130, fireRate: 900 },
@@ -134,24 +155,24 @@ export const ClashGame = ({ isOpen, onClose }) => {
         }
 
         const cost = costs[selectedDefense]
-        if (gold >= cost.gold && elixir >= cost.elixir) {
-            // Check distance from Town Hall
-            const distTH = Math.hypot(clickX - gameRef.current.townHall.x, clickY - gameRef.current.townHall.y)
-            if (distTH < 45) return // Too close to Town Hall
+        if (!cost || gold < cost.gold || elixir < cost.elixir) return
 
-            setGold((g) => g - cost.gold)
-            setElixir((el) => el - cost.elixir)
+        setGold((g) => g - cost.gold)
+        setElixir((el) => el - cost.elixir)
 
-            gameRef.current.defenses.push({
-                type: selectedDefense,
-                x: clickX,
-                y: clickY,
-                range: cost.range,
-                damage: cost.damage,
-                fireRate: cost.fireRate,
-                lastFired: 0,
-                level: 1,
-            })
+        gameRef.current.defenses.push({
+            type: selectedDefense,
+            x: clickX,
+            y: clickY,
+            range: cost.range,
+            damage: cost.damage,
+            fireRate: cost.fireRate,
+            lastFired: 0,
+            level: 1,
+        })
+
+        // Debounce subsequent placements to prevent rapid double-clicks
+        clickCooldownRef.current = Date.now() + 200
 
             // Spawn placement spark particles
             for (let i = 0; i < 12; i++) {
@@ -165,7 +186,6 @@ export const ClashGame = ({ isOpen, onClose }) => {
                 })
             }
             if (soundEnabled) playSound('arrow')
-        }
     }
 
     // 60s Timer & Resource Generation
@@ -624,9 +644,8 @@ export const ClashGame = ({ isOpen, onClose }) => {
                         ref={canvasRef}
                         width={700}
                         height={460}
-                        onClick={handleCanvasClick}
-                        onTouchStart={handleCanvasClick}
-                        className="cursor-crosshair w-full max-w-[700px] h-[min(55vh,460px)] object-contain shadow-inner touch-none"
+                        onPointerDown={handleCanvasClick}
+                        className="cursor-crosshair w-full max-w-[700px] h-[min(55vh,460px)] object-contain shadow-inner touch-none select-none"
                     />
 
                     {/* Victory Screen */}

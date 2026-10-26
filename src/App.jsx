@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Features from './components/Features'
 import HackerRoom from './components/HackerRoom'
+import CyberTerminal from './components/CyberTerminal'
 import Certificates from './components/Certificates'
 import Reviews from './components/Reviews'
 import Story from './components/Story'
@@ -39,6 +40,9 @@ const App = () => {
 
       {/* 3D Hacker Room & Real-Time Three.js Metaverse Telemetry */}
       <HackerRoom />
+
+      {/* Cyber Interactive Terminal with 15 Projects & System Capabilities */}
+      <CyberTerminal />
 
       {/* Certifications & Lifelong Learning 3D Flashcards */}
       <Certificates />

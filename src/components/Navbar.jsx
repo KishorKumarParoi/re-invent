@@ -11,6 +11,7 @@ const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
     { name: '3D Metaverse', href: '#hacker-room' },
+    { name: 'Terminal', href: '#terminal' },
     { name: 'Certifications', href: '#certifications' },
     { name: 'Reviews', href: '#reviews' },
     { name: 'Contact', href: '#contact' },

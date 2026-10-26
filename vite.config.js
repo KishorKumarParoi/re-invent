@@ -13,6 +13,9 @@ export default defineConfig({
           if (id.includes("gsap")) {
             return "gsap";
           }
+          if (id.includes("node_modules/three")) {
+            return "three";
+          }
           if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
             return "react-vendor";
           }
