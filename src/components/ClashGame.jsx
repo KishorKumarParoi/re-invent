@@ -572,12 +572,12 @@ export const ClashGame = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Defense Selection Bar */}
-                <div className="flex items-center justify-between px-6 py-2 bg-black/60 border-b border-white/10 text-xs">
-                    <span className="text-gray-400 font-semibold">Select & Click Map to Deploy:</span>
-                    <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center justify-between gap-2 px-3 sm:px-6 py-2 bg-black/60 border-b border-white/10 text-xs">
+                    <span className="text-gray-400 font-semibold text-[11px] sm:text-xs">Select &amp; Tap Map to Deploy:</span>
+                    <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto py-0.5">
                         <button
                             onClick={() => setSelectedDefense('cannon')}
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition cursor-pointer ${
+                            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs transition cursor-pointer whitespace-nowrap ${
                                 selectedDefense === 'cannon'
                                     ? 'bg-amber-500/30 border-amber-400 text-amber-300 font-bold shadow-md shadow-amber-500/20'
                                     : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
@@ -589,30 +589,30 @@ export const ClashGame = ({ isOpen, onClose }) => {
 
                         <button
                             onClick={() => setSelectedDefense('archer')}
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition cursor-pointer ${
+                            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs transition cursor-pointer whitespace-nowrap ${
                                 selectedDefense === 'archer'
                                     ? 'bg-emerald-500/30 border-emerald-400 text-emerald-300 font-bold shadow-md shadow-emerald-500/20'
                                     : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
                             }`}
                         >
-                            <span>🏹 Archer Tower</span>
+                            <span>🏹 Archer</span>
                             <span className="text-[10px] text-emerald-400">75g 50e</span>
                         </button>
 
                         <button
                             onClick={() => setSelectedDefense('wizard')}
-                            className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition cursor-pointer ${
+                            className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl border text-[11px] sm:text-xs transition cursor-pointer whitespace-nowrap ${
                                 selectedDefense === 'wizard'
                                     ? 'bg-purple-500/30 border-purple-400 text-purple-300 font-bold shadow-md shadow-purple-500/20'
                                     : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
                             }`}
                         >
-                            <span>⚡ Wizard Tower</span>
+                            <span>⚡ Wizard</span>
                             <span className="text-[10px] text-purple-400">150g 100e</span>
                         </button>
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-gray-400 text-[11px]">
+                    <div className="flex items-center gap-1 text-gray-400 text-[11px]">
                         <span>Wave:</span>
                         <span className="text-amber-400 font-bold font-mono">#{wave}</span>
                     </div>

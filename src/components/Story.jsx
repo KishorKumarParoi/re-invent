@@ -11,6 +11,7 @@ const Story = () => {
 
     // Ultra-smooth zero-lag tilt using direct CSS transforms & requestAnimationFrame
     const handleMouseMove = (e) => {
+        if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return
         if (rafIdRef.current) return
 
         rafIdRef.current = requestAnimationFrame(() => {

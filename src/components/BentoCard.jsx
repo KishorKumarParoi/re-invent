@@ -46,6 +46,7 @@ export const BentoTilt = ({ children, className = '' }) => {
 
     const handleMouseMove = (e) => {
         if (!itemRef.current) return
+        if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return
 
         const { left, top, width, height } = itemRef.current.getBoundingClientRect()
 
