@@ -183,6 +183,18 @@ export const ProjectRobot = ({ onSelectProject }) => {
                         {currentInsight.quote}
                     </p>
 
+                    {currentInsight.projectId === 'nexus' && (
+                        <div className="mb-4">
+                            <button
+                                onClick={() => window.dispatchEvent(new CustomEvent('open-nexus-chat'))}
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-linear-to-r from-cyan-400 via-teal-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black text-xs font-extrabold shadow-lg shadow-cyan-500/30 transition cursor-pointer hover:scale-105 animate-pulse"
+                            >
+                                <Bot className="size-3.5" />
+                                <span>Chat with Nexus Agent (Full Screen)</span>
+                            </button>
+                        </div>
+                    )}
+
                     {/* Navigation Controls */}
                     <div className="flex items-center justify-between pt-3 border-t border-white/5">
                         <div className="flex items-center gap-1">

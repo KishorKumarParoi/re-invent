@@ -4,8 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import BentoCard, { BentoTilt } from './BentoCard'
 import ProjectModal from './ProjectModal'
 import ProjectRobot from './ProjectRobot'
+import NexusChatModal from './NexusChatModal'
 import { TiLocationArrow } from 'react-icons/ti'
-import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio, Zap, RotateCw, LayoutGrid } from 'lucide-react'
+import { Layers, Terminal, Sparkles, ExternalLink, ArrowRight, CheckCircle2, Copy, Check, Cpu, ShieldAlert, Database, Video, Award, Radio, Zap, RotateCw, LayoutGrid, Bot } from 'lucide-react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -262,9 +263,16 @@ const Features = () => {
     const descRef = useRef(null)
     const containerRef = useRef(null)
     const [selectedProject, setSelectedProject] = useState(null)
+    const [isNexusChatOpen, setIsNexusChatOpen] = useState(false)
     const [copiedId, setCopiedId] = useState(null)
     const [viewMode, setViewMode] = useState('flashcards')
     const [flippedCards, setFlippedCards] = useState({})
+
+    useEffect(() => {
+        const handleOpenNexusChat = () => setIsNexusChatOpen(true)
+        window.addEventListener('open-nexus-chat', handleOpenNexusChat)
+        return () => window.removeEventListener('open-nexus-chat', handleOpenNexusChat)
+    }, [])
 
     const toggleCard = (id) => {
         setFlippedCards((prev) => ({
@@ -326,6 +334,9 @@ const Features = () => {
         <section id='projects' className='pb-40'>
             {/* Fullscreen Architecture & Spec Modal */}
             <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+
+            {/* Full Screen Nexus AI Agent Conversational Cockpit */}
+            <NexusChatModal isOpen={isNexusChatOpen} onClose={() => setIsNexusChatOpen(false)} />
 
             <div className='container mx-auto px-3 md:px-10'>
                 <div ref={containerRef} className='px-5 py-24'>
@@ -827,13 +838,23 @@ const Features = () => {
                             href='https://github.com/KishorKumarParoi/Nexus_AI'
                             linkLabel='GitHub Repo ↗'
                         />
-                        <button
-                            onClick={() => setSelectedProject(FEATURE_PROJECTS.nexus)}
-                            className='absolute top-5 right-5 z-20 flex items-center gap-1 text-xs font-semibold bg-black/60 hover:bg-black/90 text-cyan-300 border border-cyan-400/40 px-3 py-1 rounded-full backdrop-blur-md transition cursor-pointer hover:scale-105'
-                        >
-                            <Layers className='size-3.5' />
-                            <span>Architecture</span>
-                        </button>
+                        <div className='absolute top-4 right-4 z-20 flex flex-wrap items-center justify-end gap-2'>
+                            <button
+                                onClick={() => setIsNexusChatOpen(true)}
+                                className='flex items-center gap-1.5 text-xs font-bold bg-linear-to-r from-cyan-400 via-teal-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black px-3.5 py-1.5 rounded-full shadow-lg shadow-cyan-500/40 backdrop-blur-md transition cursor-pointer hover:scale-105 animate-pulse'
+                                title='Chat with Nexus Agent in Full Screen'
+                            >
+                                <Bot className='size-3.5' />
+                                <span>Chat with Agent</span>
+                            </button>
+                            <button
+                                onClick={() => setSelectedProject(FEATURE_PROJECTS.nexus)}
+                                className='flex items-center gap-1 text-xs font-semibold bg-black/70 hover:bg-black/90 text-cyan-300 border border-cyan-400/40 px-3 py-1.5 rounded-full backdrop-blur-md transition cursor-pointer hover:scale-105'
+                            >
+                                <Layers className='size-3.5' />
+                                <span>Architecture</span>
+                            </button>
+                        </div>
                     </BentoTilt>
 
                     {/* Project 7: Autonomous AI Chatbot */}

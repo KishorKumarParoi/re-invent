@@ -1,5 +1,5 @@
 import React from 'react'
-import { X, ExternalLink, Code, Layers, ShieldCheck, Zap, GitBranch, Terminal, CheckCircle2 } from 'lucide-react'
+import { X, ExternalLink, Code, Layers, ShieldCheck, Zap, GitBranch, Terminal, CheckCircle2, Bot } from 'lucide-react'
 
 const ProjectModal = ({ project, onClose }) => {
     if (!project) return null
@@ -87,6 +87,18 @@ const ProjectModal = ({ project, onClose }) => {
                 {/* Documentation Suite Links */}
                 <div className='mt-auto pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-3'>
                     <div className='flex flex-wrap items-center gap-2'>
+                        {project.id === 'nexus' && (
+                            <button
+                                onClick={() => {
+                                    onClose()
+                                    window.dispatchEvent(new CustomEvent('open-nexus-chat'))
+                                }}
+                                className='flex items-center gap-1.5 bg-linear-to-r from-cyan-400 via-teal-300 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-black px-4 py-2 rounded-xl text-xs font-extrabold shadow-lg shadow-cyan-500/40 transition cursor-pointer hover:scale-105'
+                            >
+                                <Bot className='size-3.5' />
+                                <span>Chat with Nexus Agent (Full Screen)</span>
+                            </button>
+                        )}
                         {project.repoUrl && (
                             <a
                                 href={project.repoUrl}
