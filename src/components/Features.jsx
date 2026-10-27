@@ -239,7 +239,7 @@ const FEATURE_PROJECTS = {
         repoUrl: 'https://github.com/KishorKumarParoi/Koom-AI',
         archUrl: 'https://github.com/KishorKumarParoi/Koom-AI/blob/main/ARCHITECTURE.md',
         docsImagesUrl: 'https://github.com/KishorKumarParoi/Koom-AI/tree/main/docs/images',
-        deployCommand: 'https://koom-ai.vercel.app',
+        deployCommand: 'https://koom.kishor.tech',
     },
 }
 
@@ -808,7 +808,7 @@ const Features = () => {
                             {/* Bottom Buttons */}
                             <div className='relative z-10 flex items-center justify-between pt-3 border-t border-white/10'>
                                 <a
-                                    href='https://koom-ai.vercel.app'
+                                    href='https://koom.kishor.tech'
                                     target='_blank'
                                     rel='noopener noreferrer'
                                     className='inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-linear-to-r from-cyan-400 to-blue-500 text-black text-xs font-black uppercase tracking-wider hover:scale-105 transition-all shadow-lg shadow-cyan-500/30'

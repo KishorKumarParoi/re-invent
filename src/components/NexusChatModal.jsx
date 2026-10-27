@@ -36,7 +36,7 @@ const NEXUS_KNOWLEDGE = [
 • **15 Enterprise Architectures:** Production-grade Multi-Agent Meshes, Medallion Lakehouses, Real-Time MLOps, and Low-Latency SIMD Engines.
 • **Key Achievements:** Cut warehouse compute by 42% ($18,000/mo saved on 35M+ orders), accelerated scoring by 50x (<0.5ms via Rust 1.85 SIMD), curtailed CI/CD releases by 96% (4h to 8m).
 • **Education & CP:** B.Sc. in CSE from RUET (Bangladesh Rank 483rd), Codeforces Div-2 Rank 232 (Blue Coder), 2000+ DSA problems solved.
-• **Founder @ KoomAI:** Low-latency WebRTC (<120ms) screen recorder generating $24K MRR.`,
+• **Founder @ KoomAI:** Sub-120ms WebRTC 60 FPS video pipeline, 20-agent LangGraph mesh (<35ms p99), NotebookLLM studio, MV3 Pomodoro extension, and Stripe client invoicing ($24K MRR).`,
     },
     {
         id: 'cicd',

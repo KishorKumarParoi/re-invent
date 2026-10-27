@@ -336,7 +336,7 @@ const Contact = () => {
                                             <span>FOUNDER &amp; ARCHITECT @ KOOM-AI:</span>
                                         </div>
                                         <a
-                                            href="https://koom-ai.vercel.app/"
+                                            href="https://koom.kishor.tech/"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-emerald-400 hover:underline flex items-center gap-1 text-[11px]"
@@ -349,7 +349,7 @@ const Contact = () => {
                                         Next-generation multi-agent automation platform designed to orchestrate self-healing data workflows, model context protocol (FastMCP) integrations, and enterprise AI copilots with sub-second execution guarantees.
                                     </p>
                                     <div className="flex flex-wrap gap-2 pt-1 text-[10px]">
-                                        <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/40 text-cyan-300">Live: koom-ai.vercel.app</span>
+                                        <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/40 text-cyan-300">Live: koom.kishor.tech</span>
                                         <span className="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/40 text-emerald-300">FastMCP Tools</span>
                                         <span className="px-2 py-0.5 rounded bg-purple-950/80 border border-purple-800/40 text-purple-300">Autonomous Mesh</span>
                                     </div>
@@ -563,7 +563,7 @@ const Contact = () => {
                         </a>
 
                         <a
-                            href="https://koom-ai.vercel.app/"
+                            href="https://koom.kishor.tech/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-1.5 text-emerald-300 hover:text-white transition hover:scale-110"

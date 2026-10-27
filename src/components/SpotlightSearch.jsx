@@ -71,7 +71,7 @@ const SEARCH_ITEMS = [
         category: 'Flagship Projects',
         title: 'KoomAI — Autonomous Video Recording & Transcription Platform',
         subtitle: 'WebRTC low-latency engine (<120ms), Electron client, MV3 Chrome extension, Next.js 16',
-        url: 'https://koom-ai.vercel.app/',
+        url: 'https://koom.kishor.tech/',
         archUrl: 'https://github.com/KishorKumarParoi/Koom-AI/blob/main/ARCHITECTURE.md',
         badge: 'Founder / Live',
     },

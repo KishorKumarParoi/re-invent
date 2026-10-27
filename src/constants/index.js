@@ -1039,7 +1039,7 @@ const WORK_LOCATION = {
             "Developed Manifest V3 Chrome Extension with offscreen documents for synchronized tab/mic mixing (10K+ user recordings).",
             "Built Next.js 16 App Router cockpit with AWS S3 multipart uploads cutting video storage expenses by 62%.",
             "Integrated Stripe billing engine generating $24K MRR in pilot enterprise adoption.",
-            "🚀 Live Platform: https://koom-ai.vercel.app",
+            "🚀 Live Platform: https://koom.kishor.tech",
           ],
         },
         {
@@ -1105,7 +1105,7 @@ const WORK_LOCATION = {
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://koom-ai.vercel.app/",
+          href: "https://koom.kishor.tech/",
           position: "top-56 left-48",
         },
       ],

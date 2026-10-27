@@ -597,7 +597,7 @@ const About = () => {
                     </p>
 
                     <p>
-                        {splitIntoWords('Founder of')} <span className='inline-block mr-1'><a href='https://koom-ai.vercel.app' target='_blank' rel='noopener noreferrer' className='text-cyan-400 font-bold hover:underline'>Koom-AI</a></span> {splitIntoWords('(autonomous screen recording & transcription cockpit), former Forward Deployment Engineer at')} <span className='inline-block mr-1'><b className='font-bold text-blue-400'>phi0.ai</b></span> {splitIntoWords('(San Francisco), and ML Systems Engineer at')} <span className='inline-block mr-1'><b className='text-emerald-400 font-bold'>Samsung AI Core</b></span> {splitIntoWords('and')} <span className='inline-block mr-1'><b className='text-purple-400 font-bold'>QuantAI</b></span>.
+                        {splitIntoWords('Founder of')} <span className='inline-block mr-1'><a href='https://koom.kishor.tech' target='_blank' rel='noopener noreferrer' className='text-cyan-400 font-bold hover:underline'>Koom-AI</a></span> {splitIntoWords('(autonomous screen recording & transcription cockpit), former Forward Deployment Engineer at')} <span className='inline-block mr-1'><b className='font-bold text-blue-400'>phi0.ai</b></span> {splitIntoWords('(San Francisco), and ML Systems Engineer at')} <span className='inline-block mr-1'><b className='text-emerald-400 font-bold'>Samsung AI Core</b></span> {splitIntoWords('and')} <span className='inline-block mr-1'><b className='text-purple-400 font-bold'>QuantAI</b></span>.
                     </p>
 
                     {/* Resume Download CTAs */}

@@ -93,7 +93,7 @@ const Footer = () => {
                                 <span>KISHOR KUMAR PAROI (kkp_007)</span>
                             </div>
                             <p className="text-xs text-gray-400 font-sans">
-                                Principal AI Systems Architect • Founder @ <a href="https://koom-ai.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline font-semibold">KoomAI</a> • Creator @ <a href="https://kishor.tech" target="_blank" rel="noopener noreferrer" className="text-emerald-300 hover:underline font-semibold">kishor.tech (macOS OS)</a> • B.Sc. CSE @ RUET (Rank 483rd)
+                                Principal AI Systems Architect • Founder @ <a href="https://koom.kishor.tech/" target="_blank" rel="noopener noreferrer" className="text-cyan-300 hover:underline font-semibold">KoomAI</a> • Creator @ <a href="https://kishor.tech" target="_blank" rel="noopener noreferrer" className="text-emerald-300 hover:underline font-semibold">kishor.tech (macOS OS)</a> • B.Sc. CSE @ RUET (Rank 483rd)
                             </p>
                         </div>
 
