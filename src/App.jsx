@@ -7,6 +7,7 @@ import { inject } from '@vercel/analytics'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import Features from './components/Features'
+import JourneySection from './components/JourneySection'
 import HackerRoom from './components/HackerRoom'
 import CyberTerminal from './components/CyberTerminal'
 import Certificates from './components/Certificates'
@@ -37,6 +38,9 @@ const App = () => {
 
       {/* Technical Projects & Flagship Architectures from RESUME_SINGLE_COLUMN.pdf */}
       <Features />
+
+      {/* AI Engineering Learning Journey: 38-Module Enterprise Curriculum */}
+      <JourneySection />
 
       {/* 3D Hacker Room & Real-Time Three.js Metaverse Telemetry */}
       <HackerRoom />

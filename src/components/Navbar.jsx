@@ -10,6 +10,7 @@ import { Maximize2, Minimize2, Search, Download, ChevronDown, Gamepad2, Sparkles
 const navItems = [
     { name: 'About', href: '#about' },
     { name: 'Projects', href: '#projects' },
+    { name: 'AI Journey', href: '#journey' },
     { name: '3D Metaverse', href: '#hacker-room' },
     { name: 'Terminal', href: '#terminal' },
     { name: 'Certifications', href: '#certifications' },
