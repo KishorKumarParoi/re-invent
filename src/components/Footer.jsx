@@ -11,15 +11,26 @@ import {
     FaFacebook,
     FaInstagram,
     FaWhatsapp,
-    FaApple
+    FaApple,
+    FaGlobe
 } from 'react-icons/fa';
 import { Sparkles, Terminal, Shield, ArrowUp, Coffee } from 'lucide-react'
 
 const socialLinks = [
     {
         href: "https://kishor.tech",
+        icon: <FaGlobe />,
+        label: "kishor.tech (Main Portfolio)"
+    },
+    {
+        href: "https://macos.kishor.tech",
         icon: <FaApple />,
-        label: "kishor.tech (macOS Portfolio)"
+        label: "macos.kishor.tech (macOS Portfolio)"
+    },
+    {
+        href: "https://hacker.kishor.tech",
+        icon: <Terminal className="size-4" />,
+        label: "hacker.kishor.tech (3D Hacker Cockpit)"
     },
     {
         href: "https://linkedin.com/in/kishor-kumar-paroi-b06344166",
