@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
   :root {
     --burgundy: #641c26;
@@ -123,10 +123,10 @@
 </head>
 <body>
   <div class="toolbar">
-    <div class="toolbar-title"><i class="fa-solid fa-graduation-cap" style="color: var(--burgundy); margin-right: 6px;"></i><strong>ATS Resume (IIT Style)</strong></div>
+    <div class="toolbar-title"><span style="color: var(--burgundy); margin-right: 6px;">🎓</span><strong>ATS Resume (IIT Style)</strong></div>
     <div class="toolbar-actions">
-      <button class="btn btn-edit" id="toggle-edit-btn" onclick="toggleEdit()"><i class="fa-solid fa-pen-to-square"></i> <span id="edit-text">Enable Live Edit</span></button>
-      <button class="btn btn-print" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> Print to PDF</button>
+      <button class="btn btn-edit" id="toggle-edit-btn" onclick="toggleEdit()"><span id="edit-text">Enable Live Edit</span></button>
+      <button class="btn btn-print" onclick="window.print()">Print to PDF</button>
     </div>
   </div>
   <div class="page" id="resume-container">
@@ -137,18 +137,19 @@
         <div class="sub-title">AI Systems Architect | (Dev/ML/LLM/AI)Ops | Founder@KoomAI | FDE(LangGraph, Kubernetes, Kubeflow, GCP, Hybrid RAG<35ms, Agent Mesh, AI Security) | vLLM, Finetune | Data Engineer(Azure, AWS, Databricks, Snowflake) | Rust SIMD</div>
         <div class="degree-info"><strong>Founder @ KoomAI</strong> (<a href="https://koom.kishor.tech/" target="_blank" style="color: var(--burgundy); font-weight: 700; text-decoration: none;"><strong>Live: koom.kishor.tech</a></strong> | <a href="https://github.com/KishorKumarParoi/Koom-AI" target="_blank" style="color: var(--burgundy); font-weight: 700; text-decoration: none;">GitHub</a>) &nbsp;•&nbsp; B.Sc. in CSE @ RUET &nbsp;•&nbsp; Dhaka, Bangladesh / Global Remote</div>
         <div class="contact-bar">
-          <i class="fa-regular fa-envelope"></i> <a href="mailto:1703053@student.ruet.ac.bd">1703053@student.ruet.ac.bd</a> &nbsp;|&nbsp; <a href="mailto:kishor.ruet.cse@gmail.com">kishor.ruet.cse@gmail.com</a> &nbsp;|&nbsp;
-          <a href="https://wa.me/8801724714156" target="_blank"><i class="fa-brands fa-whatsapp" style="color: #25d366;"></i> +880 1724-714156</a> &nbsp;|&nbsp;
-          <a href="https://koom.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);"><i class="fa-solid fa-play"></i> koom.kishor.tech</a> &nbsp;|&nbsp;
-          <a href="https://vantage.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);"><i class="fa-solid fa-graduation-cap"></i> vantage.kishor.tech</a> &nbsp;|&nbsp;
-          <a href="https://kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);"><i class="fa-solid fa-laptop-code"></i> kishor.tech (macOS)</a> &nbsp;|&nbsp;
-          <a href="https://3d.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);"><i class="fa-solid fa-cube"></i> 3d.kishor.tech (3D)</a> &nbsp;|&nbsp;
-          <a href="https://linkedin.com/in/kishor-kumar-paroi-b06344166" target="_blank"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/kishor-kumar-paroi-b06344166</a> &nbsp;|&nbsp;
-          <a href="https://github.com/KishorKumarParoi" target="_blank"><i class="fa-brands fa-github"></i> github.com/KishorKumarParoi</a> &nbsp;|&nbsp;
-          <a href="https://x.com/Mr_paroi" target="_blank"><i class="fa-brands fa-x-twitter"></i> x.com/Mr_paroi</a>
+          <a href="mailto:1703053@student.ruet.ac.bd">1703053@student.ruet.ac.bd</a> &nbsp;|&nbsp; <a href="mailto:kishor.ruet.cse@gmail.com">kishor.ruet.cse@gmail.com</a> &nbsp;|&nbsp;
+          <a href="https://wa.me/8801724714156" target="_blank">+880 1724-714156 (WhatsApp)</a> &nbsp;|&nbsp;
+          <a href="https://koom.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);">koom.kishor.tech</a> &nbsp;|&nbsp;
+          <a href="https://vantage.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);">vantage.kishor.tech</a> &nbsp;|&nbsp;
+          <a href="https://kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);">kishor.tech (macOS)</a> &nbsp;|&nbsp;
+          <a href="https://3d.kishor.tech/" target="_blank" style="font-weight: 700; color: var(--burgundy);">3d.kishor.tech (3D)</a> &nbsp;|&nbsp;
+          <a href="https://linkedin.com/in/kishor-kumar-paroi-b06344166" target="_blank">linkedin.com/in/kishor-kumar-paroi-b06344166</a> &nbsp;|&nbsp;
+          <a href="https://github.com/KishorKumarParoi" target="_blank">github.com/KishorKumarParoi</a> &nbsp;|&nbsp;
+          <a href="https://x.com/Mr_paroi" target="_blank">x.com/Mr_paroi</a>
         </div>
       </div>
     </header>
+    <div class="section-title" style="margin-top: 1.5px; margin-bottom: 0.8px;"><span>Education</span></div>
     <table class="education-table">
       <thead><tr><th style="width: 12%;">Year</th><th style="width: 32%;">Degree / Certificate</th><th style="width: 28%;">Institute / Board</th><th style="width: 14%;" class="cpi">CPI / Marks</th><th style="width: 14%;" class="cpi">Merit Rank</th></tr></thead>
       <tbody>
@@ -165,25 +166,25 @@
         <div class="item-block">
           <div class="item-header">
             <span class="item-title">phi0.ai</span>
-            <span class="item-date">Jul'26 -- Oct'26</span>
+            <span class="item-date">July 2026 – Oct 2026</span>
           </div>
           <div class="item-subtitle">Forward Deployed AI Engineer (Production RAG, GenAI & MLOps, Europe | Remote)</div>
           <ul class="compact-list">
             <li>Orchestrated forward deployment of <strong>5 concurrent autonomous AI agents</strong> executing multi-step tools via <strong>LangGraph</strong>; attained <strong>99.4% task completion</strong>, accelerating client onboarding by <strong>4x</strong>.</li>
-<li>Devised high-throughput <strong>Hybrid RAG</strong> with HNSW, BM25, and multi-stage re-ranking (<strong>FlashRank + Cohere v3.5</strong>) under <strong><35ms semantic cache</strong>; curtailed hallucinations by <strong>46%</strong> and saved <strong>$18K/mo</strong>.</li>
-<li>Codified continuous <strong>MLOps & GenAI flywheel</strong> with NeMo Guardrails and Canary K8s deployments; spearheaded enterprise AI transformation, securing <strong>$1.4M in client contracts</strong>.</li>
+<li>Devised high-throughput <strong>Hybrid RAG</strong> with HNSW, BM25, and multi-stage re-ranking (<strong>FlashRank + Cohere v3.5</strong>) under <strong>&lt;35ms semantic cache</strong>; curtailed hallucinations by <strong>46%</strong> and saved <strong>$18K/mo</strong>.</li>
+<li>Codified continuous <strong>MLOps &amp; GenAI flywheel</strong> with NeMo Guardrails and Canary K8s deployments; spearheaded enterprise AI transformation, securing <strong>$1.4M in client contracts</strong>.</li>
           </ul>
         </div>
         
         <div class="item-block">
           <div class="item-header">
             <span class="item-title">Samsung AI Core / Care Health</span>
-            <span class="item-date">Mar'26 -- Jun'26</span>
+            <span class="item-date">March 2026 – June 2026</span>
           </div>
           <div class="item-subtitle">Data Engineering & AI Systems Intern</div>
           <ul class="compact-list">
             <li>Formulated batch & streaming pipelines via <strong>AWS S3, EMR, Athena, PySpark</strong>; slashed operational compute overhead by <strong>$4.2K/run (34% savings)</strong> through asynchronous event-driven Lambda/SQS dispatch.</li>
-<li>Accelerated 8B/70B model inference on H100 GPUs via <strong>FlashAttention-2</strong> and fused kernels; delivered <strong>3.8x throughput</strong> on >32K context windows, mitigating p99 latency by <strong>54%</strong>.</li>
+<li>Accelerated 8B/70B model inference on H100 GPUs via <strong>FlashAttention-2</strong> and fused kernels; delivered <strong>3.8x throughput</strong> on &gt;32K context windows, mitigating p99 latency by <strong>54%</strong>.</li>
 <li>Deployed real-time health insurance claim fraud detection pipeline over <strong>AWS Kinesis and OpenTelemetry</strong>; eradicated false-positive claim investigations by <strong>52%</strong>, preserving <strong>$380K annually</strong>.</li>
           </ul>
         </div>
@@ -191,19 +192,19 @@
         <div class="item-block">
           <div class="item-header">
             <span class="item-title">Independent AI Specialization & Sabbatical</span>
-            <span class="item-date">Oct'25 -- Feb'26</span>
+            <span class="item-date">Oct 2025 – Feb 2026</span>
           </div>
           <div class="item-subtitle">Full-Time Technical Deep Dive: Math, ML/DL, GenAI, Big Data & MLOps</div>
           <ul class="compact-list">
-            <li>Rigorous hands-on mastery in <strong>Linear Algebra</strong> (SVD, PCA), <strong>Calculus</strong>, and core ML; handcrafted Transformers, Self-Attention, and CNNs from first principles in <strong>PyTorch</strong>.</li>
-<li>Devised <strong>Hybrid RAG</strong>, <strong>LangGraph agents</strong>, <strong>Big Data Lakehouses</strong> (PySpark Delta Lake, Snowflake, Kafka streams, dbt Core), and MLOps flywheels (<strong>MLflow, Feast, K8s</strong>).</li>
+            <li>Mastered advanced <strong>Linear Algebra</strong> (SVD, PCA), <strong>Calculus</strong>, and core ML; architected Transformers, Self-Attention, and CNNs from first principles in <strong>PyTorch</strong>.</li>
+<li>Pioneered <strong>Hybrid RAG</strong>, <strong>LangGraph agents</strong>, <strong>Big Data Lakehouses</strong> (PySpark Delta Lake, Snowflake, Kafka streams, dbt Core), and MLOps flywheels (<strong>MLflow, Feast, K8s</strong>).</li>
           </ul>
         </div>
         
         <div class="item-block">
           <div class="item-header">
             <span class="item-title">kepi.ai</span>
-            <span class="item-date">Jan'22 -- Sep'25</span>
+            <span class="item-date">Jan 2022 – Sept 2025</span>
           </div>
           <div class="item-subtitle">Senior Full Stack Engineer (3 yrs 9 mos, Remote)</div>
           <ul class="compact-list">
@@ -221,17 +222,17 @@
         <div class="item-block">
           <div class="item-header">
             <span class="item-title">KoomAI — Enterprise Asynchronous Video Intelligence Platform</span>
-            <span class="item-date">Jan'25 -- Dec'25</span>
+            <span class="item-date">Jan 2025 – Dec 2025</span>
           </div>
-          <div class="item-subtitle">Founder & Principal Architect  |  Orchestrating Desktop, Chrome Extension, Backend & Full-Stack Next.js with AWS, CDN</div>
+          <div class="item-subtitle">Founder &amp; Principal Architect  |  Orchestrating Desktop, Chrome Extension, Backend &amp; Full-Stack Next.js with AWS, CDN</div>
           <div class="item-links" style="margin: 0.4px 0 1.2px 0; display: flex; flex-wrap: wrap; gap: 2px; align-items: center;">
-             <a href="https://koom.kishor.tech/" target="_blank" title="Full-Stack Next.js App" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;"><i class="fa-brands fa-github"></i> Next.js</a> <a href="https://github.com/KishorKumarParoi/Koom-AI" target="_blank" title="Full-Stack Next.js App" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;"><i class="fa-brands fa-github"></i> Next.js</a> <a href="https://github.com/KishorKumarParoi/Koom-ai-desktop" target="_blank" title="Desktop Client (Electron)" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;"><i class="fa-solid fa-desktop"></i> Desktop</a> <a href="https://github.com/KishorKumarParoi/Koom-AI-Chrome-Extension" target="_blank" title="Chrome Extension (Manifest V3)" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;"><i class="fa-brands fa-chrome"></i> Extension</a> <a href="https://github.com/KishorKumarParoi/koom-ai-express" target="_blank" title="Express API Backend" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;"><i class="fa-solid fa-server"></i> Backend</a>
+             <a href="https://koom.kishor.tech/" target="_blank" title="Full-Stack Next.js App" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;">Next.js</a> <a href="https://github.com/KishorKumarParoi/Koom-ai-desktop" target="_blank" title="Desktop Client (Electron)" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;">Desktop</a> <a href="https://github.com/KishorKumarParoi/Koom-AI-Chrome-Extension" target="_blank" title="Chrome Extension (Manifest V3)" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;">Extension</a> <a href="https://github.com/KishorKumarParoi/koom-ai-express" target="_blank" title="Express API Backend" style="color: #641C26; text-decoration: none; font-size: 5.5pt; font-weight: 600; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.2px;">Backend</a>
           </div>
           <ul class="compact-list">
-            <li><strong>WebRTC 60 FPS Engine & Desktop Client:</strong> Sub-120ms real-time WebRTC media pipeline and Electron desktop client with native NVENC encoding; sustained 60 FPS 1080p across <strong>50K+ active video minutes</strong> (-45% CPU).</li>
-<li><strong>Autonomous 20-Agent Mesh & Video Chat Copilot:</strong> Deployed 20 concurrent <strong>LangGraph</strong> agents (<strong><35ms p99</strong>) and interactive video copilot generating 1-click GitHub PRs, Jira user stories, and Playwright tests.</li>
-<li><strong>NotebookLLM Studio & AI Job Recon:</strong> Engineered conversational two-host audio podcast studio, system design interview drills, and automated <strong>ai-job-search</strong> Trojan Horse proposals with tailored ATS CVs.</li>
-<li><strong>Pomodoro Chrome MV3 & Client Invoicing:</strong> Built screen recorder with <strong>Pomodoro focus sprints</strong> and 432Hz meditation audio; coupled video deliverables with instant <strong>Stripe client invoicing</strong> ($24K MRR).</li>
+            <li><strong>WebRTC 60 FPS Engine &amp; Desktop Client:</strong> Devised sub-120ms real-time WebRTC media pipeline and Electron desktop client with native NVENC encoding; sustained 60 FPS 1080p across <strong>50K+ active video minutes</strong> (-45% CPU).</li>
+<li><strong>Autonomous 20-Agent Mesh &amp; Video Chat Copilot:</strong> Deployed 20 concurrent <strong>LangGraph</strong> agents (<strong>&lt;35ms p99</strong>) and interactive video copilot generating 1-click GitHub PRs, Jira user stories, and Playwright tests.</li>
+<li><strong>NotebookLLM Studio &amp; AI Job Recon:</strong> Architected conversational two-host audio podcast studio, system design interview drills, and automated <strong>ai-job-search</strong> Trojan Horse proposals with tailored ATS CVs.</li>
+<li><strong>Pomodoro Chrome MV3 &amp; Client Invoicing:</strong> Engineered screen recorder with <strong>Pomodoro focus sprints</strong> and 432Hz meditation audio; coupled video deliverables with instant <strong>Stripe client invoicing</strong> ($24K MRR).</li>
           </ul>
         </div>
         
@@ -240,9 +241,9 @@
         <section style="margin-top: 3.0px;">
           <div class="section-title">Achievements &amp; Hackathons</div>
           <ul class="compact-list">
-            <li><strong>Competitive Programming & DSA:</strong> <strong>Ranked 232nd</strong> in Codeforces Div-2 (<strong>Blue Coder</strong>), <strong>5<i class="fa-solid fa-star" style="font-size: 5.5pt; color: #641C26; vertical-align: 0.5px;"></i></strong> in CodeChef, <strong>17th in IUPC</strong>; Qualified <strong>Meta Hacker Cup R3</strong>; 2000+ DSA, participated system design hackathon.</li>
-<li><strong>Champion | Technobeast AI Agents Hackathon:</strong> Engineered Qdrant vector optimization with negative embeddings and trajectory matching.</li>
-<li><strong>7th Rank | AI Security Hackathon:</strong> Ranked in top tier for real-time prompt injection firewall (<strong>97.2% accuracy</strong>, <strong><30ms</strong> latency).</li>
+            <li><strong>Competitive Programming &amp; DSA:</strong> <strong>Ranked 232nd</strong> in Codeforces Div-2 (<strong>Blue Coder</strong>), <strong>5-Star</strong> in CodeChef, <strong>17th in IUPC</strong>; Qualified <strong>Meta Hacker Cup R3</strong>; 2000+ DSA, participated system design hackathon.</li>
+<li><strong>Champion | Technobeast AI Agents Hackathon:</strong> Architected Qdrant vector optimization with negative embeddings and trajectory matching.</li>
+<li><strong>7th Rank | AI Security Hackathon:</strong> Engineered real-time prompt injection firewall (<strong>97.2% accuracy</strong>, <strong>&lt;30ms</strong> latency).</li>
 <li><strong>National Merit Scholarships:</strong> Conferred merit scholarships for 85th Rank in Dhaka Board (HSC) and 90th Rank in Dhaka Board (SSC).</li>
           </ul>
         </section>
@@ -270,31 +271,31 @@
       </div>
       <div class="column">
         <section>
-          <div class="section-title">Technical Projects <span style="font-size: 5.6pt; font-weight: 600; text-transform: none; color: #444; margin-left: 4px;"><i class="fa-solid fa-rocket" style="color: #641C26;"></i> One-Click Deploy: curl | bash</span></div>
+          <div class="section-title">Technical Projects <span style="font-size: 5.6pt; font-weight: 600; text-transform: none; color: #444; margin-left: 4px;">Deploy: curl | bash</span></div>
           
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Zomato AI Lakehouse & Multimodal Platform <a href="https://github.com/KishorKumarParoi/zomato-analysis" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/zomato-analysis/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;"><i class="fa-solid fa-rocket"></i> Deploy</a></span>
-            <span class="item-date">Sept'26 -- Present</span>
+            <span class="item-title">Zomato AI Lakehouse &amp; Multimodal Platform <a href="https://github.com/KishorKumarParoi/zomato-analysis" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/zomato-analysis/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;">[Deploy]</a></span>
+            <span class="item-date">Sept 2026 – Present</span>
           </div>
-          <div class="item-subtitle">Lakehouse (35M+ Rows), Feast Store & CV Engine</div>
+          <div class="item-subtitle">Lakehouse (35M+ Rows), Feast Store &amp; CV Engine</div>
           <ul class="compact-list">
-            <li>Architected enterprise Lakehouse on <strong>Snowflake & PySpark Delta Lake</strong> processing <strong>35M+ orders (2.3 GB)</strong> with <strong>dbt Core SCD-2</strong>; curtailed warehouse compute by <strong>42% ($18K/mo savings)</strong>.</li>
-<li>Deployed real-time feature streaming via <strong>Airflow</strong>, <strong>Debezium CDC WAL</strong>, and <strong>Feast Store</strong> over Redis; lowered serving latency to <strong><5ms</strong>, unlocking <strong>+$340K quarterly revenue lift</strong>.</li>
+            <li>Architected enterprise Lakehouse on <strong>Snowflake &amp; PySpark Delta Lake</strong> processing <strong>35M+ orders (2.3 GB)</strong> with <strong>dbt Core SCD-2</strong>; curtailed warehouse compute by <strong>42% ($18K/mo savings)</strong>.</li>
+<li>Deployed real-time feature streaming via <strong>Airflow</strong>, <strong>Debezium CDC WAL</strong>, and <strong>Feast Store</strong> over Redis; lowered serving latency to <strong>&lt;5ms</strong>, unlocking <strong>+$340K quarterly revenue lift</strong>.</li>
 <li>Operationalized multimodal CV dispute arbitration (<strong>dHash</strong> anti-fraud, receipt OCR) with <strong>G-Eval CoT</strong>; slashed fraudulent claims by <strong>68%</strong>, safeguarding <strong>$1.2M in annual partner margins</strong>.</li>
-<li><strong>Compaction & Disaster Recovery:</strong> Tuned Delta Lake compaction, Bloom filter indexes, and automated MLflow shadow canary promotion with multi-region failover (<strong>RPO < 60s, RTO < 4.5m</strong>).</li>
+<li><strong>Compaction &amp; Disaster Recovery:</strong> Tuned Delta Lake compaction, Bloom filter indexes, and automated MLflow shadow canary promotion with multi-region failover (<strong>RPO &lt; 60s, RTO &lt; 4.5m</strong>).</li>
           </ul>
         </div>
         <div class="project-divider"></div>
         
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Hybrid Anime Intelligence & LLMOps Platform <a href="https://github.com/KishorKumarParoi/Hybrid-Anime-Recommender" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/Hybrid-Anime-Recommender/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;"><i class="fa-solid fa-rocket"></i> Deploy</a></span>
-            <span class="item-date">Aug'26 -- Present</span>
+            <span class="item-title">Hybrid Anime Intelligence &amp; LLMOps Platform <a href="https://github.com/KishorKumarParoi/Hybrid-Anime-Recommender" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/Hybrid-Anime-Recommender/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;">[Deploy]</a></span>
+            <span class="item-date">Aug 2026 – Present</span>
           </div>
-          <div class="item-subtitle">Polyglot Mesh (Go/Rust), RSLoRA Flywheel & Multi-LoRA vLLM</div>
+          <div class="item-subtitle">Polyglot Mesh (Go/Rust), RSLoRA Flywheel &amp; Multi-LoRA vLLM</div>
           <ul class="compact-list">
-            <li>Polyglot mesh: <strong>Go API Gateway</strong>, <strong>Rust SIMD</strong> vector scoring, and <strong>FastAPI</strong> AI core over <strong>Kafka</strong>; curtailed scoring latency from 25ms to <strong><0.5ms (50x speedup)</strong>, saving <strong>64% CPU cost</strong>.</li>
+            <li>Polyglot mesh: <strong>Go API Gateway</strong>, <strong>Rust SIMD</strong> vector scoring, and <strong>FastAPI</strong> AI core over <strong>Kafka</strong>; curtailed scoring latency from 25ms to <strong>&lt;0.5ms (50x speedup)</strong>, saving <strong>64% CPU cost</strong>.</li>
 <li>Formulated hybrid retrieval combining <strong>Dual-Tower NCF</strong>, <strong>ChromaDB HNSW</strong>, and <strong>BM25</strong> via Reciprocal Rank Fusion (<strong>NDCG@10 = 0.94</strong>); drove a <strong>28% lift in user session retention</strong>.</li>
 <li>Served adapters via <strong>vLLM Multi-LoRA dynamic multiplexing</strong> on 1x GPU with <strong>RSLoRA flywheel</strong>; slashed GPU spend by <strong>68%</strong> while scaling to <strong>3.4x higher token throughput</strong>.</li>
 <li><strong>Inference Optimization:</strong> Embedded <strong>FlashRank ONNX local re-ranking</strong> (+21.4% MRR), <strong>KEDA Kafka lag autoscaling</strong> (2 to 32 pods in 35s), and 4-bit AWQ serving 420 concurrent users/GPU.</li>
@@ -304,15 +305,15 @@
         
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Nexus-AI Multi-Cloud Lakehouse & Autonomous Agent Mesh <a href="https://github.com/KishorKumarParoi/Nexus_AI" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/Nexus_AI/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;"><i class="fa-solid fa-rocket"></i> Deploy</a></span>
-            <span class="item-date">Oct'26 -- Present</span>
+            <span class="item-title">Nexus-AI Multi-Cloud Lakehouse &amp; Autonomous Agent Mesh <a href="https://github.com/KishorKumarParoi/Nexus_AI" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/Nexus_AI/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;">[Deploy]</a></span>
+            <span class="item-date">Oct 2026 – Present</span>
           </div>
-          <div class="item-subtitle">Multi-Cloud (AWS/GCP/Azure), LangGraph, PySpark Delta Lake & Next.js 16</div>
+          <div class="item-subtitle">Multi-Cloud (AWS/GCP/Azure), LangGraph, PySpark Delta Lake &amp; Next.js 16</div>
           <ul class="compact-list">
             <li>Orchestrated autonomous multi-agent mesh in <strong>LangGraph</strong> (Data NL2SQL, BI Analyst, MLOps Health, OWASP Guardrails); automated multi-step analytical reasoning with <strong>99.2% task reliability</strong>.</li>
-<li>Engineered multi-cloud Lakehouse over <strong>AWS S3, GCP GCS, Azure ADLS Gen2</strong> via <strong>PySpark Delta Lake & dbt Core</strong>; consolidated 18M+ cross-cloud events under <strong><250ms</strong> query latency.</li>
+<li>Engineered multi-cloud Lakehouse over <strong>AWS S3, GCP GCS, Azure ADLS Gen2</strong> via <strong>PySpark Delta Lake &amp; dbt Core</strong>; consolidated 18M+ cross-cloud events under <strong>&lt;250ms</strong> query latency.</li>
 <li>Built polyglot microservice gateway in <strong>Go 1.22</strong> (:3000), <strong>FastAPI</strong> core (:8081), and <strong>Next.js 16</strong> command cockpit with real-time SSE streaming; trimmed API routing overhead by <strong>65%</strong>.</li>
-<li>Integrated continuous ML training and model registry with <strong>MLflow, Feast Feature Store, and Docker/Kubernetes</strong>; reduced model deployment turnaround from days to <strong><12 minutes</strong>.</li>
+<li>Integrated continuous ML training and model registry with <strong>MLflow, Feast Feature Store, and Docker/Kubernetes</strong>; reduced model deployment turnaround from days to <strong>&lt;12 minutes</strong>.</li>
 <li>Enforced zero-trust defense via <strong>NVIDIA NeMo Guardrails, BotShield WAF, and Terraform IaC</strong>; halted <strong>98%+ prompt injections</strong> while ensuring reproducible 1-click cloud bootstrap.</li>
           </ul>
         </div>
@@ -320,13 +321,13 @@
         
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Enterprise AI Security & Agentic RAG Platform <a href="https://github.com/KishorKumarParoi/AI_Security_Production_App" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/AI_Security_Production_App/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;"><i class="fa-solid fa-rocket"></i> Deploy</a></span>
-            <span class="item-date">Oct'26 -- Present</span>
+            <span class="item-title">Enterprise AI Security &amp; Agentic RAG Platform <a href="https://github.com/KishorKumarParoi/AI_Security_Production_App" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/AI_Security_Production_App/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;">[Deploy]</a></span>
+            <span class="item-date">Oct 2026 – Present</span>
           </div>
-          <div class="item-subtitle">Defense-in-Depth AI Gateway, NVIDIA NeMo & LangGraph</div>
+          <div class="item-subtitle">Defense-in-Depth AI Gateway, NVIDIA NeMo &amp; LangGraph</div>
           <ul class="compact-list">
-            <li>Built zero-trust defense with <strong>BotShield WAF</strong> and <strong>NVIDIA NeMo Guardrails</strong>; blocked <strong>95%+ of prompt injections & jailbreaks</strong> (benchmarked via <strong>Microsoft PyRIT 0.14.0</strong>).</li>
-<li>Formulated stateful agentic core in <strong>LangGraph</strong> with MemorySaver checkpoints and <strong>Portkey Gateway</strong>; saved <strong>$8.4K/month (42%)</strong> via <strong><50ms semantic similarity caching</strong>.</li>
+            <li>Built zero-trust defense with <strong>BotShield WAF</strong> and <strong>NVIDIA NeMo Guardrails</strong>; blocked <strong>95%+ of prompt injections &amp; jailbreaks</strong> (benchmarked via <strong>Microsoft PyRIT 0.14.0</strong>).</li>
+<li>Formulated stateful agentic core in <strong>LangGraph</strong> with MemorySaver checkpoints and <strong>Portkey Gateway</strong>; saved <strong>$8.4K/month (42%)</strong> via <strong>&lt;50ms semantic similarity caching</strong>.</li>
 <li>Standardized tool execution via <strong>FastMCP</strong> with <strong>Human-in-the-Loop (HITL)</strong> gates and Logfire/LangSmith tracing; achieved <strong>100% audit compliance</strong> with zero unauthorized tool runs.</li>
 <li>Enforced dynamic context budgeting (-36% tokens), cryptographic HMAC-SHA256 tool invocation verification, and automated RAGAS synthetic regression evaluation harness.</li>
           </ul>
@@ -335,28 +336,28 @@
         
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Smart Manufacturing Industrial AI & MLOps <a href="https://github.com/KishorKumarParoi/smart-manufacturing" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/smart-manufacturing/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;"><i class="fa-solid fa-rocket"></i> Deploy</a></span>
-            <span class="item-date">Oct'26 -- Present</span>
+            <span class="item-title">Smart Manufacturing Industrial AI &amp; MLOps <a href="https://github.com/KishorKumarParoi/smart-manufacturing" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a> <a href="https://raw.githubusercontent.com/KishorKumarParoi/smart-manufacturing/main/bootstrap.sh" target="_blank" title="One-Click Deploy (curl | bash)" style="color: #641C26; text-decoration: none; font-size: 5.8pt; margin-left: 3px; font-weight: 700; background: #fdf5f6; border: 0.4pt solid #c99ea5; border-radius: 2px; padding: 0.2px 2.5px;">[Deploy]</a></span>
+            <span class="item-date">Oct 2026 – Present</span>
           </div>
-          <div class="item-subtitle">Polyglot (Rust/Go/Next.js), PyTorch Autoencoders, GKE/K3s & ArgoCD</div>
+          <div class="item-subtitle">Polyglot (Rust/Go/Next.js), PyTorch Autoencoders, GKE/K3s &amp; ArgoCD</div>
           <ul class="compact-list">
-            <li>Deployed IoT anomaly detection (<strong>PyTorch Autoencoders</strong>) and defect inspection (<strong>CNN</strong>, <20ms); mitigated part escape defect rate by <strong>31%</strong>, saving <strong>$420K annually in scrap waste</strong>.</li>
+            <li>Deployed IoT anomaly detection (<strong>PyTorch Autoencoders</strong>) and defect inspection (<strong>CNN</strong>, &lt;20ms); mitigated part escape defect rate by <strong>31%</strong>, saving <strong>$420K annually in scrap waste</strong>.</li>
 <li>Built polyglot edge architecture: <strong>Rust SIMD</strong> vibration pre-filter (:8082), <strong>Go edge gateway</strong> (:8085), <strong>Next.js 15</strong> cockpit (:3000), and <strong>PyTorch AI core</strong> (:8000).</li>
 <li>Orchestrated declarative CI/CD via <strong>Jenkins, SonarQube, Nexus 3, and ArgoCD GitOps</strong>; curtailed deployment cycles by <strong>96% (4h to 8m)</strong> with zero-downtime failover.</li>
-<li>Integrated TensorRT INT8 edge engine (<8.2ms), non-blocking OPC-UA protocol adapter (50K tags/sec), and bidirectional gRPC edge-to-cloud streaming (-68% bandwidth).</li>
+<li>Integrated TensorRT INT8 edge engine (&lt;8.2ms), non-blocking OPC-UA protocol adapter (50K tags/sec), and bidirectional gRPC edge-to-cloud streaming (-68% bandwidth).</li>
           </ul>
         </div>
         <div class="project-divider"></div>
         
         <div class="item-block">
           <div class="item-header">
-            <span class="item-title">Core Systems: Rust Git Engine & POSIX Terminal Shell <a href="https://github.com/KishorKumarParoi/codecrafters-git-rust" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;"><i class="fa-brands fa-github"></i></a></span>
-            <span class="item-date">Aug'24</span>
+            <span class="item-title">Core Systems: Rust Git Engine &amp; POSIX Terminal Shell <a href="https://github.com/KishorKumarParoi/codecrafters-git-rust" target="_blank" title="GitHub Repository" style="color: var(--burgundy); text-decoration: none; font-size: 7.0pt; margin-left: 3px;">[GitHub]</a></span>
+            <span class="item-date">August 2024</span>
           </div>
-          <div class="item-subtitle">Bare-Metal Systems in Rust, Concurrency & Pipelines</div>
+          <div class="item-subtitle">Bare-Metal Systems in Rust, Concurrency &amp; Pipelines</div>
           <ul class="compact-list">
-            <li>Crafted Git internals in <strong>Rust</strong> (SHA-1 object graph, streaming zlib SIMD decompression); matched C speed with <strong>100% compile memory safety</strong>.</li>
-<li>Built async POSIX terminal shell with signal multiplexing and I/O redirection; attained <strong>sub-microsecond (<1µs) latency</strong> with <strong>73% lower heap allocation</strong>.</li>
+            <li>Architected Git internals in <strong>Rust</strong> (SHA-1 object graph, streaming zlib SIMD decompression); matched C speed with <strong>100% compile memory safety</strong>.</li>
+<li>Engineered async POSIX terminal shell with signal multiplexing and I/O redirection; attained <strong>sub-microsecond (&lt;1µs) latency</strong> with <strong>73% lower heap allocation</strong>.</li>
           </ul>
         </div>
         
