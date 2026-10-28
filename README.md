@@ -4,14 +4,20 @@
 
 ---
 
-## 🔗 Quick Links
+## 🔗 Quick Links & Live Ecosystem
 
-| Link | URL | Description |
-|------|-----|-------------|
-| 🌐 **Live Demo** | https://re-invent-rust.vercel.app/ | Interactive 3D Portfolio Platform |
-| 📄 **Executive Resume (PDF)** | https://re-invent-rust.vercel.app/files/resume.pdf | Official 1-Page Vector PDF Resume |
-| 📑 **Comprehensive ATS Resume** | https://re-invent-rust.vercel.app/files/resume_single_column.pdf | Detailed Single-Column ATS Resume |
-| 📊 **Visitors Count API** | https://re-invent-rust.vercel.app/api/visitors | Real-Time Supabase PostgreSQL Telemetry |
+| Platform | URL | Architecture Highlights |
+|:---|:---|:---|
+| 🎓 **Kishor.tech (Main Academic Portfolio)** | **[kishor.tech](https://kishor.tech)** | Minimalist academic layout, sub-35ms Hybrid RAG, 38-module AI curriculum |
+| 💻 **macos-portfolio (Desktop Environment)** | **[macos.kishor.tech](https://macos.kishor.tech)** | Interactive desktop OS emulator with draggable windows, dock, and terminal CLI |
+| 🧊 **3d (Interactive 3D WebGL Platform)** | **[3d.kishor.tech](https://3d.kishor.tech)** | React 19.2, Rolldown Vite, Tailwind v4, GSAP 3.13 camera choreography |
+| ⚡ **hacker (3D Cyber Hacker Workstation)** | **[hacker.kishor.tech](https://hacker.kishor.tech)** | 3D Cyber Hacker command room, CRT monitor shaders, Web Audio, terminal HUD |
+| ▶ **KoomAI Video Intelligence** | **[koom.kishor.tech](https://koom.kishor.tech)** | Sub-120ms WebRTC SVC engine, Electron native capture, 20-agent LangGraph copilot |
+| 💼 **LinkedIn Network** | **[linkedin.com/in/kishor-kumar-paroi-b06344166](https://linkedin.com/in/kishor-kumar-paroi-b06344166)** | Verified professional connections and leadership updates |
+| 🐙 **GitHub Repositories** | **[github.com/KishorKumarParoi](https://github.com/KishorKumarParoi)** | 11 production-grade ML/LLM/Lakehouse systems with 1-click cloud bootstrap scripts |
+| 📄 **Executive Resume (PDF)** | **[kishor.tech/resume.pdf](https://kishor.tech/resume.pdf)** | Official 1-Page Vector PDF Resume (ATS Score: 100/100) |
+| 📑 **Comprehensive ATS Resume** | **[kishor.tech/resume_single_column.pdf](https://kishor.tech/resume_single_column.pdf)** | Detailed 2-Page Single-Column ATS Resume (ATS Score: 100/100) |
+| 📊 **Visitors Count API** | **[3d.kishor.tech/api/visitors](https://3d.kishor.tech/api/visitors)** | Real-Time Supabase PostgreSQL Telemetry |
 
 ---
 
@@ -19,15 +25,15 @@
 
 <div align="center">
 
-[![Download Resume](https://img.shields.io/badge/📄%20Executive%20Resume-Download%20PDF-641C26?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://re-invent-rust.vercel.app/files/resume.pdf)
-[![Detailed ATS Resume](https://img.shields.io/badge/📑%20ATS%20Resume-Download%20Single--Column-1a1a1a?style=for-the-badge&logo=files&logoColor=white)](https://re-invent-rust.vercel.app/files/resume_single_column.pdf)
+[![Executive Resume](https://img.shields.io/badge/📄%20Executive%20Resume-1--Page%20(ATS%20100)-641C26?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://kishor.tech/resume.pdf)
+[![ATS Resume](https://img.shields.io/badge/📑%20ATS%20Resume-2--Page%20(ATS%20100)-1a1a1a?style=for-the-badge&logo=files&logoColor=white)](https://kishor.tech/resume_single_column.pdf)
 
 </div>
 
 | Format | Document | Target Audience & Specifications | Direct Download |
 | :--- | :--- | :--- | :--- |
-| **Academic / Executive** | `resume.pdf` | **Strict 1-Page A4 PDF:** High-DPI typography, burgundy accents, RUET CSE credentials, competitive programming mastery, and core production ML/AI systems. | [📥 **Download `resume.pdf`**](https://re-invent-rust.vercel.app/files/resume.pdf) |
-| **Comprehensive ATS** | `resume_single_column.pdf` | **Comprehensive ATS Format:** Deep architectural breakdown across all 11 production projects (Zomato Lakehouse, Anime Multi-LoRA, Agentic RAG, Smart Mfg, SageMaker, Real-time MLOps). | [📥 **Download `resume_single_column.pdf`**](https://re-invent-rust.vercel.app/files/resume_single_column.pdf) |
+| **Academic / Executive** | `resume.pdf` | **Strict 1-Page A4 PDF &bull; 100/100 ATS Score:** High-DPI typography, burgundy accents, RUET CSE credentials, competitive programming mastery, and 61 quantified metrics. | [📥 **Download `resume.pdf`**](https://kishor.tech/resume.pdf) |
+| **Comprehensive ATS** | `resume_single_column.pdf` | **Comprehensive 2-Page ATS Format &bull; 100/100 ATS Score:** Deep architectural breakdown across all 11 production projects (Zomato Lakehouse, Anime Multi-LoRA, Agentic RAG, Smart Mfg, SageMaker, Real-time MLOps) with 97 quantified metrics. | [📥 **Download `resume_single_column.pdf`**](https://kishor.tech/resume_single_column.pdf) |
 
 ---
 
