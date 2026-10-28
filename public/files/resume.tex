@@ -207,7 +207,7 @@
     \noindent\textbf{Hybrid Anime Intelligence \& LLMOps Platform} \hfill {\footnotesize\textit{Aug'26 -- Present}}\\
     \textit{Polyglot Mesh (Go/Rust), RSLoRA Flywheel \& Multi-LoRA vLLM} \href{https://github.com/KishorKumarParoi/Hybrid-Anime-Recommender}{\faGithub} \href{https://raw.githubusercontent.com/KishorKumarParoi/Hybrid-Anime-Recommender/main/bootstrap.sh}{\faRocket\ Deploy}
     \begin{itemize}
-        \item Polyglot mesh: \textbf{Go 1.24} auth, \textbf{Rust 1.85 SIMD} scoring, and \textbf{FastAPI} AI core over \textbf{Kafka}; curtailed scoring latency from 25ms to \textbf{$<$0.5ms (50x speedup)}, saving \textbf{64\% CPU cost}.
+        \item Polyglot mesh: \textbf{Go API Gateway}, \textbf{Rust SIMD} vector scoring, and \textbf{FastAPI} AI core over \textbf{Kafka}; curtailed scoring latency from 25ms to \textbf{$<$0.5ms (50x speedup)}, saving \textbf{64\% CPU cost}.
         \item Formulated hybrid retrieval combining \textbf{Dual-Tower NCF}, \textbf{ChromaDB HNSW}, and \textbf{BM25} via Reciprocal Rank Fusion (\textbf{NDCG@10 = 0.94}); drove a \textbf{28\% lift in user session retention}.
         \item Served adapters via \textbf{vLLM Multi-LoRA dynamic multiplexing} on 1x GPU with \textbf{RSLoRA flywheel}; slashed GPU spend by \textbf{68\%} while scaling to \textbf{3.4x higher token throughput}.
         \item \textbf{Inference Optimization:} Embedded \textbf{FlashRank ONNX local re-ranking} (+21.4\% MRR), \textbf{KEDA Kafka lag autoscaling} (2 to 32 pods in 35s), and 4-bit AWQ serving 420 concurrent users/GPU.
@@ -242,7 +242,7 @@
     \textit{Polyglot (Rust/Go/Next.js), PyTorch Autoencoders, GKE/K3s \& ArgoCD} \href{https://github.com/KishorKumarParoi/smart-manufacturing}{\faGithub} \href{https://raw.githubusercontent.com/KishorKumarParoi/smart-manufacturing/main/bootstrap.sh}{\faRocket\ Deploy}
     \begin{itemize}
         \item Deployed IoT anomaly detection (\textbf{PyTorch Autoencoders}) and defect inspection (\textbf{CNN}, $<$20ms); mitigated part escape defect rate by \textbf{31\%}, saving \textbf{\$420K annually in scrap waste}.
-        \item Built polyglot edge architecture: \textbf{Rust 1.85 SIMD} vibration pre-filter (:8082), \textbf{Go cloud gateway} (:8085), \textbf{Next.js 15} cockpit (:3000), and \textbf{PyTorch AI core} (:8000).
+        \item Built polyglot edge architecture: \textbf{Rust SIMD} vibration pre-filter (:8082), \textbf{Go edge gateway} (:8085), \textbf{Next.js 15} cockpit (:3000), and \textbf{PyTorch AI core} (:8000).
         \item Orchestrated declarative CI/CD via \textbf{Jenkins, SonarQube, Nexus 3, and ArgoCD GitOps}; curtailed deployment cycles by \textbf{96\% (4h to 8m)} with zero-downtime failover.
         \item Integrated TensorRT INT8 edge engine ($<$8.2ms), non-blocking OPC-UA protocol adapter (50K tags/sec), and bidirectional gRPC edge-to-cloud streaming (-68\% bandwidth).
     \end{itemize}
@@ -250,9 +250,9 @@
     \vspace{0.8pt}\noindent{\color{lightgray}\hrule height 0.3pt}\vspace{1.2pt}
     % PROJECT 6: RUST GIT ENGINE & POSIX TERMINAL
     \noindent\textbf{Core Systems: Rust Git Engine \& POSIX Terminal Shell} \hfill {\footnotesize\textit{Aug'24}}\\
-    \textit{Bare-Metal Systems in Rust 1.85, Concurrency \& Pipelines} \href{https://github.com/KishorKumarParoi/codecrafters-git-rust}{\faGithub}
+    \textit{Bare-Metal Systems in Rust, Concurrency \& Pipelines} \href{https://github.com/KishorKumarParoi/codecrafters-git-rust}{\faGithub}
     \begin{itemize}
-        \item Crafted Git internals in \textbf{Rust 1.85} (SHA-1 object graph, streaming zlib SIMD decompression); matched C speed with \textbf{100\% compile memory safety}.
+        \item Crafted Git internals in \textbf{Rust} (SHA-1 object graph, streaming zlib SIMD decompression); matched C speed with \textbf{100\% compile memory safety}.
         \item Built async POSIX terminal shell with signal multiplexing and I/O redirection; attained \textbf{sub-microsecond ($<$1$\mu$s) latency} with \textbf{73\% lower heap allocation}.
     \end{itemize}
 
