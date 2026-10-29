@@ -5,8 +5,7 @@
 html {
   scroll-behavior: smooth;
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
@@ -18,8 +17,8 @@ html {
 body {
   overscroll-behavior: none; /* Prevent bounce on scroll end */
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible;
   font-family: "General Sans", sans-serif;
   
   /* Stunning gradient background */
