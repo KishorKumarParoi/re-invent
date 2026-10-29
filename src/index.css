@@ -4,15 +4,21 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
-* {
+*, *::before, *::after {
+  box-sizing: border-box;
   scroll-padding-top: 80px; /* Offset for fixed headers */
 }
 
 body {
   overscroll-behavior: none; /* Prevent bounce on scroll end */
-  width: 100dvw;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   font-family: "General Sans", sans-serif;
   

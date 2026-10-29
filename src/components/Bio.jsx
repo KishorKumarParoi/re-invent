@@ -20,7 +20,7 @@ const Bio = () => {
         })
 
         clipAnimation.to('.mask-clip-path', {
-            width: '100vw',
+            width: '100%',
             height: '100vh',
             borderRadius: '0%',
             ease: 'power2.out',
@@ -29,7 +29,7 @@ const Bio = () => {
     })
 
     return (
-        <div id='about' className='min-h-screen w-screen'>
+        <div id='about' className='min-h-screen w-full max-w-full overflow-x-hidden'>
             <div className='relative mb-8 mt-36 flex flex-col items-center gap-5'>
                 <h2 className='font-general text-sm uppercase md:text-[10px] bg-linear-to-r from-purple-400 via-cyan-300 to-fuchsia-300 bg-clip-text text-transparent font-black tracking-widest animate-pulse'>
                     Welcome to KKP&apos;s World
@@ -47,7 +47,7 @@ const Bio = () => {
                 </div>
             </div>
 
-            <div className='h-dvh w-screen' id='clip'>
+            <div className='h-dvh w-full max-w-full overflow-hidden' id='clip'>
                 <div className='mask-clip-path about-image'>
                     <img
                         src='img/15.jpg'

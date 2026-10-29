@@ -46,7 +46,7 @@ const Story = () => {
     }, [])
 
     return (
-        <section id="story" className="relative min-h-dvh w-screen text-blue-100 py-20 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden transform-gpu">
+        <section id="story" className="relative min-h-dvh w-full max-w-full text-blue-100 py-20 bg-linear-to-b from-black via-slate-950 to-black overflow-hidden transform-gpu">
             {/* Background Radiant Nebula Lights */}
             <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[300px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />

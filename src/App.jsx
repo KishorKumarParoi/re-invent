@@ -20,7 +20,7 @@ inject()
 
 const App = () => {
   return (
-    <main className='relative min-h-screen w-screen overflow-x-hidden bg-black text-white'>
+    <main className='relative min-h-screen w-full max-w-full overflow-x-hidden bg-black text-white'>
       {/* Persistent 30s Motivation Music Engine (M: Play/Pause, N: Next, P: Prev) */}
       <MusicPlayer />
 

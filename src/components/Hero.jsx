@@ -149,7 +149,7 @@ const Hero = () => {
     const upcomingVideoIndex = ((currentIndex + 1) % totalVideos)
 
     return (
-        <div className='relative h-dvh w-screen overflow-x-hidden'>
+        <div className='relative h-dvh w-full max-w-full overflow-x-hidden'>
             {isLoading && (
                 <div className='flex-center absolute inset-0 z-1000 bg-violet-50'>
                     <div className='three-body'>
@@ -174,7 +174,7 @@ const Hero = () => {
             )}
 
 
-            <div id='video-frame' className='relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75'>
+            <div id='video-frame' className='relative z-10 h-dvh w-full max-w-full overflow-hidden rounded-lg bg-blue-75'>
                 <video
                     src={getVideoSrc(currentIndex)}
                     id='current-video'

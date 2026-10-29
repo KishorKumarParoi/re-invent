@@ -139,7 +139,7 @@ const Contact = () => {
         <div
             ref={contactRef}
             id="contact"
-            className="my-24 min-h-[90vh] w-screen px-4 md:px-10 perspective will-change-transform"
+            className="my-24 min-h-[90vh] w-full max-w-full px-4 md:px-10 perspective will-change-transform"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
