@@ -1,17 +1,36 @@
 import React from 'react'
 import clsx from 'clsx'
 
-const Button = ({ title, containerClass, id, leftIcon, rightIcon }) => {
+const Button = ({ title, containerClass, id, leftIcon, rightIcon, onClick, href }) => {
+    if (href) {
+        return (
+            <a
+                id={id}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={clsx`*:group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-violet-50
+                px-7 py-3 text-black inline-flex items-center justify-center transition-all duration-300 hover:scale-105 ${containerClass}`}
+            >
+                {leftIcon}
+                <span className='relative inline-flex overflow-hidden font-general text-xs uppercase'>
+                    <div>{title}</div>
+                </span>
+                {rightIcon}
+            </a>
+        )
+    }
 
     return (
-        <button id={id} className={clsx`*:group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-violet-50
-        px-7 py-3 text-black ${containerClass}`}
+        <button
+            id={id}
+            onClick={onClick}
+            className={clsx`*:group relative z-10 w-fit cursor-pointer overflow-hidden rounded-full bg-violet-50
+            px-7 py-3 text-black inline-flex items-center justify-center transition-all duration-300 hover:scale-105 ${containerClass}`}
         >
             {leftIcon}
-            <span className='relative incline-flex overflow-hidden font-general text-xs uppercase'>
-                <div>
-                    {title}
-                </div>
+            <span className='relative inline-flex overflow-hidden font-general text-xs uppercase'>
+                <div>{title}</div>
             </span>
             {rightIcon}
         </button>

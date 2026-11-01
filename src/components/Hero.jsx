@@ -231,8 +231,21 @@ const Hero = () => {
                             ― Sun Tzu
                         </p>
 
-                        <Button id="watch-trailer" title="Watch Trailer" leftIcon={<TiLocationArrow />}
-                            containerClass='!bg-yellow-300 flex-center gap-1' />
+                        <div className="flex flex-wrap items-center gap-3">
+                            <Button 
+                                id="watch-trailer" 
+                                title="🔥 Watch $1.4M Trailer" 
+                                href="https://www.youtube.com/watch?v=mqX-2FW3o0Q"
+                                leftIcon={<TiLocationArrow className="animate-pulse text-red-600 text-lg mr-1" />}
+                                containerClass='!bg-yellow-300 font-extrabold shadow-xl shadow-yellow-400/50 hover:shadow-yellow-400/90 hover:scale-110 transition-all duration-300 flex-center gap-1.5' 
+                            />
+                            <Button 
+                                id="pitch-deck" 
+                                title="💎 $10K Pitch Deck (.pptx)" 
+                                href="/files/Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx"
+                                containerClass='!bg-cyan-400 font-extrabold shadow-xl shadow-cyan-400/50 hover:shadow-cyan-400/90 hover:scale-110 transition-all duration-300 flex-center gap-1.5' 
+                            />
+                        </div>
 
                     </div>
                 </div>
