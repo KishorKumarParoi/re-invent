@@ -231,19 +231,30 @@ const Hero = () => {
                             ― Sun Tzu
                         </p>
 
+                        <div className="mb-3 flex items-center gap-2">
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                            </span>
+                            <span className="font-mono text-[11px] sm:text-xs font-bold uppercase tracking-widest text-amber-300 bg-amber-950/70 border border-amber-400/40 px-2 py-0.5 rounded-full shadow-lg shadow-amber-500/20">
+                                ⚡ 90s Cinematic Pitch · $1.4M Enterprise Reel
+                            </span>
+                        </div>
+
                         <div className="flex flex-wrap items-center gap-3">
                             <Button 
                                 id="watch-trailer" 
                                 title="🔥 Watch $1.4M Trailer" 
                                 href="https://www.youtube.com/watch?v=mqX-2FW3o0Q"
-                                leftIcon={<TiLocationArrow className="animate-pulse text-red-600 text-lg mr-1" />}
-                                containerClass='!bg-yellow-300 font-extrabold shadow-xl shadow-yellow-400/50 hover:shadow-yellow-400/90 hover:scale-110 transition-all duration-300 flex-center gap-1.5' 
+                                leftIcon={<TiLocationArrow className="animate-bounce text-red-600 text-xl mr-1" />}
+                                containerClass='!bg-gradient-to-r from-yellow-300 via-amber-300 to-yellow-400 !font-black text-black shadow-[0_0_35px_rgba(250,204,21,0.85)] hover:shadow-[0_0_55px_rgba(250,204,21,1)] hover:scale-110 transition-all duration-300 border-2 border-yellow-100 flex-center gap-2' 
                             />
                             <Button 
                                 id="pitch-deck" 
                                 title="💎 $10K Pitch Deck (.pptx)" 
-                                href="/files/Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx"
-                                containerClass='!bg-cyan-400 font-extrabold shadow-xl shadow-cyan-400/50 hover:shadow-cyan-400/90 hover:scale-110 transition-all duration-300 flex-center gap-1.5' 
+                                href="/files/pitch_deck.pptx"
+                                download="Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx"
+                                containerClass='!bg-gradient-to-r from-cyan-400 via-teal-300 to-cyan-400 !font-black text-black shadow-[0_0_30px_rgba(6,182,212,0.8)] hover:shadow-[0_0_50px_rgba(6,182,212,1)] hover:scale-110 transition-all duration-300 border-2 border-cyan-100 flex-center gap-2' 
                             />
                         </div>
 

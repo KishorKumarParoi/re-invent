@@ -208,6 +208,18 @@ export const Navbar = () => {
                                 <Search className='size-3.5' />
                             </button>
 
+                            {/* Watch Trailer Link */}
+                            <a
+                                href="https://www.youtube.com/watch?v=mqX-2FW3o0Q"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hidden md:flex items-center gap-1.5 px-3 py-1 sm:py-1.5 rounded-full font-black text-[10px] sm:text-xs uppercase tracking-wider cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 shadow-md shadow-rose-500/40 bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 text-white whitespace-nowrap border border-red-400/50 animate-pulse"
+                                title="Watch $1.4M Cinematic Trailer (YouTube)"
+                            >
+                                <span className="size-2 rounded-full bg-white animate-ping" />
+                                <span>Trailer</span>
+                            </a>
+
                             {/* Flashy Gaming Button */}
                             <button
                                 onClick={() => setIsGamingOpen(true)}
@@ -258,6 +270,14 @@ export const Navbar = () => {
                                                 <a href='/files/resume_single_column.docx' download className='flex-1 text-center bg-white/10 hover:bg-emerald-500/30 text-emerald-200 py-1 rounded text-[11px] font-semibold transition'>DOCX</a>
                                                 <a href='/files/resume_single_column.tex' download className='flex-1 text-center bg-white/10 hover:bg-emerald-500/30 text-emerald-200 py-1 rounded text-[11px] font-semibold transition'>LaTeX</a>
                                             </div>
+                                        </div>
+                                        <div className='border-t border-white/10 pt-1.5 px-1 space-y-1'>
+                                            <a href='https://www.youtube.com/watch?v=mqX-2FW3o0Q' target='_blank' rel='noopener noreferrer' className='block text-center bg-rose-600/30 hover:bg-rose-600/50 text-rose-200 border border-rose-500/40 py-1 rounded text-[11px] font-bold transition'>
+                                                🔥 Watch $1.4M Trailer (YouTube) ↗
+                                            </a>
+                                            <a href='/files/pitch_deck.pptx' download="Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx" className='block text-center bg-amber-500/30 hover:bg-amber-500/50 text-amber-200 border border-amber-500/40 py-1 rounded text-[11px] font-bold transition'>
+                                                💎 $10K Pitch Deck (.pptx) ↓
+                                            </a>
                                         </div>
                                     </div>
                                 )}
