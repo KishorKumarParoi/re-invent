@@ -275,8 +275,8 @@ export const Navbar = () => {
                                             <a href='https://www.youtube.com/watch?v=mqX-2FW3o0Q' target='_blank' rel='noopener noreferrer' className='block text-center bg-rose-600/30 hover:bg-rose-600/50 text-rose-200 border border-rose-500/40 py-1 rounded text-[11px] font-bold transition'>
                                                 🔥 Watch $1.4M Trailer (YouTube) ↗
                                             </a>
-                                            <a href='/files/pitch_deck.pptx' download="Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx" className='block text-center bg-amber-500/30 hover:bg-amber-500/50 text-amber-200 border border-amber-500/40 py-1 rounded text-[11px] font-bold transition'>
-                                                💎 $10K Pitch Deck (.pptx) ↓
+                                            <a href='https://pptx.kishor.tech' target='_blank' rel='noopener noreferrer' className='block text-center bg-amber-500/30 hover:bg-amber-500/50 text-amber-200 border border-amber-500/40 py-1 rounded text-[11px] font-bold transition'>
+                                                💎 $10K Pitch Deck (pptx.kishor.tech) ↗
                                             </a>
                                         </div>
                                     </div>

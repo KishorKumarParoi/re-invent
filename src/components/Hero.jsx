@@ -251,9 +251,8 @@ const Hero = () => {
                             />
                             <Button 
                                 id="pitch-deck" 
-                                title="💎 $10K Pitch Deck (.pptx)" 
-                                href="/files/pitch_deck.pptx"
-                                download="Kishor_Kumar_Paroi_10000_Dollar_Executive_Deck.pptx"
+                                title="💎 $10K Pitch Deck (pptx.kishor.tech)" 
+                                href="https://pptx.kishor.tech"
                                 containerClass='!bg-gradient-to-r from-cyan-400 via-teal-300 to-cyan-400 !font-black text-black shadow-[0_0_30px_rgba(6,182,212,0.8)] hover:shadow-[0_0_50px_rgba(6,182,212,1)] hover:scale-110 transition-all duration-300 border-2 border-cyan-100 flex-center gap-2' 
                             />
                         </div>
