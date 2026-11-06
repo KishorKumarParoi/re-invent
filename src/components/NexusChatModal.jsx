@@ -33,10 +33,57 @@ const NEXUS_KNOWLEDGE = [
         keywords: ['who', 'about', 'kishor', 'role', 'summary', 'profile', 'experience'],
         title: 'Kishor Kumar Paroi — Senior AI Systems Architect',
         answer: `**Kishor Kumar Paroi** is a **Senior AI Systems Architect & Platform Leader**:
-• **15 Enterprise Architectures:** Production-grade Multi-Agent Meshes, Medallion Lakehouses, Real-Time MLOps, and Low-Latency SIMD Engines.
-• **Key Achievements:** Cut warehouse compute by 42% ($18,000/mo saved on 35M+ orders), accelerated scoring by 50x (<0.5ms via Rust 1.85 SIMD), curtailed CI/CD releases by 96% (4h to 8m).
+• **20 Enterprise Architectures:** Production-grade Multi-Agent Meshes, CUDA Attention Kernels, 4D Distributed LLM Training, Medallion Lakehouses, Real-Time MLOps, and Low-Latency SIMD Engines.
+• **Key Achievements:** Cut warehouse compute by 42% ($18,000/mo saved on 35M+ orders), accelerated scoring by 50x (<0.5ms via Rust 1.85 SIMD), achieved 7.2x kernel speedup with FlashAttention, and curtailed CI/CD releases by 96% (4h to 8m).
 • **Education & CP:** B.Sc. in CSE from RUET (Bangladesh Rank 483rd), Codeforces Div-2 Rank 232 (Blue Coder), 2000+ DSA problems solved.
 • **Founder @ KoomAI:** Sub-120ms WebRTC 60 FPS video pipeline, 20-agent LangGraph mesh (<35ms p99), NotebookLLM studio, MV3 Pomodoro extension, and Stripe client invoicing ($24K MRR).`,
+    },
+    {
+        id: 'cuda_attention',
+        keywords: ['cuda', 'attention', 'flashattention', 'kernel', 'sram', 'gpu', 'tma', 'hopper', 'a100'],
+        title: 'CUDA FlashAttention Kernel (7.2x Speedup, O(N) SRAM)',
+        answer: `**CUDA FlashAttention Tiled Online Softmax Kernel:**
+• **SRAM Tiling & IO Complexity:** Tiles $Q, K, V$ into 164 KB SMEM, reducing HBM memory roundtrips from $O(N^2)$ to $O(N^2 d / M)$, reaching the Hong-Kung IO lower bound $\Omega(N^2 d^2 / M)$.
+• **Tiled Online Softmax:** Maintains running row-max $m^{(j)}$ and partition function $l^{(j)}$ on register files via warp shuffle instructions (\`__shfl_down_sync\`), computing exact softmax without writing intermediate $N \\times N$ matrices to HBM.
+• **Bank Conflict Elimination:** Applied 32-way shared memory padding (\`[Br][d + 4]\`) and 2D swizzling, eliminating bank conflicts and reaching **7.2x speedup** over PyTorch vanilla SDPA.
+• **Repo:** https://github.com/KishorKumarParoi/cuda-attention-kernel`,
+    },
+    {
+        id: 'distributed_llm',
+        keywords: ['distributed', 'llm', 'training', 'zero', 'megatron', 'tensor parallel', 'pipeline', 'sequence parallel'],
+        title: 'Distributed LLM Training Engine (4D Parallelism & ZeRO-3)',
+        answer: `**4D Parallel Distributed LLM Training Engine:**
+• **4D Mesh (TP × PP × DP × SP):** Combines Megatron-LM Column/Row Parallel Linear with Ring-Attention Sequence Parallelism, scaling across multi-node clusters with near-linear 91.4% efficiency.
+• **1F1B Pipelining:** Scheduled 1F1B activation checkpointing across pipeline stages, reducing bubble overhead to $F_{\\text{bubble}} = \\frac{P-1}{M+P-1} < 11\\%$.
+• **ZeRO-3 Sharding:** Sharded optimizer states, gradients, and model parameters, achieving 49.07% Model FLOPs Utilization (MFU) on LLaMA-3 70B benchmarks.
+• **Repo:** https://github.com/KishorKumarParoi/distributed-llm-training`,
+    },
+    {
+        id: 'omnichannel_voice',
+        keywords: ['omnichannel', 'voice', 'receptionist', 'webrtc', 'livekit', 'salon', 'luxe', 'sub-500ms'],
+        title: 'Omnichannel AI Voice Receptionist (Sub-500ms Latency)',
+        answer: `**Omnichannel AI Voice Receptionist Architecture:**
+• **Sub-500ms End-to-End Latency:** Integrated Silero VAD, Deepgram Nova-2 STT, Groq LLaMA-3.3 70B, and Cartesia Sonic TTS via LiveKit WebRTC for natural duplex conversations.
+• **Autonomous Scheduling:** Cal.com & Google Calendar two-way synchronization with PostgreSQL state persistence and Twilio SIP trunking.
+• **Repo:** https://github.com/KishorKumarParoi/omnichannel-voice-chat-ai-receptionist`,
+    },
+    {
+        id: 'nimbus_suite',
+        keywords: ['nimbus', 'voice suite', '5 agents', 'healthcare', 'legal', 'support', 'real estate'],
+        title: 'Nimbus AI Suite: 5 Specialized Voice Agents Swarm',
+        answer: `**Nimbus AI Voice Agents Suite:**
+• **5 Domain Swarm:** Autonomous Voice Agents for Clinical Triage, Financial Advisory, Customer Support, Legal Intake, and Real Estate Concierge.
+• **FastMCP & WebRTC:** Full duplex audio streaming with sub-450ms turnaround and cryptographically signed tool calls.
+• **Repo:** https://github.com/KishorKumarParoi/nimbus-voice-agents-suite`,
+    },
+    {
+        id: 'autocut_ai',
+        keywords: ['autocut', 'video', 'neural editor', 'whisper', 'ffmpeg', 'silence removal', 'jump-cut'],
+        title: 'AutoCut-AI: Autonomous Neural Video Editor',
+        answer: `**AutoCut-AI Neural Video Engine:**
+• **Automated Jump-Cuts:** Whisper voice activity detection and Silero VAD for automated silence detection, speaker diarization, and dynamic pacing.
+• **GPU Hardware Acceleration:** Hardware-accelerated FFmpeg pipeline rendering production-ready social clips in <15s per minute of source video.
+• **Repo:** https://github.com/KishorKumarParoi/autocut-ai`,
     },
     {
         id: 'cicd',
@@ -71,7 +118,7 @@ export const NexusChatModal = ({ isOpen, onClose }) => {
             id: 'init-1',
             sender: 'bot',
             timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-            text: `👋 Greetings! I am the **Nexus-AI Autonomous Agent**.\n\nYou are in **Full Screen Conversational AI Cockpit Mode**.\n\nAsk me anything about the **5-Agent LangGraph Mesh**, **DuckDB Medallion Lakehouse (<120ms)**, **12-stage GitOps CI/CD**, or any of Kishor's **15 enterprise production architectures**!`,
+            text: `👋 Greetings! I am the **Nexus-AI Autonomous Agent**.\n\nYou are in **Full Screen Conversational AI Cockpit Mode**.\n\nAsk me anything about the **5-Agent LangGraph Mesh**, **CUDA FlashAttention**, **Distributed LLM Training**, **DuckDB Medallion Lakehouse (<120ms)**, or any of Kishor's **20 enterprise production architectures**!`,
             trace: [
                 'Supervisor: LangGraph Cyclic State Initialized (FastMCP)',
                 'Guardrail: NVIDIA NeMo BotShield WAF active',
