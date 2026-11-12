@@ -75,6 +75,24 @@ const SEARCH_ITEMS = [
         archUrl: 'https://github.com/KishorKumarParoi/Koom-AI/blob/main/ARCHITECTURE.md',
         badge: 'Founder / Live',
     },
+    {
+        id: 'p9',
+        category: 'Flagship Projects',
+        title: 'Omnichannel AI Voice & Chat Receptionist (Live SaaS)',
+        subtitle: 'Sub-500ms LiveKit WebRTC & Vapi voice portal, 8+ messaging webhooks, Neon PG & GCal OAuth2',
+        url: 'https://ai-voice-receptionist.kishor.tech/',
+        archUrl: 'https://github.com/KishorKumarParoi/omnichannel-voice-chat-ai-receptionist',
+        badge: 'Voice SaaS / Live',
+    },
+    {
+        id: 'p10',
+        category: 'Flagship Projects',
+        title: 'Nimbus-AI Suite — 5-Agent Live Voice Ecosystem',
+        subtitle: 'LiveKit WebRTC Cloud, FastAPI, GPT-4o, ElevenLabs Turbo v2.5 across 5 live agent portals',
+        url: 'https://nimbus.kishor.tech/',
+        archUrl: 'https://github.com/KishorKumarParoi/nimbus-voice-agents-suite',
+        badge: '5-Agent Suite / Live',
+    },
 
     // Resume Downloads
     {
@@ -105,7 +123,7 @@ const SEARCH_ITEMS = [
         id: 'r4',
         category: 'Resume Downloads',
         title: 'Comprehensive Single-Column ATS Resume (2-Page PDF)',
-        subtitle: 'Strictly 2-page compact single-column format with all 11 projects',
+        subtitle: 'Strictly 2-page single-column format covering 15 flagship systems, Omnichannel AI & Nimbus Suite',
         url: '/files/resume_single_column.pdf',
         badge: 'PDF',
     },

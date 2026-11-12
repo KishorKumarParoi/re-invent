@@ -60,20 +60,20 @@ const NEXUS_KNOWLEDGE = [
     },
     {
         id: 'omnichannel_voice',
-        keywords: ['omnichannel', 'voice', 'receptionist', 'webrtc', 'livekit', 'salon', 'luxe', 'sub-500ms'],
-        title: 'Omnichannel AI Voice Receptionist (Sub-500ms Latency)',
-        answer: `**Omnichannel AI Voice Receptionist Architecture:**
-• **Sub-500ms End-to-End Latency:** Integrated Silero VAD, Deepgram Nova-2 STT, Groq LLaMA-3.3 70B, and Cartesia Sonic TTS via LiveKit WebRTC for natural duplex conversations.
-• **Autonomous Scheduling:** Cal.com & Google Calendar two-way synchronization with PostgreSQL state persistence and Twilio SIP trunking.
+        keywords: ['omnichannel', 'voice', 'receptionist', 'webrtc', 'vapi', 'salon', 'luxe', 'sub-500ms'],
+        title: 'Omnichannel AI Voice & Chat Receptionist (Live SaaS · Sub-500ms)',
+        answer: `**Omnichannel AI Voice & Chat Receptionist (Live: https://ai-voice-receptionist.kishor.tech/):**
+• **Sub-500ms Voice Pipeline:** Vapi Squad (Marcus↔Sophia) + Deepgram Nova-2 STT (<180ms) + FastAPI (<40ms) + Cartesia Sonic-3.5 TTS (<110ms) over PSTN (+1-617-271-8180) & WebRTC (/vapi-call).
+• **Omnichannel SaaS Core:** Clerk Auth, Neon Serverless PostgreSQL, vector FAQ RAG, 2-way Google Calendar v3 OAuth2, 8+ messaging webhooks, Twilio 24h/1h cron & n8n/Slack.
 • **Repo:** https://github.com/KishorKumarParoi/omnichannel-voice-chat-ai-receptionist`,
     },
     {
         id: 'nimbus_suite',
-        keywords: ['nimbus', 'voice suite', '5 agents', 'healthcare', 'legal', 'support', 'real estate'],
-        title: 'Nimbus AI Suite: 5 Specialized Voice Agents Swarm',
-        answer: `**Nimbus AI Voice Agents Suite:**
-• **5 Domain Swarm:** Autonomous Voice Agents for Clinical Triage, Financial Advisory, Customer Support, Legal Intake, and Real Estate Concierge.
-• **FastMCP & WebRTC:** Full duplex audio streaming with sub-450ms turnaround and cryptographically signed tool calls.
+        keywords: ['nimbus', 'voice suite', '5 agents', 'sales', 'meeting', 'research', 'scheduling', 'desktop'],
+        title: 'Nimbus-AI Suite: 5-Agent Live Voice Ecosystem (nimbus.kishor.tech)',
+        answer: `**Nimbus-AI 5-Agent Live Voice Suite (https://nimbus.kishor.tech/):**
+• **Sub-400ms Scratch Pipeline:** LiveKit WebRTC, FastAPI (/api/voice/process), OpenAI GPT-4o / Whisper & ElevenLabs Turbo v2.5 with 60fps waveform, instant barge-in & RAG vs RAG-less toggle.
+• **5 Live Deployed Agents:** Sales (sales.kishor.tech), Meeting (meeting.kishor.tech), Research (research.kishor.tech), Scheduling (scheduling.kishor.tech), and Desktop (desktop.kishor.tech), each verified with pytest.
 • **Repo:** https://github.com/KishorKumarParoi/nimbus-voice-agents-suite`,
     },
     {

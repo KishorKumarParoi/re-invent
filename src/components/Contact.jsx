@@ -210,7 +210,7 @@ const Contact = () => {
                                     href="/files/resume.pdf"
                                     download="Kishor_Kumar_Paroi_Resume.pdf"
                                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-gray-200 text-xs font-bold font-mono transition-all hover:scale-105 active:scale-95"
-                                    title="Download Standard 2-Page Executive Resume"
+                                    title="Download Strict 1-Page Executive Resume (PDF)"
                                 >
                                     <FileText className="size-3.5" />
                                     <span>Executive PDF</span>
@@ -224,6 +224,7 @@ const Contact = () => {
                                 { id: "pillars", label: "Core Pillars", icon: Compass },
                                 { id: "education", label: "Education (RUET)", icon: GraduationCap },
                                 { id: "competitive", label: "Competitive Solves", icon: Award },
+                                { id: "omnichannel", label: "Omnichannel AI", icon: Sparkles },
                                 { id: "koomai", label: "Founder @ KoomAI", icon: Sparkles },
                             ].map((tab) => {
                                 const Icon = tab.icon;
@@ -324,6 +325,45 @@ const Contact = () => {
                                             <div className="text-purple-400 font-extrabold text-base">RUET</div>
                                             <div className="text-gray-400 text-[10px]">ACM-ICPC Teams</div>
                                         </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {activeResumeTab === "omnichannel" && (
+                                <div className="space-y-2">
+                                    <div className="text-emerald-400 font-bold flex items-center justify-between flex-wrap gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <Sparkles className="size-4 text-emerald-400" />
+                                            <span>AI ENGINEER @ OMNICHANNEL AI SOLUTIONS:</span>
+                                        </div>
+                                        <div className="flex items-center gap-3 text-[11px]">
+                                            <a
+                                                href="https://ai-voice-receptionist.kishor.tech/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-emerald-400 hover:underline flex items-center gap-1"
+                                            >
+                                                <span>Live SaaS</span>
+                                                <ExternalLink className="size-3" />
+                                            </a>
+                                            <a
+                                                href="https://ai-voice-receptionist-webrtc-portal.kishor.tech/"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-cyan-400 hover:underline flex items-center gap-1"
+                                            >
+                                                <span>WebRTC Portal</span>
+                                                <ExternalLink className="size-3" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p className="text-[11px] text-gray-300 leading-relaxed">
+                                        Architected sub-500ms LiveKit WebRTC &amp; Vapi AI voice receptionist and 8+ channel omnichannel SaaS automation (Next.js 15, Clerk RBAC, Neon PostgreSQL, vector FAQ RAG, 2-way Google Calendar v3 OAuth2, Twilio cron reminders).
+                                    </p>
+                                    <div className="flex flex-wrap gap-2 pt-1 text-[10px]">
+                                        <span className="px-2 py-0.5 rounded bg-emerald-950/80 border border-emerald-800/40 text-emerald-300">Sub-500ms WebRTC</span>
+                                        <span className="px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-800/40 text-cyan-300">8+ Messaging Webhooks</span>
+                                        <span className="px-2 py-0.5 rounded bg-purple-950/80 border border-purple-800/40 text-purple-300">Zero Double-Bookings</span>
                                     </div>
                                 </div>
                             )}

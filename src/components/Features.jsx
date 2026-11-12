@@ -241,6 +241,39 @@ const FEATURE_PROJECTS = {
         docsImagesUrl: 'https://github.com/KishorKumarParoi/Koom-AI/tree/main/docs/images',
         deployCommand: 'https://koom.kishor.tech',
     },
+    omnichannel: {
+        id: 'omnichannel',
+        title: '13. Omnichannel AI Voice & Chat Receptionist (Live SaaS)',
+        category: 'Omnichannel Voice & SaaS',
+        sla: '<500ms WebRTC • 8+ Channels • Zero Double-Bookings',
+        description: 'Multi-tenant AI receptionist automating voice (Vapi / LiveKit WebRTC), phone, web chat, SMS, WhatsApp, Instagram, Facebook Messenger, and email workflows over Next.js 15, Neon Postgres, and Google Calendar OAuth2.',
+        highlights: [
+            'Built sub-500ms LiveKit WebRTC & Vapi conversational voice portal alongside 8+ webhook channels with HMAC validation.',
+            'Architected Next.js 15, Clerk multi-tenant RBAC, Neon Serverless PostgreSQL, vector FAQ RAG, and atomic Google Calendar v3 slot locking.',
+            'Automated 24h/1h Twilio SMS/email reminders, n8n/Slack escalation webhooks, and no-show mitigation.',
+        ],
+        techStack: ['LiveKit WebRTC', 'Vapi', 'Next.js 15', 'Neon PostgreSQL', 'Clerk Auth', 'Google Calendar v3', 'Twilio'],
+        repoUrl: 'https://github.com/KishorKumarParoi/omnichannel-voice-chat-ai-receptionist',
+        archUrl: 'https://github.com/KishorKumarParoi/omnichannel-voice-chat-ai-receptionist',
+        docsImagesUrl: 'https://ai-voice-receptionist-webrtc-portal.kishor.tech/',
+        deployCommand: 'https://ai-voice-receptionist.kishor.tech/',
+    },
+    nimbus: {
+        id: 'nimbus',
+        title: '14. Nimbus-AI Suite: 5-Agent Live Voice Ecosystem',
+        category: '5-Agent Voice Ecosystem',
+        sla: '<400ms Voice RTT • 5 Live Deployments • LiveKit Cloud',
+        description: 'Enterprise 5-agent conversational voice ecosystem built from scratch on LiveKit WebRTC Cloud, FastAPI /api/voice/process, OpenAI GPT-4o / Whisper ASR, and ElevenLabs Turbo v2.5 TTS across 5 dedicated live subdomains.',
+        highlights: [
+            'Deployed Hub & 5 live agents: Sales (sales.kishor.tech), Meeting (meeting.kishor.tech), Research (research.kishor.tech), Scheduling (scheduling.kishor.tech), and Desktop (desktop.kishor.tech).',
+            'Sub-400ms end-to-end voice roundtrips with 60fps audio waveform canvas, instant barge-in VAD interruption, RAG vs raw mode toggle, and waterfall latency telemetry.',
+        ],
+        techStack: ['LiveKit WebRTC Cloud', 'FastAPI', 'OpenAI GPT-4o', 'Whisper ASR', 'ElevenLabs Turbo v2.5', 'Next.js'],
+        repoUrl: 'https://github.com/KishorKumarParoi/nimbus-voice-agents-suite',
+        archUrl: 'https://github.com/KishorKumarParoi/nimbus-voice-agents-suite',
+        docsImagesUrl: 'https://nimbus.kishor.tech/',
+        deployCommand: 'https://nimbus.kishor.tech/',
+    },
 }
 
 const JUMP_ITEMS = [
@@ -256,6 +289,8 @@ const JUMP_ITEMS = [
     { id: 'realtime_mlops', label: '10. Realtime MLOps' },
     { id: 'rustgit', label: '11. Rust Git' },
     { id: 'koom', label: '12. KOOM-AI' },
+    { id: 'omnichannel', label: '13. Omnichannel AI' },
+    { id: 'nimbus', label: '14. Nimbus-AI Suite' },
 ]
 
 const Features = () => {
@@ -488,7 +523,7 @@ const Features = () => {
                                     <Sparkles className='size-3.5 text-amber-400' />
                                     <span>Interactive Project Showcase Engine</span>
                                 </div>
-                                <h3 className='text-xl md:text-2xl font-black text-white'>12 Flagship Architectures from RESUME.pdf</h3>
+                                <h3 className='text-xl md:text-2xl font-black text-white'>14 Flagship Architectures from RESUME.pdf</h3>
                             </div>
 
                             {/* View Switcher: 3D Flashcards Deck vs Bento Grid */}

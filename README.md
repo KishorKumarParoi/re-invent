@@ -32,8 +32,8 @@
 
 | Format | Document | Target Audience & Specifications | Direct Download |
 | :--- | :--- | :--- | :--- |
-| **Academic / Executive** | `resume.pdf` | **Strict 1-Page A4 PDF &bull; 100/100 ATS Score:** High-DPI typography, burgundy accents, RUET CSE credentials, competitive programming mastery, and 61 quantified metrics. | [📥 **Download `resume.pdf`**](https://kishor.tech/resume.pdf) |
-| **Comprehensive ATS** | `resume_single_column.pdf` | **Comprehensive 2-Page ATS Format &bull; 100/100 ATS Score:** Deep architectural breakdown across all 11 production projects (Zomato Lakehouse, Anime Multi-LoRA, Agentic RAG, Smart Mfg, SageMaker, Real-time MLOps) with 97 quantified metrics. | [📥 **Download `resume_single_column.pdf`**](https://kishor.tech/resume_single_column.pdf) |
+| **Academic / Executive** | `resume.pdf` | **Strict 1-Page A4 PDF &bull; 100/100 ATS Score:** High-DPI typography, Omnichannel AI Live SaaS, Nimbus 5-Agent Live Suite, RUET CSE credentials, and competitive programming mastery. | [📥 **Download `resume.pdf`**](https://kishor.tech/resume.pdf) |
+| **Comprehensive ATS** | `resume_single_column.pdf` | **Comprehensive 2-Page ATS Format &bull; 100/100 ATS Score:** Deep architectural breakdown across Omnichannel AI & all 15 flagship systems (including Nimbus 5-Agent Suite, Zomato Lakehouse, Anime Multi-LoRA, CUDA FlashAttention). | [📥 **Download `resume_single_column.pdf`**](https://kishor.tech/resume_single_column.pdf) |
 
 ---
 
